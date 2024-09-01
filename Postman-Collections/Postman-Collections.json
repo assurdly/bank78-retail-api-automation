@@ -25,7 +25,6 @@
 									"    pm.expect(jsonData.access_token).to.exist;\r",
 									"});\r",
 									"\r",
-									"\r",
 									"pm.test(\"Access token is a non-empty string\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData.access_token).to.be.a('string').and.to.not.be.empty;\r",
@@ -43,7 +42,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "c170f9cc-74cf-49d3-a6ca-49297d9af8a0",
+								"id": "5606f03f-641f-4256-9020-93f09ae49073",
 								"exec": [],
 								"type": "text/javascript"
 							}
