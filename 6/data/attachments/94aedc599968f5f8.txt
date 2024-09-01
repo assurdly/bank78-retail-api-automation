@@ -1,0 +1,43 @@
+{
+  "channel": "1",
+  "sourceAccountNo": "1010001719",
+  "transactionPin": "638",
+  "deviceId": "xphone",
+  "beneficiaries": [
+    {
+            "accountName": "Reece Koch",
+            "accountNumber": "1010001719",
+            "nameEnquiryId": 600,
+            "amount": "100",
+            "narration": "Salary"
+        },
+        {
+            "accountName": "John Doe",
+            "accountNumber": "8045013161",
+            "amount": "110",
+            "narration": "Salary",
+            "nameEnquiryId": 601
+        },
+        {
+            "accountName": "Chi Chi",
+            "accountNumber": "8198765432",
+            "amount": "120",
+            "narration": "Salary",
+            "nameEnquiryId": 602
+        },
+        {
+            "accountName": "John Doe",
+            "accountNumber": "8055584568",
+            "amount": "130",
+            "narration": "Salary",
+            "nameEnquiryId": 603
+        },
+        {
+            "accountName": "Bunch Dillon",
+            "accountNumber": "9373494343",
+            "amount": "140",
+            "narration": "Salary",
+            "nameEnquiryId": 604
+        }
+  ]
+}
