@@ -1,0 +1,21 @@
+{
+  "amount": "100",
+  "transactionPin": "6385",
+  "narration": "Transfer overseas",
+  "channel": "1",
+  "sourceAccountNo": "1010000712",
+  "saveBeneficiary": true,
+  "deviceId": "phoneX",
+  "canSchedule": true,
+  "scheduleInfo": {
+    "scheduledStartDate": "2024-08-30T16:10:46.856Z",
+    "scheduledEndDate": "2024-08-30T16:10:46.856Z",
+    "repeatFrequency": "0",
+    "repeatWeekDay": "0",
+    "repeatMonthDay": "0",
+    "repeatCount": "0"
+  },
+  "accountNumber": "1780004070",
+  "nameEnquiryRequestId": "10",
+  "currency": "NGN"
+}
