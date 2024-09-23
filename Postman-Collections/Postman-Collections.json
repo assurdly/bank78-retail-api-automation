@@ -205,8 +205,11 @@
 							"listen": "prerequest",
 							"script": {
 								"id": "5606f03f-641f-4256-9020-93f09ae49073",
-								"exec": [],
-								"type": "text/javascript"
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -242,12 +245,12 @@
 								{
 									"description": "username= test1860@mailinator.com, test6900, {{latest_cust_email}}",
 									"key": "username",
-									"value": "mayin@yopmail.com"
+									"value": "percivalrp106+jimbei@gmail.com"
 								},
 								{
 									"description": "password",
 									"key": "password",
-									"value": "Assurdly01!"
+									"value": "Test123$"
 								},
 								{
 									"description": "client_id",
