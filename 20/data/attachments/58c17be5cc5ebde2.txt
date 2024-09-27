@@ -1,0 +1,1 @@
+{"hasResult":false,"result":null,"resultType":"ValidationError","message":"Response has validation errors","validationMessages":["The accountDto field is required.","Error converting value \"\" to type 'Library.Common.Models.CurrencyEnum'. Path 'currencyCode', line 2, position 20."],"successful":false,"responseCode":null}
