@@ -1,0 +1,12 @@
+{
+    "Date": "Sat, 05 Oct 2024 21:22:06 GMT",
+    "Content-Length": "0",
+    "Connection": "keep-alive",
+    "www-authenticate": "Bearer error=\"invalid_token\", error_description=\"The token expired at '10/05/2024 16:11:55'\"",
+    "CF-Cache-Status": "DYNAMIC",
+    "Report-To": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=newypVV%2BP9bBZAdt2ILPGvGlh%2FfFFSu0x6fOJVTufa2oDJE1T8qzlYtcICff%2BkR%2BalI%2FnBo0%2Bm8rJro3Mx395n0m6tjPSk5gThoQrDl5xOAHkiuHc422QYbtNMQAjByvvCKMUEQiCueK\"}],\"group\":\"cf-nel\",\"max_age\":604800}",
+    "NEL": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}",
+    "Server": "cloudflare",
+    "CF-RAY": "8ce07712be7d17da-SJC",
+    "alt-svc": "h3=\":443\"; ma=86400"
+}
