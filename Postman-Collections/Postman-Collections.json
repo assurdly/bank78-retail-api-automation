@@ -17843,7 +17843,7 @@
 									]
 								},
 								{
-									"name": "Invalid Beneficiary Name",
+									"name": "No Beneficiary Name",
 									"event": [
 										{
 											"listen": "test",
@@ -17899,7 +17899,8 @@
 													"});\r",
 													""
 												],
-												"type": "text/javascript"
+												"type": "text/javascript",
+												"packages": {}
 											}
 										}
 									],
@@ -17927,7 +17928,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"beneficiaryName\": \"Abdel123 Lover\",\n  \"bankName\": \"Providus\",\n  \"accountName\": \"Abdel Abdufa\",\n  \"accountNumber\": \"1010001422\",\n  \"emailAddress\": \"abdel@email.com\",\n  \"countryCode\": \"+234\",\n  \"address\": \"Abuja\",\n  \"CurrencyCode\": \"nil\",\n  \"BankRequirementValue\": \"nil\",\n  \"currencyRequirement\": {\n    \"name\": \"NGN\",\n    \"value\": \"100\",\n    \"forms\": [\n      {\n        \"dataLabel\": \"Money\",\n        \"dataValue\": \"Save Money\"\n      }\n    ]\n  }\n}",
+											"raw": "// \n\n{\n  \"beneficiaryName\": \"\",\n  \"bankName\": \"Bank78\",\n  \"accountName\": \"Lala Ogee\",\n  \"accountNumber\":\"9035000122\",\n  \"emailAddress\": \"la@mailinator.com\",\n  \"countryCode\": \"+234\",\n  \"address\": \"Lagos\",\n  \"bankRequirementId\": 1,\n  \"CurrencyCode\": \"NGN\",\n  \"BankRequirementValue\": \"110072\",\n  \"nameEnquiryId\": 1680,\n  \"bankId\": 335\n  \n    \n  }",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
