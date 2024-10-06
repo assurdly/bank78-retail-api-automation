@@ -19727,7 +19727,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Error message matches the expected value for 400\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.equal(\"Request account number and name enquiry request account number mismatch\");\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Response has validation errors\");\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Error code is 0 for failed request\", function () {\r",
@@ -20028,7 +20028,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"amount\": \"100\",\n  \"transactionPin\": \"6543\",\n  \"narration\": \"Invalid account number\",\n  \"channel\": \"1\",\n  \"sourceAccountNo\": \"{{sourceAccount}}\",\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"phoneX\",\n  \"canSchedule\": true,\n  \"scheduleInfo\": {\n    \"scheduledStartDate\": \"2024-08-30T16:10:46.856Z\",\n    \"scheduledEndDate\": \"2024-08-30T16:10:46.856Z\",\n    \"repeatFrequency\": \"0\",\n    \"repeatWeekDay\": \"0\",\n    \"repeatMonthDay\": \"0\",\n    \"repeatCount\": \"0\"\n  },\n  \"accountNumber\": \"1780001233\",\n  \"nameEnquiryRequestId\": \"10\",\n  \"currency\": \"NGN\"\n}",
+									"raw": "{\n  \"amount\": \"100\",\n  \"transactionPin\": \"6543\",\n  \"narration\": \"Transfer now\",\n  \"channel\": \"1\",\n  \"sourceAccountNo\": 8135575834,\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"phoneX\",\n  \"canSchedule\": false,\n  \"scheduleInfo\": {},\n  \"accountNumber\": \"8168519015\",\n  \"nameEnquiryRequestId\": \"1680\",\n  \"currency\": \"NGN\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
