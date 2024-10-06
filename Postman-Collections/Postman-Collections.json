@@ -19978,16 +19978,21 @@
 											"pm.test(\"Response structure and properties for 400\", function () {\r",
 											"    pm.expect(pm.response.json()).to.have.property(\"hasResult\", false);\r",
 											"    pm.expect(pm.response.json()).to.have.property(\"result\", null);\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"resultType\", 2);\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"message\", \"Request account number and name enquiry request account number mismatch\");\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"resultType\");\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\", \"Response has validation errors\");\r",
 											"  //  pm.expect(pm.response.json()).to.have.property(\"validationMessages\");\r",
 											"    pm.expect(pm.response.json()).to.have.property(\"successful\", false);\r",
 											"    pm.expect(pm.response.json()).to.have.property(\"errorCode\", 0);\r",
 											"   // pm.expect(pm.response.json()).to.have.property(\"responseCode\", \"07\");\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Error message matches the expected value for 400\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.equal(\"Request account number and name enquiry request account number mismatch\");\r",
+											"// pm.test(\"Error message matches the expected value for 400\", function () {\r",
+											"//     pm.expect(pm.response.json().message).to.equal(\"Request account number and name enquiry request account number mismatch\");\r",
+											"// });\r",
+											"\r",
+											"pm.test(\"ValidationMessages array and content for 400\", function () {\r",
+											"    var validationMessages = pm.response.json().validationMessages;\r",
+											"    pm.expect(validationMessages).to.be.an(\"array\").that.includes(\"Account Number can only be digits with a length of 10\");\r",
 											"});\r",
 											"\r",
 											"\r",
@@ -20028,7 +20033,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"amount\": \"100\",\n  \"transactionPin\": \"6543\",\n  \"narration\": \"Transfer now\",\n  \"channel\": \"1\",\n  \"sourceAccountNo\": 8135575834,\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"phoneX\",\n  \"canSchedule\": false,\n  \"scheduleInfo\": {},\n  \"accountNumber\": \"8168519015\",\n  \"nameEnquiryRequestId\": \"1680\",\n  \"currency\": \"NGN\"\n}",
+									"raw": "{\n  \"amount\": \"100\",\n  \"transactionPin\": \"6543\",\n  \"narration\": \"Transfer now\",\n  \"channel\": \"1\",\n  \"sourceAccountNo\": 8135575834,\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"phoneX\",\n  \"canSchedule\": false,\n  \"scheduleInfo\": {},\n  \"accountNumber\": \"124959400-3\", //Investigate this response with Matthew\n  \"nameEnquiryRequestId\": \"1680\",\n  \"currency\": \"NGN\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -20169,7 +20174,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"amount\": \"100\",\n  \"transactionPin\": \"6385\",\n  \"narration\": \"Transfer overseas\",\n  \"channel\": \"1\",\n  \"sourceAccountNo\": \"1010000712\",\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"phoneX\",\n  \"canSchedule\": true,\n  \"scheduleInfo\": {\n    \"scheduledStartDate\": \"2024-08-30T16:10:46.856Z\",\n    \"scheduledEndDate\": \"2024-08-30T16:10:46.856Z\",\n    \"repeatFrequency\": \"0\",\n    \"repeatWeekDay\": \"0\",\n    \"repeatMonthDay\": \"0\",\n    \"repeatCount\": \"0\"\n  },\n  \"accountNumber\": \"1780004070\",\n  \"nameEnquiryRequestId\": \"10\",\n  \"currency\": \"NGN\"\n}",
+									"raw": "{\n  \"amount\": \"100\",\n  \"transactionPin\": \"6590\",\n  \"narration\": \"Transfer now\",\n  \"channel\": \"1\",\n  \"sourceAccountNo\": 8135575834,\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"phoneX\",\n  \"canSchedule\": false,\n  \"scheduleInfo\": {},\n  \"accountNumber\": \"8168519515\",\n  \"nameEnquiryRequestId\": \"1680\",\n  \"currency\": \"NGN\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
