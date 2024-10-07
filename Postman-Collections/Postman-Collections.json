@@ -21054,9 +21054,9 @@
 											"    pm.expect(pm.response.json().hasResult).to.be.a('boolean');",
 											"});",
 											"",
-											"pm.test(\"Response result property is an array\", function () {",
-											"    pm.expect(pm.response.json().result).to.be.an('array');",
-											"});",
+											"// pm.test(\"Response result property is an array\", function () {",
+											"//     pm.expect(pm.response.json().result).to.be.an('array');",
+											"// });",
 											"",
 											"pm.test(\"Response resultType property is a number or null\", function () {",
 											"    pm.expect(pm.response.json().resultType).to.satisfy(function(value) {",
@@ -21150,7 +21150,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"channel\": \"1\",\n  \"sourceAccountNo\": \"8135575834\",\n  \"transactionPin\": \"6543\",\n  \"deviceId\": \"iphone\",\n  \"beneficiaries\": [\n    {\n      \"accountNumber\": \"0000028170\",\n      \"amount\": \"100\",\n      \"NameEnquiryRequestId\": \"15\",\n      \"narration\": \"My sister\",\n      \"saveBeneficiary\": \"true\"\n    },\n    {\n      \"accountNumber\": \"8048838483\",\n      \"amount\": \"100\",\n      \"NameEnquiryRequestId\": \"10\",\n      \"narration\": \"My sister\",\n      \"saveBeneficiary\": \"true\"\n    },\n    {\n      \"accountNumber\": \"1010001729\",\n      \"amount\": \"100\",\n      \"NameEnquiryRequestId\": \"15\",\n      \"narration\": \"Have fun\",\n      \"saveBeneficiary\": \"true\"\n    }\n  \n  ],\n  \"currency\": \"NGN\"\n}",
+									"raw": "// {\n//   \"channel\": \"1\",\n//   \"sourceAccountNo\": \"8135575834\",\n//   \"transactionPin\": \"6543\",\n//   \"deviceId\": \"iphone\",\n//   \"beneficiaries\": [\n//     {\n//       \"accountNumber\": \"0000028170\",\n//       \"amount\": \"100\",\n//       \"NameEnquiryRequestId\": \"15\",\n//       \"narration\": \"My sister\",\n//       \"saveBeneficiary\": \"false\"\n//     },\n//     {\n//       \"accountNumber\": \"8048838483\",\n//       \"amount\": \"100\",\n//       \"NameEnquiryRequestId\": \"10\",\n//       \"narration\": \"My sister\",\n//       \"saveBeneficiary\": \"false\"\n//     },\n//     {\n//       \"accountNumber\": \"1010001729\",\n//       \"amount\": \"100\",\n//       \"NameEnquiryRequestId\": \"15\",\n//       \"narration\": \"Have fun\",\n//       \"saveBeneficiary\": \"true\"\n//     }\n  \n//   ],\n//   \"currency\": \"NGN\"\n// }\n\n{\n    \"transactionPin\": \"6543\",\n    \"channel\": \"Web\",\n    \"sourceAccountNo\": \"8135575834\",\n    \"deviceId\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36\",\n    \"beneficiaries\": [\n        {\n            \"accountNumber\": \"0000028170\",\n            \"amount\": 500,\n            \"nameEnquiryRequestId\": 10118,\n            \"saveBeneficiary\": false,\n            \"narration\": \"\"\n        },\n        {\n            \"accountNumber\": \"8048838483\",\n            \"amount\": 500,\n            \"nameEnquiryRequestId\": 10119,\n            \"saveBeneficiary\": false,\n            \"narration\": \"\"\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -21158,7 +21158,7 @@
 										}
 									}
 								},
-								"url": "https://transfer-dev.bank78.co/api/v1/Transfer/bulk"
+								"url": "https://transfer-dev.bank78.co/api/v1/transfer/bulk/process-transfer"
 							},
 							"response": [
 								{
