@@ -8338,148 +8338,6 @@
 							]
 						},
 						{
-							"name": "Reset PIN - Expired OTP",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "aec9c988-05d4-4827-b0e4-9bbafd5e2009",
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status code response is Bad Request\", function () {\r",
-											"    pm.response.to.have.status(\"Bad Request\")\r",
-											"});\r",
-											"\r",
-											"var jsonData = pm.response.json();\r",
-											"\r",
-											"pm.test(\"Response has a result property\", function () {\r",
-											"    pm.expect(jsonData).to.be.an(\"object\");\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Result property is an object\", function () {\r",
-											"    pm.expect(jsonData.hasResult).to.be.a(\"boolean\");\r",
-											"    pm.expect(jsonData.hasResult).to.eq(false);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Result property has a message property\", function () {\r",
-											"    pm.expect(jsonData.result).to.be.null;\r",
-											"});\r",
-											"\r",
-											"pm.test(\"ResultType is a number\", function () {\r",
-											"    pm.expect(jsonData.resultType).to.be.a(\"number\");\r",
-											"    pm.expect(jsonData.resultType).to.eq(3);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Message is a string\", function () {\r",
-											"    pm.expect(jsonData.message).to.be.a(\"string\");\r",
-											"    pm.expect(jsonData.message).to.eq(\"Response has validation errors\");\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Message is a string\", function () {\r",
-											"    pm.expect(jsonData.validationMessages).to.be.an(\"array\");\r",
-											"    pm.expect(jsonData.validationMessages[0]).to.eq(\"OTP can only be 6 digits\");\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Successful is a boolean\", function () {\r",
-											"    pm.expect(jsonData.successful).to.be.a(\"boolean\");\r",
-											"     pm.expect(jsonData.successful).to.eq(false);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "deb8b9d9-0461-4506-8832-02d99b25b350",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{customer_access_token}}"
-									}
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "x-api-key",
-										"value": "{{x-api-key}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"confirmPin\": \"6385\",\n  \"newPin\": \"6385\",\n  \"otp\": \"123456\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/identity/api/v1/users/pin/reset-pin"
-							},
-							"response": [
-								{
-									"id": "6d5cca7d-da5a-45d9-9470-4a889fb2f294",
-									"name": "Success",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											},
-											{
-												"key": "Accept",
-												"value": "application/json"
-											},
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "Authorization",
-												"value": "<API Key>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"confirmPin\": \"6271\",\n  \"newPin\": \"3762\",\n  \"otp\": \"626481\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": "{{baseUrl}}/api/v1/users/pin/reset-pin"
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"message\": \"<string>\"\n  },\n  \"resultType\": \"Warning\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
-								}
-							]
-						},
-						{
 							"name": "Reset PIN - Invalid PIN",
 							"event": [
 								{
@@ -8773,6 +8631,149 @@
 						}
 					],
 					"id": "72883be3-7e03-46ab-8a74-3018dc31ae5d"
+				},
+				{
+					"name": "Reset PIN - Expired OTP",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "aec9c988-05d4-4827-b0e4-9bbafd5e2009",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code response is Bad Request\", function () {\r",
+									"    pm.response.to.have.status(\"Bad Request\")\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Response has a result property\", function () {\r",
+									"    pm.expect(jsonData).to.be.an(\"object\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Result property is an object\", function () {\r",
+									"    pm.expect(jsonData.hasResult).to.be.a(\"boolean\");\r",
+									"    pm.expect(jsonData.hasResult).to.eq(false);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Result property has a message property\", function () {\r",
+									"    pm.expect(jsonData.result).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ResultType is a number\", function () {\r",
+									"    pm.expect(jsonData.resultType).to.be.a(\"number\");\r",
+									"    pm.expect(jsonData.resultType).to.eq(3);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Message is a string\", function () {\r",
+									"    pm.expect(jsonData.message).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.message).to.eq(\"Response has validation errors\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Message is a string\", function () {\r",
+									"    pm.expect(jsonData.validationMessages).to.be.an(\"array\");\r",
+									"    pm.expect(jsonData.validationMessages[0]).to.eq(\"OTP can only be 6 digits\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Successful is a boolean\", function () {\r",
+									"    pm.expect(jsonData.successful).to.be.a(\"boolean\");\r",
+									"     pm.expect(jsonData.successful).to.eq(false);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "deb8b9d9-0461-4506-8832-02d99b25b350",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{customer_access_token}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"confirmPin\": \"6385\",\n  \"newPin\": \"6380\",\n  \"otp\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/identity/api/v1/users/pin/reset-pin"
+					},
+					"response": [
+						{
+							"id": "6d5cca7d-da5a-45d9-9470-4a889fb2f294",
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"confirmPin\": \"6271\",\n  \"newPin\": \"3762\",\n  \"otp\": \"626481\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/v1/users/pin/reset-pin"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"message\": \"<string>\"\n  },\n  \"resultType\": \"Warning\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+						}
+					]
 				}
 			],
 			"id": "f3f7956f-1c48-45b8-9ee0-4470f4c43289"
