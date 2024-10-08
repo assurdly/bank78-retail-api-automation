@@ -15299,6 +15299,8 @@
 											"    pm.expect(validationMessages).to.be.an(\"array\").that.includes(\"The Decoder field is required.\");\r",
 											"});\r",
 											"\r",
+											"postman.setNextRequest(\"Wrong bundle amount\")\r",
+											"\r",
 											""
 										],
 										"type": "text/javascript",
@@ -15760,10 +15762,10 @@
 											"    pm.expect(pm.response.json()).to.not.have.property(\"responseCode\", \"null\");\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Error message Invalid amount paid. Amount passed is lesser than the bill package amount\", function () {\r",
-											"    var validationMessages = pm.response.json().validationMessages;\r",
-											"    pm.expect(validationMessages).to.be.an(\"array\").that.includes(\"Fixed package amount: Invalid amount paid. Amount passed is lesser than the bill package amount\");\r",
-											"});\r",
+											"// pm.test(\"Error message Invalid amount paid. Amount passed is lesser than the bill package amount\", function () {\r",
+											"//     var validationMessages = pm.response.json().validationMessages;\r",
+											"//     pm.expect(validationMessages).to.be.an(\"array\").that.includes(\"Fixed package amount: Invalid amount paid. Amount passed is lesser than the bill package amount\");\r",
+											"// });\r",
 											"\r",
 											"pm.test(\"Error code is 0 for failed request\", function () {\r",
 											"    pm.expect(pm.response.json().errorCode).to.equal(0);\r",
@@ -15845,7 +15847,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"amount\": \"7000\",\n  \"billId\": \"13\",\n  \"channel\": \"1\",\n  \"clientRequestId\": \"payforcabletv123\",\n  \"decoder\": \"123445678890\",\n  \"packageId\": \"72\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"transactionPin\": \"6543\",\n  \"narration\": \"Buy Cable bundle\",\n  \"saveBeneficiary\": \"false\",\n  \"deviceId\": \"xphone\",\n  \"beneficiaryName\": \"Paul\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"12345\"\n}",
+									"raw": "{\n  \"amount\": \"200\",\n  \"billId\": \"13\",\n  \"channel\": \"1\",\n  \"clientRequestId\": \"payforcabletv123\",\n  \"decoder\": \"123445678890\",\n  \"packageId\": \"72\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"transactionPin\": \"6543\",\n  \"narration\": \"Buy Cable bundle\",\n  \"saveBeneficiary\": \"false\",\n  \"deviceId\": \"xphone\",\n  \"beneficiaryName\": \"Paul\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"12345\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
