@@ -13399,6 +13399,168 @@
 					"name": "Buy Data",
 					"item": [
 						{
+							"name": "Invalid pin",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "542ad0a1-db8e-499a-aa24-5850592b538f",
+										"exec": [
+											"pm.test(\"Response code is 400 (Bad Request)\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response structure and properties for 400\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"hasResult\", false);\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"result\", null);\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"resultType\", 3);\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\", \"Response has validation errors\");\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"successful\", false);\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"errorCode\", 0);\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"responseCode\", null);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Error message says Transaction PIN can only be digits with a length of 4\", function () {\r",
+											"    pm.expect(pm.response.json().validationMessages[0]).to.equal(\"Transaction PIN can only be digits with a length of 4\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "33345de5-c219-44c8-a743-a18743d736c5",
+										"exec": [
+											"// Generate a random string function\r",
+											"// function generateRandomString(length) {\r",
+											"//     const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';\r",
+											"//     let result = '';\r",
+											"//     for (let i = 0; i < length; i++) {\r",
+											"//         const randomIndex = Math.floor(Math.random() * characters.length);\r",
+											"//         result += characters.charAt(randomIndex);\r",
+											"//     }\r",
+											"//     return result;\r",
+											"// }\r",
+											"\r",
+											"// Update the requestBody with a random clientRequestId\r",
+											"// const randomClientId = generateRandomString(10); // Change 10 to the desired length\r",
+											"// const requestBody = {\r",
+											"\r",
+											"//   \"amount\": \"2500\",\r",
+											"//   \"billId\": \"9\",\r",
+											"//   \"channel\": \"1\",\r",
+											"//   \"clientRequestId\": randomClientId,\r",
+											"//   \"packageId\": \"47\",\r",
+											"//   \"phoneNumber\": \"08185597979\",\r",
+											"//   \"sourceAccountNumber\": \"{{sourceAccount}}\",\r",
+											"//   \"transactionPin\": \"6380\",\r",
+											"//   \"narration\": \"Buy data bundle\",\r",
+											"//   \"saveBeneficiary\": \"True\",\r",
+											"//   \"deviceId\": \"pixel phone\",\r",
+											"//   \"beneficiaryName\": \"Bryan Ek\",\r",
+											"//   \"beneficiaryPhone\": \"08185597979\",\r",
+											"//   \"beneficiaryEmail\": \"bryan@assurdly\"\r",
+											"// };\r",
+											"\r",
+											"// pm.request.body.raw = JSON.stringify(requestBody);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "f9205a34-1dfa-4fd0-90f1-d8fdcd979367",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{customer_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									},
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"amount\": \"2500\",\n  \"billId\": \"6\",\n  \"channel\": \"1\",\n  \"clientRequestId\": \"buydata1335\",\n  \"packageId\": \"112\",\n  \"phoneNumber\": \"08185597979\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"transactionPin\": \"6k43\",\n  \"narration\": \"Buy data bundle\",\n  \"saveBeneficiary\": \"True\",\n  \"deviceId\": \"pixel phone\",\n  \"beneficiaryName\": \"Bryan Ek\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"bryan@assurdly\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/bills-payment/api/v1/BillsPayment/data"
+							},
+							"response": [
+								{
+									"id": "ba9f4b6f-6ed1-4a5c-b7be-8919c73820a4",
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											},
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"amount\": \"<double>\",\n  \"billId\": \"<integer>\",\n  \"channel\": null,\n  \"clientRequestId\": \"<string>\",\n  \"packageId\": \"<integer>\",\n  \"phoneNumber\": \"83027014417\",\n  \"sourceAccountId\": \"<long>\",\n  \"transactionPin\": \"5206\",\n  \"narration\": \"<string>\",\n  \"saveBeneficiary\": \"<boolean>\",\n  \"deviceId\": \"<string>\",\n  \"beneficiaryName\": \"<string>\",\n  \"beneficiaryPhone\": \"<string>\",\n  \"beneficiaryEmail\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/api/v1/BillsPayment/data"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"amount\": \"<double>\",\n    \"reference\": \"<string>\",\n    \"beneficiary\": \"<string>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"senderName\": \"<string>\",\n    \"senderAccountNumber\": \"<string>\",\n    \"beneficiaryName\": \"<string>\",\n    \"billToken\": \"<string>\"\n  },\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
 							"name": "Successful Data Purchase",
 							"event": [
 								{
@@ -13534,168 +13696,6 @@
 							"response": [
 								{
 									"id": "9313b245-28f2-4e56-9207-1c1d25d9da80",
-									"name": "Success",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											},
-											{
-												"key": "Accept",
-												"value": "text/plain"
-											},
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "Authorization",
-												"value": "<API Key>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"amount\": \"<double>\",\n  \"billId\": \"<integer>\",\n  \"channel\": null,\n  \"clientRequestId\": \"<string>\",\n  \"packageId\": \"<integer>\",\n  \"phoneNumber\": \"83027014417\",\n  \"sourceAccountId\": \"<long>\",\n  \"transactionPin\": \"5206\",\n  \"narration\": \"<string>\",\n  \"saveBeneficiary\": \"<boolean>\",\n  \"deviceId\": \"<string>\",\n  \"beneficiaryName\": \"<string>\",\n  \"beneficiaryPhone\": \"<string>\",\n  \"beneficiaryEmail\": \"<string>\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": "{{baseUrl}}/api/v1/BillsPayment/data"
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"amount\": \"<double>\",\n    \"reference\": \"<string>\",\n    \"beneficiary\": \"<string>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"senderName\": \"<string>\",\n    \"senderAccountNumber\": \"<string>\",\n    \"beneficiaryName\": \"<string>\",\n    \"billToken\": \"<string>\"\n  },\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
-								}
-							]
-						},
-						{
-							"name": "Invalid pin",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "542ad0a1-db8e-499a-aa24-5850592b538f",
-										"exec": [
-											"pm.test(\"Response code is 400 (Bad Request)\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Response structure and properties for 400\", function () {\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"hasResult\", false);\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"result\", null);\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"resultType\", 3);\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"message\", \"Response has validation errors\");\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"successful\", false);\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"errorCode\", 0);\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"responseCode\", null);\r",
-											"});\r",
-											"\r",
-											"\r",
-											"pm.test(\"Error message says Transaction PIN can only be digits with a length of 4\", function () {\r",
-											"    pm.expect(pm.response.json().validationMessages[0]).to.equal(\"Transaction PIN can only be digits with a length of 4\");\r",
-											"});\r",
-											""
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								},
-								{
-									"listen": "prerequest",
-									"script": {
-										"id": "33345de5-c219-44c8-a743-a18743d736c5",
-										"exec": [
-											"// Generate a random string function\r",
-											"// function generateRandomString(length) {\r",
-											"//     const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';\r",
-											"//     let result = '';\r",
-											"//     for (let i = 0; i < length; i++) {\r",
-											"//         const randomIndex = Math.floor(Math.random() * characters.length);\r",
-											"//         result += characters.charAt(randomIndex);\r",
-											"//     }\r",
-											"//     return result;\r",
-											"// }\r",
-											"\r",
-											"// Update the requestBody with a random clientRequestId\r",
-											"// const randomClientId = generateRandomString(10); // Change 10 to the desired length\r",
-											"// const requestBody = {\r",
-											"\r",
-											"//   \"amount\": \"2500\",\r",
-											"//   \"billId\": \"9\",\r",
-											"//   \"channel\": \"1\",\r",
-											"//   \"clientRequestId\": randomClientId,\r",
-											"//   \"packageId\": \"47\",\r",
-											"//   \"phoneNumber\": \"08185597979\",\r",
-											"//   \"sourceAccountNumber\": \"{{sourceAccount}}\",\r",
-											"//   \"transactionPin\": \"6380\",\r",
-											"//   \"narration\": \"Buy data bundle\",\r",
-											"//   \"saveBeneficiary\": \"True\",\r",
-											"//   \"deviceId\": \"pixel phone\",\r",
-											"//   \"beneficiaryName\": \"Bryan Ek\",\r",
-											"//   \"beneficiaryPhone\": \"08185597979\",\r",
-											"//   \"beneficiaryEmail\": \"bryan@assurdly\"\r",
-											"// };\r",
-											"\r",
-											"// pm.request.body.raw = JSON.stringify(requestBody);"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "f9205a34-1dfa-4fd0-90f1-d8fdcd979367",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{customer_access_token}}"
-									}
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "text/plain"
-									},
-									{
-										"key": "x-api-key",
-										"value": "{{x-api-key}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"amount\": \"2500\",\n  \"billId\": \"6\",\n  \"channel\": \"1\",\n  \"clientRequestId\": \"buydata1335\",\n  \"packageId\": \"112\",\n  \"phoneNumber\": \"08185597979\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"transactionPin\": \"6k43\",\n  \"narration\": \"Buy data bundle\",\n  \"saveBeneficiary\": \"True\",\n  \"deviceId\": \"pixel phone\",\n  \"beneficiaryName\": \"Bryan Ek\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"bryan@assurdly\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/bills-payment/api/v1/BillsPayment/data"
-							},
-							"response": [
-								{
-									"id": "ba9f4b6f-6ed1-4a5c-b7be-8919c73820a4",
 									"name": "Success",
 									"originalRequest": {
 										"method": "POST",
@@ -15299,7 +15299,7 @@
 											"    pm.expect(validationMessages).to.be.an(\"array\").that.includes(\"The Decoder field is required.\");\r",
 											"});\r",
 											"\r",
-											"postman.setNextRequest(\"Wrong bundle amount\")\r",
+											"//postman.setNextRequest(\"Wrong bundle amount\")\r",
 											"\r",
 											""
 										],
@@ -15443,7 +15443,7 @@
 											"    pm.expect(pm.response.json().message).to.equal(\"Invalid Transaction PIN\");\r",
 											"});\r",
 											"\r",
-											"postman.setNextRequest(\"No decoder number\")\r",
+											"//postman.setNextRequest(\"No decoder number\")\r",
 											""
 										],
 										"type": "text/javascript",
