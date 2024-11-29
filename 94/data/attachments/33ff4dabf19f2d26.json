@@ -1,0 +1,13 @@
+{
+    "Date": "Fri, 29 Nov 2024 10:27:44 GMT",
+    "Content-Length": "0",
+    "Connection": "keep-alive",
+    "www-authenticate": "Bearer error=\"invalid_token\"",
+    "CF-Cache-Status": "DYNAMIC",
+    "Report-To": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=2%2BrWxSHKMO9yEgHkXkgm97mTxJQJM7DBs4FUtWJJnXdYAEx88%2BhcvjWHyCuRpoAkjLruz3jSDMRY9fOq6z2yMCxdA766S0A5jafmfunyPiXY%2Fmw673HHfQ4F0kQJORcfJoxEg%2FN%2BR2A%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}",
+    "NEL": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}",
+    "Server": "cloudflare",
+    "CF-RAY": "8ea1e826fff1ead7-ORD",
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "server-timing": "cfL4;desc=\"?proto=TCP&rtt=2403&min_rtt=2386&rtt_var=929&sent=4&recv=6&lost=0&retrans=0&sent_bytes=2819&recv_bytes=2042&delivery_rate=1130641&cwnd=251&unsent_bytes=0&cid=ebc93188a7d8face&ts=528&x=0\""
+}
