@@ -1,0 +1,15 @@
+{
+  "amount": "100",
+  "billId": "1",
+  "channel": "1",
+  "clientRequestId": "idnumber12345",
+  "phoneNumber": "0706276543p",
+  "sourceAccountNumber": "{{sourceAccountBills}}",
+  "transactionPin": "6543",
+  "narration": "Buy the airtime",
+  "saveBeneficiary": "true",
+  "deviceId": "postman",
+  "beneficiaryName": "Bryan",
+  "beneficiaryPhone": "07062765437",
+  "beneficiaryEmail": "bryan@assurdly"
+}
