@@ -331,7 +331,7 @@
 									"\r",
 									"pm.test(\"error message is 'invalid_grant'\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.exist.and.to.eql(\"invalid_grant\");\r",
+									"    pm.expect(jsonData.error_description).to.eql(\"Your account is inactive. Contact the system administrator\");\r",
 									"});\r",
 									"\r",
 									""
@@ -344,8 +344,11 @@
 							"listen": "prerequest",
 							"script": {
 								"id": "188d94f8-6ecb-49d8-95c2-10e7a1c16d74",
-								"exec": [],
-								"type": "text/javascript"
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -381,12 +384,12 @@
 								{
 									"description": "username= test1860@mailinator.com, test6900, {{latest_cust_email}}",
 									"key": "username",
-									"value": ""
+									"value": "test1860@mailinator.com"
 								},
 								{
 									"description": "password",
 									"key": "password",
-									"value": "Tested@098"
+									"value": ""
 								},
 								{
 									"description": "client_id",
@@ -472,7 +475,7 @@
 					]
 				},
 				{
-					"name": "Login - Empty Password Copy",
+					"name": "Login - Empty Password",
 					"event": [
 						{
 							"listen": "test",
@@ -485,7 +488,7 @@
 									"\r",
 									"pm.test(\"error message is 'invalid_grant'\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.exist.and.to.eql(\"invalid_grant\");\r",
+									"    pm.expect(jsonData.error_description).to.eql(\"Invalid Username or password\");\r",
 									"});\r",
 									"\r",
 									""
@@ -498,8 +501,11 @@
 							"listen": "prerequest",
 							"script": {
 								"id": "188d94f8-6ecb-49d8-95c2-10e7a1c16d74",
-								"exec": [],
-								"type": "text/javascript"
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -535,12 +541,12 @@
 								{
 									"description": "username= test1860@mailinator.com, test6900, {{latest_cust_email}}",
 									"key": "username",
-									"value": ""
+									"value": "test8033@mailinator.com"
 								},
 								{
 									"description": "password",
 									"key": "password",
-									"value": "Tested@098"
+									"value": ""
 								},
 								{
 									"description": "client_id",
@@ -639,7 +645,7 @@
 									"\r",
 									"pm.test(\"error message is 'invalid_grant'\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.exist.and.to.eql(\"invalid_grant\");\r",
+									"   pm.expect(jsonData.error_description).to.eql(\"Invalid Username or password\");\r",
 									"});\r",
 									"\r",
 									""
@@ -652,8 +658,11 @@
 							"listen": "prerequest",
 							"script": {
 								"id": "188d94f8-6ecb-49d8-95c2-10e7a1c16d74",
-								"exec": [],
-								"type": "text/javascript"
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
