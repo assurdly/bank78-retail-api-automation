@@ -787,6 +787,173 @@
 							"body": "{\n  \"access_token\": \"<string>\",\n  \"error_description\": \"<string>\",\n  \"error\": \"<string>\",\n  \"expires_in\": \"<integer>\",\n  \"scope\": \"<string>\",\n  \"token_type\": \"<string>\",\n  \"refresh_token\": \"<string>\"\n}"
 						}
 					]
+				},
+				{
+					"name": "Login - Invalid username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5cbbe3ec-ec6a-449c-b893-0f648dd308b6",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code response is Bad Request\", function () {\r",
+									"    pm.response.to.have.status('Bad Request');\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Response body required field\", function () {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.error).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error is unauthorized_client\", function () {\r",
+									"    pm.expect(jsonData.error).to.eql('unauthorized_client');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error message is Invalid Username or password\", function () {\r",
+									"    pm.expect(jsonData.error_description).to.eql('Invalid Username or password');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "f1de8a25-7698-4fa5-a23c-71f4071f2913",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"description": "grant_type can either be password, client_credentials or refresh_token",
+									"key": "grant_type",
+									"value": "password"
+								},
+								{
+									"description": "username",
+									"key": "username",
+									"value": "abc@cde.com"
+								},
+								{
+									"description": "password",
+									"key": "password",
+									"value": "Tested@0980"
+								},
+								{
+									"description": "client_id",
+									"key": "client_id",
+									"value": "ECBEECBC7CE5434DBA509B9375203EC1"
+								},
+								{
+									"description": "client_secret",
+									"key": "client_secret",
+									"value": "E166C7F9E6EA4D899A499EE239FCD930"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": "{{baseUrl}}/identity/connect/token",
+						"description": "Get Auth Token"
+					},
+					"response": [
+						{
+							"id": "d104c714-1af8-4ab1-bfe3-7009e7056080",
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "Authorization",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "grant_type can either be password, client_credentials or refresh_token",
+											"key": "grant_type",
+											"value": "<string>"
+										},
+										{
+											"description": "username",
+											"key": "username",
+											"value": "<string>"
+										},
+										{
+											"description": "password",
+											"key": "password",
+											"value": "<string>"
+										},
+										{
+											"description": "client_id",
+											"key": "client_id",
+											"value": "<string>"
+										},
+										{
+											"description": "client_secret",
+											"key": "client_secret",
+											"value": "<string>"
+										}
+									]
+								},
+								"url": "{{baseUrl}}/connect/token"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"access_token\": \"<string>\",\n  \"error_description\": \"<string>\",\n  \"error\": \"<string>\",\n  \"expires_in\": \"<integer>\",\n  \"scope\": \"<string>\",\n  \"token_type\": \"<string>\",\n  \"refresh_token\": \"<string>\"\n}"
+						}
+					]
 				}
 			],
 			"id": "fb8bac33-df1f-4a52-b5db-07f9d12cd384"
@@ -3800,173 +3967,6 @@
 							"response": [
 								{
 									"id": "e185051c-ab0b-4a8c-a6cf-a679f6cf951b",
-									"name": "Success",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/x-www-form-urlencoded"
-											},
-											{
-												"key": "Accept",
-												"value": "application/json"
-											},
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "Authorization",
-												"value": "<API Key>"
-											}
-										],
-										"body": {
-											"mode": "urlencoded",
-											"urlencoded": [
-												{
-													"description": "grant_type can either be password, client_credentials or refresh_token",
-													"key": "grant_type",
-													"value": "<string>"
-												},
-												{
-													"description": "username",
-													"key": "username",
-													"value": "<string>"
-												},
-												{
-													"description": "password",
-													"key": "password",
-													"value": "<string>"
-												},
-												{
-													"description": "client_id",
-													"key": "client_id",
-													"value": "<string>"
-												},
-												{
-													"description": "client_secret",
-													"key": "client_secret",
-													"value": "<string>"
-												}
-											]
-										},
-										"url": "{{baseUrl}}/connect/token"
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"access_token\": \"<string>\",\n  \"error_description\": \"<string>\",\n  \"error\": \"<string>\",\n  \"expires_in\": \"<integer>\",\n  \"scope\": \"<string>\",\n  \"token_type\": \"<string>\",\n  \"refresh_token\": \"<string>\"\n}"
-								}
-							]
-						},
-						{
-							"name": "Signin - Invalid username",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "5cbbe3ec-ec6a-449c-b893-0f648dd308b6",
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status code response is Bad Request\", function () {\r",
-											"    pm.response.to.have.status('Bad Request');\r",
-											"});\r",
-											"\r",
-											"var jsonData = pm.response.json();\r",
-											"\r",
-											"pm.test(\"Response body required field\", function () {\r",
-											"    pm.expect(jsonData).to.be.an('object');\r",
-											"    pm.expect(jsonData.error).to.be.a('string');\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Error is unauthorized_client\", function () {\r",
-											"    pm.expect(jsonData.error).to.eql('unauthorized_client');\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Error message is Invalid Username or password\", function () {\r",
-											"    pm.expect(jsonData.error_description).to.eql('Invalid Username or password');\r",
-											"});\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "f1de8a25-7698-4fa5-a23c-71f4071f2913",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "noauth"
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/x-www-form-urlencoded"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "x-api-key",
-										"value": "{{x-api-key}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"description": "grant_type can either be password, client_credentials or refresh_token",
-											"key": "grant_type",
-											"value": "password"
-										},
-										{
-											"description": "username",
-											"key": "username",
-											"value": "abc@cde.com"
-										},
-										{
-											"description": "password",
-											"key": "password",
-											"value": "Tested@0980"
-										},
-										{
-											"description": "client_id",
-											"key": "client_id",
-											"value": "ECBEECBC7CE5434DBA509B9375203EC1"
-										},
-										{
-											"description": "client_secret",
-											"key": "client_secret",
-											"value": "E166C7F9E6EA4D899A499EE239FCD930"
-										},
-										{
-											"key": "",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										}
-									]
-								},
-								"url": "{{baseUrl}}/identity/connect/token",
-								"description": "Get Auth Token"
-							},
-							"response": [
-								{
-									"id": "d104c714-1af8-4ab1-bfe3-7009e7056080",
 									"name": "Success",
 									"originalRequest": {
 										"method": "POST",
