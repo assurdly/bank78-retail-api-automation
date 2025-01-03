@@ -2381,37 +2381,34 @@
 							]
 						},
 						{
-							"name": "Signup - Invalid countrycode",
+							"name": "Signup - Invalid phone number country code",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
 										"id": "a3bbd591-7f4e-43d4-bcac-f20edc665da8",
 										"exec": [
-											"pm.test(\"Status code is 500\", function () {\r",
-											"    pm.response.to.have.status(500);\r",
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
 											"});\r",
-											"pm.test(\"verify reponse contains hasResult\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(false);\r",
+											"\r",
+											"pm.test(\"Reponse body contains error fields\", function () {\r",
+											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+											"    pm.expect(jsonData.successful).to.eql(false);\r",
+											"    pm.expect(jsonData.result).to.be.null;\r",
+											"    pm.expect(jsonData.responseCode).to.be.null;\r",
+											"    pm.expect(jsonData.resultType).to.eql(\"ValidationError\");\r",
 											"});\r",
-											"pm.test(\"verify reponse contains result\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(null);\r",
-											"});\r",
-											"pm.test(\"verify reponse contains resultType\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(\"Error\");\r",
-											"});\r",
-											"pm.test(\"verify reponse contains message\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include( \"Error in Saving User \");\r",
-											"});\r",
-											"pm.test(\"verify reponse contains validationMessage\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(null);\r",
-											"});\r",
-											"pm.test(\"verify reponse contains successful\", function () {\r",
-											"    pm.expect(pm.response.text()).to.include(false);\r",
-											"});\r",
-											""
+											"\r",
+											"pm.test(\"Phone number country code validation error is returned\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.validationMessages[0]).to.include(\"Invalid phone number country code\");\r",
+											"});"
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {}
 									}
 								},
 								{
@@ -2427,7 +2424,8 @@
 											"var email = \"test\"+rand+\"@mailinator.com\"\r",
 											"pm.environment.set(\"cust_email\",email)"
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {}
 									}
 								}
 							],
