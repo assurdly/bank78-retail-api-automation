@@ -175,22 +175,23 @@
 							"script": {
 								"id": "5cbbe3ec-ec6a-449c-b893-0f648dd308b6",
 								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
 									"pm.test(\"Status code is 400\", function () {\r",
 									"    pm.response.to.have.status(400, \"Bad Request\");\r",
 									"});\r",
 									"\r",
-									"pm.test(\"error message is 'unauthorized client'\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error).to.exist.and.to.eql(\"unauthorized_client\");\r",
+									"pm.test(\"Error message is 'unauthorized client'\", function () {\r",
+									"    pm.expect(jsonData.error).to.eql(\"unauthorized_client\");\r",
 									"});\r",
 									"\r",
-									"pm.test(\"error description is accurate\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.error_description).to.be.a('string').and.to.eql(\"Invalid Username or password\");\r",
+									"pm.test(\"Error description is present\", function () {\r",
+									"    pm.expect(jsonData.error_description).to.eql(\"Invalid Username or password\");\r",
 									"});\r",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -317,7 +318,7 @@
 					]
 				},
 				{
-					"name": "Login - Empty Field",
+					"name": "Login - Empty Username or Password",
 					"event": [
 						{
 							"listen": "test",
