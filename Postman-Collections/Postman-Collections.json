@@ -7637,7 +7637,7 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/identity/v1/accounts/passwords/forgot"
+								"url": "{{baseUrl}}/identity/v1/accounts/passwords/forgot-otp"
 							},
 							"response": [
 								{
@@ -7756,7 +7756,7 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/identity/v1/accounts/passwords/forgot"
+								"url": "{{baseUrl}}/identity/v1/accounts/passwords/forgot-otp"
 							},
 							"response": [
 								{
