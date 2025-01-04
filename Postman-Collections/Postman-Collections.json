@@ -1171,10 +1171,10 @@
 											"var email = \"test\"+rand+\"@mailinator.com\"\r",
 											"pm.environment.set(\"cust_email\", email)\r",
 											"\r",
-											"let userName = pm.variables.replaceIn(\"{{$randomUserName}}\")\r",
-											"pm.environment.set(\"firstname\", userName)\r",
+											"let firstName = pm.variables.replaceIn(\"{{$randomFirstName}}\")\r",
+											"pm.environment.set(\"firstname\", firstName)\r",
 											"\r",
-											"let lastName = pm.variables.replaceIn(\"{{$randomUserName}}\")\r",
+											"let lastName = pm.variables.replaceIn(\"{{$randomLastName}}\")\r",
 											"pm.environment.set(\"lastname\", lastName)"
 										],
 										"type": "text/javascript",
@@ -1349,10 +1349,10 @@
 											"var email = \"test\"+rand+\"@mailinator.com\"\r",
 											"pm.environment.set(\"cust_email\", email)\r",
 											"\r",
-											"let userName = pm.variables.replaceIn(\"{{$randomUserName}}\")\r",
-											"pm.environment.set(\"firstname\", userName)\r",
+											"let firstName = pm.variables.replaceIn(\"{{$randomFirstName}}\")\r",
+											"pm.environment.set(\"firstname\", firstName)\r",
 											"\r",
-											"let lastName = pm.variables.replaceIn(\"{{$randomUserName}}\")\r",
+											"let lastName = pm.variables.replaceIn(\"{{$randomLastName}}\")\r",
 											"pm.environment.set(\"lastname\", lastName)"
 										],
 										"type": "text/javascript",
@@ -1389,7 +1389,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"firstName\": \"{{firstname}}\",\n  \"lastName\": \"{{lastname}}\",\n  \"userName\": \"{{cust_email}}\",\n  \"email\": \"{{cust_email}}\",\n  \"phoneNumber\": \"{{number}}\",\n  \"phoneNumberCountryCode\": \"+234\",\n  \"referralCode\": \"GRE100\",\n  \"countryCode\": \"NG\",\n  \"password\": \"Tested@0980\",\n  \"otp\": \"\",\n  \"agreeToSignUpTandC\": true\n}\n",
+									"raw": "{\n  \"firstName\": \"{{firstname}}\",\n  \"lastName\": \"{{lastname}}\",\n  \"userName\": \"{{cust_email}}\",\n  \"email\": \"haha@g\",\n  \"phoneNumber\": \"{{number}}\",\n  \"phoneNumberCountryCode\": \"+234\",\n  \"referralCode\": \"GRE100\",\n  \"countryCode\": \"NG\",\n  \"password\": \"Tested@0980\",\n  \"otp\": \"\",\n  \"agreeToSignUpTandC\": true\n}\n",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
