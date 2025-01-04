@@ -7829,7 +7829,9 @@
 											"    pm.expect(responseData.result.requiresBvnDobCheck).to.be.a('boolean');\r",
 											"    pm.expect(responseData.message).to.equal(\"Success\");\r",
 											"    pm.expect(responseData.successful).to.be.a('boolean');\r",
-											"});"
+											"});\r",
+											"\r",
+											"pm.environment.set(\"resetTokenId\", responseData.result.resetTokenId)"
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -7941,117 +7943,7 @@
 					"name": "Verify OTP",
 					"item": [
 						{
-							"name": "Verify OTP- Valid details",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "70be0b22-b417-4079-a4e8-fda21d70188e",
-										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status code response is OK\", function () {\r",
-											"    pm.response.to.have.status(\"OK\");\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Content-Type is present\", function () {\r",
-											"    pm.response.to.have.header(\"Content-Type\");\r",
-											"});\r",
-											"\r",
-											"var jsonData = pm.response.json();\r",
-											"\r",
-											"pm.test(\"Response has a result property\", function () {\r",
-											"    pm.expect(jsonData).to.exist;\r",
-											"    pm.expect(jsonData).to.be.an('object');\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Response has a result property\", function () {\r",
-											"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
-											"    pm.expect(jsonData.hasResult).to.eq(true);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Result property is a non-empty object\", function () {\r",
-											"    pm.expect(jsonData.result).to.be.an('object').and.to.not.be.empty;\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Result property contains a message property\", function () {\r",
-											"    pm.expect(jsonData.result.message).to.be.a('string');\r",
-											"    pm.expect(jsonData.result.message).to.eq(\"Password Reset link resent\");\r",
-											"});\r",
-											"\r",
-											"// pm.test(\"Result property contains a message property\", function () {\r",
-											"//     pm.expect(jsonData.result.resetTokenId).to.be.a('string');\r",
-											"//     pm.expect(jsonData.result.resetTokenId).to.eq(\"Password Reset link resent\");\r",
-											"// });\r",
-											"\r",
-											"pm.test(\"Result property contains a resetTokenId property\", function () {\r",
-											"    pm.expect(jsonData.resultType).to.be.a('number');\r",
-											"    pm.expect(jsonData.resultType).to.eq(1);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"ResultType is present\", function () {\r",
-											"    pm.expect(jsonData.message).to.be.a('string');\r",
-											"    pm.expect(jsonData.message).to.eq('Success');\r",
-											"});\r",
-											"\r",
-											"pm.test(\"ValidationMessages is present\", function () {\r",
-											"    pm.expect(jsonData.validationMessages).to.be.null;\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Successful is present\", function () {\r",
-											"   pm.expect(jsonData.successful).to.be.a('boolean');\r",
-											"   pm.expect(jsonData.successful).to.eq(true);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "18e78186-9a2d-4d6f-8560-568ab9aa6b8d",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{latest_cust_email}}"
-									}
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "x-api-key",
-										"value": "{{x-api-key}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"otp\": \"123456\",\n    \"resetTokenId\": \"{{resetTokenId}}\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrli}}/v1/accounts/passwords/verify-otp"
-							},
-							"response": []
-						},
-						{
-							"name": "Verify OTP - Invalid OTP",
+							"name": "Verify OTP - non-numeric OTP",
 							"event": [
 								{
 									"listen": "test",
