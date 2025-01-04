@@ -7950,59 +7950,38 @@
 									"script": {
 										"id": "70be0b22-b417-4079-a4e8-fda21d70188e",
 										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
 											"pm.test(\"Status code is 400\", function () {\r",
 											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Status code response is Bad Request\", function () {\r",
-											"    pm.response.to.have.status(\"Bad Request\");\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Content-Type is present\", function () {\r",
-											"    pm.response.to.have.header(\"Content-Type\");\r",
-											"});\r",
-											"\r",
-											"var jsonData = pm.response.json();\r",
-											"\r",
-											"pm.test(\"Response has a result property\", function () {   \r",
-											"    pm.expect(jsonData).to.exist;\r",
-											"    pm.expect(jsonData).to.be.an(\"object\");\r",
-											"});\r",
-											"\r",
-											"pm.test(\"hasResult property is present\", function () {   \r",
-											"    pm.expect(jsonData.hasResult).to.be.a(\"boolean\");\r",
-											"    pm.expect(jsonData.hasResult).to.eq(false);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Result property is a non-empty object\", function () {\r",
+											"pm.test(\"Reponse body contains error fields\", function () {\r",
+											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+											"    pm.expect(jsonData.successful).to.eql(false);\r",
 											"    pm.expect(jsonData.result).to.be.null;\r",
+											"    pm.expect(jsonData.responseCode).to.be.null;\r",
+											"    pm.expect(jsonData.resultType).to.eql(\"Error\");\r",
 											"});\r",
 											"\r",
-											"pm.test(\"resultType property is present\", function () {\r",
-											"    pm.expect(jsonData.resultType).to.be.a(\"number\");\r",
-											"    pm.expect(jsonData.resultType).to.eq(2);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Message property is present\", function () {\r",
-											"    pm.expect(jsonData.message).to.be.a(\"string\");\r",
-											"    pm.expect(jsonData.message).to.eq(\"Invalid OTP\");\r",
-											"});\r",
-											"\r",
-											"\r",
-											"pm.test(\"Successful property is a boolean - false\", function () {\r",
-											"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
-											"     pm.expect(jsonData.successful).to.eq(false);\r",
+											"pm.test(\"Error message about an invalid OTP is returned\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.message).to.include(\"Invalid OTP\");\r",
 											"});"
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {}
 									}
 								},
 								{
 									"listen": "prerequest",
 									"script": {
 										"id": "ffb02017-757e-469e-8e61-431318825224",
-										"exec": [],
-										"type": "text/javascript"
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
 									}
 								}
 							],
@@ -8048,7 +8027,91 @@
 							"response": []
 						},
 						{
-							"name": "Verify OTP - Blank otp",
+							"name": "Verify OTP - incorrect OTP",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "70be0b22-b417-4079-a4e8-fda21d70188e",
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Reponse body contains error fields\", function () {\r",
+											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+											"    pm.expect(jsonData.successful).to.eql(false);\r",
+											"    pm.expect(jsonData.result).to.be.null;\r",
+											"    pm.expect(jsonData.responseCode).to.be.null;\r",
+											"    pm.expect(jsonData.resultType).to.eql(\"Error\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Error message about an incorrect OTP is returned\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.message).to.include(\"Invalid OTP\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "ffb02017-757e-469e-8e61-431318825224",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "5f842cae-7428-4dac-a13b-76079ada0ac9",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{latest_cust_email}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"otp\": \"123456\",\n    \"resetTokenId\": \"{{resetTokenId}}\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrli}}/v1/accounts/passwords/verify-otp"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify OTP - Empty OTP",
 							"event": [
 								{
 									"listen": "test",
