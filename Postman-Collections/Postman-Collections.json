@@ -22651,20 +22651,7 @@
 		},
 		{
 			"name": "Account Termination",
-			"item": [
-				{
-					"name": "New Request",
-					"id": "f86c857c-d893-4dab-ba50-59225c3ce940",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				}
-			],
+			"item": [],
 			"id": "ab392039-397a-4fbf-85c7-3775f54ba5fc"
 		},
 		{
