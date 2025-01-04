@@ -1,0 +1,19 @@
+{
+    "Date": "Sat, 04 Jan 2025 02:06:24 GMT",
+    "Content-Type": "application/json",
+    "Content-Length": "0",
+    "Connection": "keep-alive",
+    "x-amzn-RequestId": "8e40ce72-4d7f-47d6-afb8-cc58e37eec38",
+    "CF-RAY": "8fc7ab4dfc1d5757-DUB",
+    "cf-cache-status": "DYNAMIC",
+    "x-amzn-Remapped-Content-Length": "0",
+    "x-amzn-Remapped-Connection": "keep-alive",
+    "x-amz-apigw-id": "D1yhNHBXDoEEHtA=",
+    "x-amzn-Remapped-Server": "cloudflare",
+    "server-timing": "cfL4;desc=\"?proto=TCP&rtt=1432&min_rtt=1088&rtt_var=633&sent=48&recv=113&lost=0&retrans=0&sent_bytes=21414&recv_bytes=108842&delivery_rate=3641240&cwnd=257&unsent_bytes=0&cid=540ef6445851fdbd&ts=144552&x=0\"",
+    "Report-To": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=5j4%2F9nbyhGpeH6ARR75ScXx%2Bkj1dmtWzuFTTwzYDwGqRsSV%2B7Z9g%2B262sn5L2ZgjFUtDWh3u6xs%2B9NTyZB7dhdog1zFnIqoSjOJhfbbmYYgW8%2FoX5i%2Bg15Jm6jECrA2VCy%2BBcBpXn40q\"}],\"group\":\"cf-nel\",\"max_age\":604800}",
+    "NEL": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}",
+    "x-amzn-Remapped-www-authenticate": "Bearer error=\"invalid_token\", error_description=\"The token expired at '01/04/2025 01:56:37'\"",
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "x-amzn-Remapped-Date": "Sat, 04 Jan 2025 02:06:24 GMT"
+}
