@@ -7629,7 +7629,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"resetPasswordUrl\": \"https://docs.google.com/spreadsheets/d/1Q8d_SD6dFPWaozL7HKcbaNjV99rdlBPcorGm0VMEUuc/edit#gid=0\",\n  \"username\": \"abc@d\"\n}",
+									"raw": "{\n  \"username\": \"abc@d\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -7748,7 +7748,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"resetPasswordUrl\": \"https://docs.google.com/spreadsheets/d/1Q8d_SD6dFPWaozL7HKcbaNjV99rdlBPcorGm0VMEUuc/edit#gid=0\",\n  \"username\": \"\"\n}",
+									"raw": "{\n \"username\": \"\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -7761,155 +7761,6 @@
 							"response": [
 								{
 									"id": "4ca3efac-6bc3-45f2-9647-2ec0efa606f4",
-									"name": "Success",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											},
-											{
-												"key": "Accept",
-												"value": "application/json"
-											},
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "Authorization",
-												"value": "<API Key>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"resetPasswordUrl\": \"<uri>\",\n  \"username\": \"MbGsaHMTEH.WQAH-6q53Efv.sB@33c43hdrj3B-Es2Swsfn-NnartasH1Q.kqw.47VXldTEjeo.5-siD4_V.BX55rWY-lGpyiDmw8My.OSVagBz8_zg-E-0I-rmHXI8b-ojns6kl8Bi.Z1.avZh-VXgEn-B5x.TOylwf\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": "{{baseUrl}}/v1/accounts/passwords/forgot"
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"message\": \"<string>\",\n    \"resetTokenId\": \"<string>\"\n  },\n  \"resultType\": \"Error\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
-								}
-							]
-						},
-						{
-							"name": "Forgot Password - Blank resetpasswordurl",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "95d70e6c-2015-47a2-bb37-b79955eaeea2",
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Status code response is Bad Request\", function () {\r",
-											"    pm.response.to.have.status(\"Bad Request\");\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Content-Type is present\", function () {\r",
-											"    pm.response.to.have.header(\"Content-Type\");\r",
-											"});\r",
-											"\r",
-											"var jsonData = pm.response.json();\r",
-											"\r",
-											"pm.test(\"Response bodi is present\", function () {   \r",
-											"    pm.expect(jsonData).to.exist;\r",
-											"    pm.expect(jsonData).to.be.an(\"object\");\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Response has a hasResult property\", function () {   \r",
-											"    pm.expect(jsonData.hasResult).to.be.a(\"boolean\");\r",
-											"    pm.expect(jsonData.hasResult).to.eq(false);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Result property is a non-empty object\", function () {\r",
-											"    pm.expect(jsonData.result).to.be.null;\r",
-											"});\r",
-											"\r",
-											"pm.test(\"resultType is present\", function () {\r",
-											"    pm.expect(jsonData.resultType).to.be.a(\"number\");\r",
-											"    pm.expect(jsonData.resultType).to.eq(3);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Message property is present\", function () {\r",
-											"    pm.expect(jsonData.message).to.be.a(\"string\");\r",
-											"    pm.expect(jsonData.message).to.eq(\"Response has validation errors\");\r",
-											"});\r",
-											"\r",
-											"pm.test(\"validation is present\", function () {\r",
-											"    pm.expect(jsonData.validationMessages).to.be.an(\"array\");\r",
-											"    pm.expect(jsonData.validationMessages[0]).to.eq\r",
-											"    (\"The ResetPasswordUrl field is required.\",\r",
-											"        \"The ResetPasswordUrl field is not a valid fully-qualified http, https, or ftp URL.\");\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Successful property is a boolean\", function () {\r",
-											"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
-											"     pm.expect(jsonData.successful).to.eq(false);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "ebaca242-7c0b-401b-b3ab-2d643204e85d",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{customer_access_token}}"
-									}
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "x-api-key",
-										"value": "{{x-api-key}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"resetPasswordUrl\": \"\",\n  \"username\": \"{{userName}}\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/identity/v1/accounts/passwords/forgot"
-							},
-							"response": [
-								{
-									"id": "e7936cb3-b7c6-432f-a429-48518e68cabe",
 									"name": "Success",
 									"originalRequest": {
 										"method": "POST",
