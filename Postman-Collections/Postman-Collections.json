@@ -1298,6 +1298,184 @@
 							]
 						},
 						{
+							"name": "Signup - Successful Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8c032496-4db5-4aae-8635-b8f897afd427",
+										"exec": [
+											"var responseData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response has required fields\", function () {\r",
+											"    pm.expect(responseData.result).to.be.an('object');\r",
+											"     pm.expect(responseData.message).to.equal('Success');\r",
+											"    pm.expect(responseData.result.firstName).to.equal(pm.environment.get('firstname'));\r",
+											"    pm.expect(responseData.result.lastName).to.equal(pm.environment.get('lastname'));\r",
+											"    pm.expect(responseData.result.userName).to.equal(pm.environment.get('cust_email'));\r",
+											"    pm.expect(responseData.result.email).to.equal(pm.environment.get('cust_email'));\r",
+											"    pm.expect(responseData.result.phoneNumber).to.equal(pm.environment.get('number'));\r",
+											"    pm.expect(responseData.result.phoneNumberCountryCode).to.be.a('string');\r",
+											"    pm.expect(responseData.hasResult).to.be.a('boolean');\r",
+											"});\r",
+											"\r",
+											"//pm.test(\"Email is in a valid format\", function () {\r",
+											"//    pm.expect(responseData.result.email).to.match(/^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$/);\r",
+											"//});\r",
+											"\r",
+											"pm.test(\"Phone number has a valid length\", function () {\r",
+											"    pm.expect(responseData.result.phoneNumber).to.have.lengthOf(10);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "e090e7b7-f28f-4fb4-a760-1c7e1e1d2295",
+										"exec": [
+											"var num = Math.floor(Math.random() * (9999 - 1000) + 1000)\r",
+											"var number  = \"806744\" + num\r",
+											"let phone = pm.variables.replaceIn(number)\r",
+											"pm.environment.set(\"number\", phone)\r",
+											"\r",
+											"var rand = Math.floor(Math.random()* (9999 -1000) + 100)\r",
+											"var email = \"test\"+rand+\"@mailinator.com\"\r",
+											"pm.environment.set(\"cust_email\", email)\r",
+											"\r",
+											"let userName = pm.variables.replaceIn(\"{{$randomUserName}}\")\r",
+											"pm.environment.set(\"firstname\", userName)\r",
+											"\r",
+											"let lastName = pm.variables.replaceIn(\"{{$randomUserName}}\")\r",
+											"pm.environment.set(\"lastname\", lastName)"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "e79ea443-a835-4ee7-aa01-7d9f5176f325",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{Onboarding_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									},
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"{{firstname}}\",\n  \"lastName\": \"{{lastname}}\",\n  \"userName\": \"{{cust_email}}\",\n  \"email\": \"{{cust_email}}\",\n  \"phoneNumber\": \"{{number}}\",\n  \"phoneNumberCountryCode\": \"+234\",\n  \"referralCode\": \"GRE100\",\n  \"countryCode\": \"NG\",\n  \"password\": \"Tested@0980\",\n  \"otp\": \"\",\n  \"agreeToSignUpTandC\": true\n}\n",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/onboard/api/user/save?profile=person",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"onboard",
+										"api",
+										"user",
+										"save"
+									],
+									"query": [
+										{
+											"key": "profile",
+											"value": "person"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "b95ce2f9-1332-4b35-98ea-8d5d7a42ebeb",
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"userName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"phoneNumberCountryCode\": \"<string>\",\n  \"referralCode\": \"<string>\",\n  \"countryCode\": \"<string>\",\n  \"password\": \"<string>\",\n  \"otp\": \"<string>\",\n  \"status\": \"<string>\",\n  \"rcBnNumber\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/user/save?profile=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"user",
+												"save"
+											],
+											"query": [
+												{
+													"key": "profile",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"userName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"phoneNumberCountryCode\": \"<string>\",\n    \"referralCode\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"password\": \"<string>\",\n    \"otp\": \"<string>\",\n    \"status\": \"<string>\",\n    \"rcBnNumber\": \"<string>\"\n  },\n  \"resultType\": 4,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+								}
+							]
+						},
+						{
 							"name": "Signup - Phone No already exists",
 							"event": [
 								{
