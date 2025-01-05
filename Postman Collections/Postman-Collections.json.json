@@ -4770,7 +4770,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Response has standard success fields\", function () {\r",
-											"     pm.expect(responseData.message).to.equal('Success');\r",
 											"    pm.expect(responseData.message).to.equal(`Success`);\r",
 											"    pm.expect(responseData.successful).to.eql(true);\r",
 											"    pm.expect(responseData.hasResult).to.eql(true);\r",
