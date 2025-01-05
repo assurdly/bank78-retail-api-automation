@@ -4236,7 +4236,7 @@
 											"    pm.expect(jsonData.responseCode).to.be.null;\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Error message about the PIN mismatch is returned\", function () {\r",
+											"pm.test(\"Error message about the Invalid OTP mismatch is returned\", function () {\r",
 											"    pm.expect(jsonData.message).to.eql(\"Invalid OTP\");\r",
 											"});\r",
 											""
@@ -6841,7 +6841,7 @@
 											"    pm.expect(jsonData.responseCode).to.be.null;\r",
 											"});\r",
 											"\r",
-											"pm.test(\"The error message about the invalid OTP field is returned\", function () {\r",
+											"pm.test(\"A single error message about the invalid OTP field is returned\", function () {\r",
 											"    pm.expect(jsonData.validationMessages[0]).to.eql(\"OTP can only be 6 digits\");\r",
 											"});"
 										],
