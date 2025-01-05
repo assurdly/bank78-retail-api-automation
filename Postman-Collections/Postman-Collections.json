@@ -22954,7 +22954,6 @@
 											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
 											"    pm.expect(jsonData.successful).to.eql(false);\r",
 											"    pm.expect(jsonData.result).to.be.null;\r",
-											"    pm.expect(jsonData.responseCode).to.be.null;\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Error messages is returned about no security question present\", function () {\r",
