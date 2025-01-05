@@ -24701,7 +24701,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "eed4d5f2-63ba-4714-bbfe-e99097bafb45",
+				"id": "8df6629e-111e-48dc-8a82-9857b2ada0df",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -24712,7 +24712,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "089f5855-1cb1-4058-b8d0-9b2c21800f57",
+				"id": "996b393c-5f95-4f8c-bb2b-001e7bc71e8e",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -24759,6 +24759,11 @@
 		{
 			"key": "token",
 			"value": ""
+		},
+		{
+			"key": "baseUrl",
+			"value": "https://sandbox.bank78.co",
+			"type": "string"
 		}
 	]
 }
