@@ -1493,7 +1493,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Error message about invalid username is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.message).to.include(\"Invalid email format\");\r",
 											"});"
 										],
@@ -2859,8 +2858,7 @@
 											"    pm.expect(jsonData.resultType).to.eql(\"Error\");\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Error messages about existing email is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
+											"pm.test(\"Error message about the existing email is returned\", function () {\r",
 											"    pm.expect(jsonData.message).to.include(\"This email is already registered.\");\r",
 											"});"
 										],
