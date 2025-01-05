@@ -4628,7 +4628,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the required Confirm PIN field is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.validationMessages[0]).to.include(\"The ConfirmPIN field is required.\");\r",
 											"});"
 										],
