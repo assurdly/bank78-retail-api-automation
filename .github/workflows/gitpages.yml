@@ -1,12 +1,13 @@
 name: Postman Test and Allure Report
 on:
-  push:
-    branches:
-      - main
+#  push:
+#    branches:
+#      - main
   schedule:
     - cron: '0 18 * * 4' # Runs every Wednesday by 4pm
     - cron: '0 18 * * 5' # Runs every Friday by 4pm
     - cron: '0 20 * * 0' # Runs every Sunday by 4pm
+  workflow_dispatch:
 jobs:
   run_tests:
     if: github.event_name == 'schedule' || github.event_name == 'push'
