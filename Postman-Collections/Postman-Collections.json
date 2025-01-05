@@ -4784,7 +4784,7 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "{{customer_access_token}}"
+										"token": "{{verifypin_access_token}}"
 									}
 								},
 								"method": "POST",
@@ -6353,7 +6353,7 @@
 					"name": "Verify OTP",
 					"item": [
 						{
-							"name": "Login",
+							"name": "Login for PIN verification",
 							"event": [
 								{
 									"listen": "test",
@@ -6364,14 +6364,10 @@
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Access token is a non-empty string\", function () {\r",
+											"pm.test(\"Access token is present\", function () {\r",
 											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.access_token).to.be.a('string').and.to.not.be.empty;\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Set access token as an environmental variable\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
-											"    pm.environment.set(\"customer_access_token\", jsonData.access_token);\r",
+											"    pm.environment.set(\"verifypin_access_token\", jsonData.access_token);\r",
 											"});"
 										],
 										"type": "text/javascript",
