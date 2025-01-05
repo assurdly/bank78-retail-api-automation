@@ -4254,7 +4254,7 @@
 									"script": {
 										"id": "c5979bb0-dedf-4de6-91a9-3a3562acae63",
 										"exec": [
-											"pm.execution.setNextRequest(\"Verify Pin - Valid PIN\")"
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -4383,7 +4383,7 @@
 									"script": {
 										"id": "c5979bb0-dedf-4de6-91a9-3a3562acae63",
 										"exec": [
-											"pm.execution.setNextRequest(\"Verify Pin - Valid PIN\")"
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -4512,7 +4512,7 @@
 									"script": {
 										"id": "c5979bb0-dedf-4de6-91a9-3a3562acae63",
 										"exec": [
-											"pm.execution.setNextRequest(\"Verify Pin - Valid PIN\")"
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -6971,7 +6971,7 @@
 									"script": {
 										"id": "46338115-e626-42be-bc5e-fa595a95a5ee",
 										"exec": [
-											"postman.setNextRequest(\"Verify OTP - Invalid OTP\")"
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -8092,7 +8092,7 @@
 									"script": {
 										"id": "8609ed5c-380a-44ca-b09f-58c78bdff5f2",
 										"exec": [
-											"postman.setNextRequest(\"Verify OTP - Invalid OTP\")"
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
