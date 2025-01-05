@@ -24290,7 +24290,7 @@
 									"    pm.expect(jsonData.result).to.be.null;\r",
 									"});\r",
 									"\r",
-									"pm.test(\"The error message about the required OTP field is returned\", function () {\r",
+									"pm.test(\"The error message about the incorrect UserID format is returned\", function () {\r",
 									"    pm.expect(jsonData.message).to.include(\"Error in Get Referral  with Referrer User Id Guid should contain 32 digits with 4 dashes (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).\");\r",
 									"});"
 								],
@@ -24348,7 +24348,7 @@
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Referral details are returned\", function () {\r",
+									"pm.test(\"No referral details are returned\", function () {\r",
 									"    pm.expect(responseData.result).to.be.an('array').that.is.empty;\r",
 									"});"
 								],
