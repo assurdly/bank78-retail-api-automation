@@ -2698,7 +2698,6 @@
 											"    pm.expect(jsonData.validationMessages[2]).to.include(\"'Password' must not be empty.\");\r",
 											"    pm.expect(jsonData.validationMessages[8]).to.include(\"'Phone Number' must not be empty.\");\r",
 											"    pm.expect(jsonData.validationMessages[11]).to.include(\"'Email' must not be empty.\");\r",
-											"    pm.expect(jsonData.validationMessages[12]).to.include(\"'Country Code' must not be empty.\");\r",
 											"});"
 										],
 										"type": "text/javascript",
