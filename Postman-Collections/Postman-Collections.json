@@ -14079,7 +14079,6 @@
 											"    pm.expect(pm.response.json().message).to.equal(\"Invalid Transaction PIN\");\r",
 											"});\r",
 											"\r",
-											"//postman.setNextRequest(\"No decoder number\")\r",
 											""
 										],
 										"type": "text/javascript",
