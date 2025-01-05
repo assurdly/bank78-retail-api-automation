@@ -8554,7 +8554,7 @@
 									"script": {
 										"id": "de0437dd-0829-4f3f-90cc-9c05ecfce86b",
 										"exec": [
-											"postman.setNextRequest(\"Reset Password - Invalid email\")"
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
