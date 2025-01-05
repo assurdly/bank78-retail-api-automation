@@ -3048,10 +3048,7 @@
 											"\r",
 											"var rand = Math.floor(Math.random()* (9999 -1000) + 100)\r",
 											"var email = \"test\"+rand+\"@mailinator.com\"\r",
-											"pm.environment.set(\"cust_email\",email)\r",
-											"\r",
-											"\r",
-											"pm.execution.setNextRequest(\"Verify email - Unregistered email\")"
+											"pm.environment.set(\"cust_email\",email)"
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -3214,7 +3211,6 @@
 									"script": {
 										"id": "b2c58061-264e-4670-9c7e-73ab6072c1de",
 										"exec": [
-											"// pm.collectionVariables.set(\"username\", pm.environment.get(\"cust_email\"));\r",
 											""
 										],
 										"type": "text/javascript",
@@ -4640,7 +4636,7 @@
 									"script": {
 										"id": "c5979bb0-dedf-4de6-91a9-3a3562acae63",
 										"exec": [
-											"pm.execution.setNextRequest(\"Verify Pin - Valid PIN\")"
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -5138,7 +5134,7 @@
 									"script": {
 										"id": "2067193d-8eb5-4416-bd19-bb8ec3ece8b7",
 										"exec": [
-											"pm.execution.setNextRequest(\"Change PIN - Valid details\")"
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -5267,7 +5263,7 @@
 									"script": {
 										"id": "2067193d-8eb5-4416-bd19-bb8ec3ece8b7",
 										"exec": [
-											"pm.execution.setNextRequest(\"Change PIN - Valid details\")"
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
