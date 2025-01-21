@@ -14982,50 +14982,28 @@
 							]
 						},
 						{
-							"name": "Buy Jamb - Empty amount field",
+							"name": "Buy Jamb - Invalid amount field",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
 										"id": "36f5a182-cdf3-4d56-b57e-b6ff59f446f9",
 										"exec": [
-											"pm.test(\"Response status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Response code is 200 for success\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
+											"pm.test(\"Reponse body contains error fields\", function () {\r",
+											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+											"    pm.expect(jsonData.successful).to.eql(false);\r",
+											"    pm.expect(jsonData.result).to.be.null;\r",
 											"});\r",
 											"\r",
-											"\r",
-											"pm.test(\"The 'amount' field should be a number\", function () {\r",
-											"    const responseData = pm.response.json();\r",
-											"    pm.expect(responseData).to.be.an('object');\r",
-											"    pm.expect(responseData.result.amount).to.be.a('number');\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Response structure and properties for 200\", function () {\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"hasResult\", true);\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"result\");\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"resultType\", 1);\r",
-											"   // pm.expect(pm.response.json()).to.have.property(\"message\", \"Successful\");\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"successful\", true);\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"errorCode\", 0);\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"responseCode\", \"200\");\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Result object properties for 200\", function () {\r",
-											"    var result = pm.response.json().result;\r",
-											"    \r",
-											" //   pm.expect(result).to.have.property(\"message\", \"Successful\");\r",
-											"    pm.expect(result).to.have.property(\"status\", \"Success\");\r",
-											"  //  pm.expect(result).to.have.property(\"billToken\").to.be.null;\r",
-											"});\r",
-											"\r",
-											"\r",
-											"pm.test(\"Check if transaction reference is present\", function () {\r",
-											"    var responseBody = pm.response.json();\r",
-											"    pm.expect(responseBody.result.reference).to.not.be.undefined;\r",
+											"pm.test(\"The error message about Invalid amount is returned\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.validationMessages[0]).to.include(\"Invalid amount. Amount lesser than payable amount\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -15073,7 +15051,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"transactionPin\": \"6543\",\n  \"narration\": \"Pay Epin\",\n  \"channel\": \"3\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"1284903\",\n  \"beneficiaryName\": \"Jamb\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"test8033@mailinator.com\",\n  \"billId\": \"30\",\n  \"packageId\": \"109\",\n  \"amount\": \"4700\",\n  \"numberOfPins\": \"1\",\n  \"phone\" : \"07035361770\",\n  \"accountNumber\": \"1111111111\"\n\n}",
+									"raw": "{\n  \"transactionPin\": \"6543\",\n  \"narration\": \"Pay Epin\",\n  \"channel\": \"3\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"1284903\",\n  \"beneficiaryName\": \"Jamb\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"test8033@mailinator.com\",\n  \"billId\": \"30\",\n  \"packageId\": \"109\",\n  \"amount\": \"1\",\n  \"numberOfPins\": \"1\",\n  \"phone\" : \"07035361770\",\n  \"accountNumber\": \"1111111111\"\n\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -15279,9 +15257,9 @@
 											"    pm.expect(jsonData.result).to.be.null;\r",
 											"});\r",
 											"\r",
-											"pm.test(\"The error message about the PIN length is returned\", function () {\r",
+											"pm.test(\"The error message about invalid Beneficiary email is returned\", function () {\r",
 											"    var jsonData = pm.response.json();\r",
-											"    pm.expect(jsonData.validationMessages[0]).to.include(\"The TransactionPin field is required\");\r",
+											"    pm.expect(jsonData.validationMessages[0]).to.include(\"Invalid Beneficiary Email\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -15329,7 +15307,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"transactionPin\": \"\",\n  \"narration\": \"Pay Epin\",\n  \"channel\": \"3\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"1284903\",\n  \"beneficiaryName\": \"Jamb\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"test8033@mailinator.com\",\n  \"billId\": \"30\",\n  \"packageId\": \"109\",\n  \"amount\": \"4700\",\n  \"numberOfPins\": \"1\",\n  \"phone\" : \"07035361770\",\n  \"accountNumber\": \"1111111111\"\n\n}",
+									"raw": "{\n  \"transactionPin\": \"6543\",\n  \"narration\": \"Pay Epin\",\n  \"channel\": \"3\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"1284903\",\n  \"beneficiaryName\": \"Jamb\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"test8033@mailinator\",\n  \"billId\": \"30\",\n  \"packageId\": \"109\",\n  \"amount\": \"4700\",\n  \"numberOfPins\": \"1\",\n  \"phone\" : \"07035361770\",\n  \"accountNumber\": \"1111111111\"\n\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
