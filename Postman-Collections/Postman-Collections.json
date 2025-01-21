@@ -15129,9 +15129,9 @@
 											"    pm.expect(jsonData.result).to.be.null;\r",
 											"});\r",
 											"\r",
-											"pm.test(\"The error message about Invalid amount is returned\", function () {\r",
+											"pm.test(\"The error message about Invalid bill is returned\", function () {\r",
 											"    var jsonData = pm.response.json();\r",
-											"    pm.expect(jsonData.validationMessages[0]).to.include(\"Invalid amount. Amount lesser than payable amount\");\r",
+											"    pm.expect(jsonData.validationMessages[0]).to.include(\"Invalid bill\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -15179,7 +15179,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"transactionPin\": \"6543\",\n  \"narration\": \"Pay Epin\",\n  \"channel\": \"3\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"1284903\",\n  \"beneficiaryName\": \"Jamb\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"test8033@mailinator.com\",\n  \"billId\": \"30\",\n  \"packageId\": \"109\",\n  \"amount\": \"1\",\n  \"numberOfPins\": \"1\",\n  \"phone\" : \"07035361770\",\n  \"accountNumber\": \"1111111111\"\n\n}",
+									"raw": "{\n  \"transactionPin\": \"6543\",\n  \"narration\": \"Pay Epin\",\n  \"channel\": \"3\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"1284903\",\n  \"beneficiaryName\": \"Jamb\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"test8033@mailinator.com\",\n  \"billId\": \"999\",\n  \"packageId\": \"109\",\n  \"amount\": \"4700\",\n  \"numberOfPins\": \"1\",\n  \"phone\" : \"07035361770\",\n  \"accountNumber\": \"1111111111\"\n\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
