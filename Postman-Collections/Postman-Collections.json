@@ -13937,6 +13937,704 @@
 					"id": "745b5212-bd6b-4d28-8eb7-79885388b5f9"
 				},
 				{
+					"name": "Buy Electricity tokens Copy",
+					"item": [
+						{
+							"name": "Buy Electricity - Successful prepaid token purchase",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "beb5574d-35ab-4f4a-82b9-a8df659fa474",
+										"exec": [
+											"pm.test(\"Check if billToken is present\", function () {\r",
+											"    var responseBody = pm.response.json();\r",
+											"    // Check if the \"billToken\" field exists in the response\r",
+											"    pm.expect(responseBody.result.billToken).to.not.be.undefined;\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"The 'reference' field is a non-empty string\", function () {\r",
+											"    const responseData = pm.response.json();\r",
+											"\r",
+											"    pm.expect(responseData.result.reference).to.be.a('string').and.to.have.lengthOf.at.least(1, \"'reference' field should not be empty\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"The 'amount' field should be a number\", function () {\r",
+											"    const responseData = pm.response.json();\r",
+											"    pm.expect(responseData).to.be.an('object');\r",
+											"    pm.expect(responseData.result.amount).to.be.a('number');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response structure and properties for 200\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"hasResult\", true);\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"result\");\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"resultType\", 1);\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\", \"Successful\");\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"successful\", true);\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"errorCode\", 0);\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"responseCode\", \"200\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "14ce85cb-41ed-4f0f-8a8f-7fde563c4ec5",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "84f59809-100e-4804-bcf5-f31ec6547a6d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{customer_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									},
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"amount\": \"1000\",\n  \"billId\": \"25\",\n  \"channel\": \"1\",\n  \"clientRequestId\": \"hffjsknyrhgfkfk\",\n  \"meterNumber\": \"123456695049\",\n  \"packageId\": \"99\",\n  \"sourceAccountNumber\": {{sourceAccountBills}},\n  \"transactionPin\": \"6543\",\n  \"narration\": \"buy elec\",\n  \"saveBeneficiary\": \"false\",\n  \"deviceId\": \"meter1\",\n  \"beneficiaryName\": \"bryan\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"bryan@assurdly\",\n  \"beneficiaryAddress\": \"\" //This is an optional field\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrlb}}/api/v1/BillsPayment/electricity"
+							},
+							"response": [
+								{
+									"id": "c3a2905b-d318-4504-a24e-c0348920d2b0",
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											},
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"amount\": \"<double>\",\n  \"billId\": \"<integer>\",\n  \"channel\": null,\n  \"clientRequestId\": \"<string>\",\n  \"meterNumber\": \"<string>\",\n  \"packageId\": \"<integer>\",\n  \"sourceAccountId\": \"<long>\",\n  \"transactionPin\": \"0878\",\n  \"narration\": \"<string>\",\n  \"saveBeneficiary\": \"<boolean>\",\n  \"deviceId\": \"<string>\",\n  \"beneficiaryName\": \"<string>\",\n  \"beneficiaryPhone\": \"<string>\",\n  \"beneficiaryEmail\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/api/v1/BillsPayment/electricity"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"amount\": \"<double>\",\n    \"reference\": \"<string>\",\n    \"beneficiary\": \"<string>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"senderName\": \"<string>\",\n    \"senderAccountNumber\": \"<string>\",\n    \"beneficiaryName\": \"<string>\",\n    \"billToken\": \"<string>\"\n  },\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Buy Electricity - Successful post paid purchase",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "beb5574d-35ab-4f4a-82b9-a8df659fa474",
+										"exec": [
+											"pm.test(\"Check if billToken is present\", function () {\r",
+											"    var responseBody = pm.response.json();\r",
+											"    // Check if the \"billToken\" field exists in the response\r",
+											"    pm.expect(responseBody.result.billToken).to.not.be.undefined;\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"The 'reference' field is a non-empty string\", function () {\r",
+											"    const responseData = pm.response.json();\r",
+											"\r",
+											"    pm.expect(responseData.result.reference).to.be.a('string').and.to.have.lengthOf.at.least(1, \"'reference' field should not be empty\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"The 'amount' field should be a number\", function () {\r",
+											"    const responseData = pm.response.json();\r",
+											"    pm.expect(responseData).to.be.an('object');\r",
+											"    pm.expect(responseData.result.amount).to.be.a('number');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response structure and properties for 200\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"hasResult\", true);\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"result\");\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"resultType\", 1);\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\", \"Successful\");\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"successful\", true);\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"errorCode\", 0);\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"responseCode\", \"200\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "14ce85cb-41ed-4f0f-8a8f-7fde563c4ec5",
+										"exec": [
+											"// Generate a random string function\r",
+											"function generateRandomString(length) {\r",
+											"    const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';\r",
+											"    let result = '';\r",
+											"    for (let i = 0; i < length; i++) {\r",
+											"        const randomIndex = Math.floor(Math.random() * characters.length);\r",
+											"        result += characters.charAt(randomIndex);\r",
+											"    }\r",
+											"    return result;\r",
+											"}\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "c3f831b6-bf4e-4fe2-83b6-6fb82e7b4046",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{customer_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									},
+									{
+										"warning": "This is a duplicate header and will be overridden by the x-api-key header generated by Postman.",
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"amount\": \"1000\",\n  \"billId\": \"28\",\n  \"channel\": \"1\",\n  \"clientRequestId\": \"hffjsknyrhgfkfk\",\n  \"meterNumber\": \"123456695049\",\n  \"packageId\": \"104\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"transactionPin\": \"6543\",\n  \"narration\": \"buy elec\",\n  \"saveBeneficiary\": \"false\",\n  \"deviceId\": \"meter1\",\n  \"beneficiaryName\": \"bryan\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"bryan@assurdly\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrlb}}/api/v1/BillsPayment/electricity"
+							},
+							"response": [
+								{
+									"id": "a766801d-99c9-468d-89da-ff315f997a83",
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											},
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"amount\": \"<double>\",\n  \"billId\": \"<integer>\",\n  \"channel\": null,\n  \"clientRequestId\": \"<string>\",\n  \"meterNumber\": \"<string>\",\n  \"packageId\": \"<integer>\",\n  \"sourceAccountId\": \"<long>\",\n  \"transactionPin\": \"0878\",\n  \"narration\": \"<string>\",\n  \"saveBeneficiary\": \"<boolean>\",\n  \"deviceId\": \"<string>\",\n  \"beneficiaryName\": \"<string>\",\n  \"beneficiaryPhone\": \"<string>\",\n  \"beneficiaryEmail\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/api/v1/BillsPayment/electricity"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"amount\": \"<double>\",\n    \"reference\": \"<string>\",\n    \"beneficiary\": \"<string>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"senderName\": \"<string>\",\n    \"senderAccountNumber\": \"<string>\",\n    \"beneficiaryName\": \"<string>\",\n    \"billToken\": \"<string>\"\n  },\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Buy Electricity - Invalid Transaction PIN",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "beb5574d-35ab-4f4a-82b9-a8df659fa474",
+										"exec": [
+											"pm.test(\"Response code is 400 (Bad Request)\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response structure and properties for 400\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"hasResult\", false);\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"result\", null);\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"resultType\", 2);\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\", \"Invalid Transaction PIN\");\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"successful\", false);\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"errorCode\", 1003);\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"responseCode\", \"BANK78BP01002\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Error message says Invalid Transaction PIN\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Invalid Transaction PIN\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "14ce85cb-41ed-4f0f-8a8f-7fde563c4ec5",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "0a3caff7-ef7f-4da7-a29f-22f1ad82393f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{customer_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									},
+									{
+										"warning": "This is a duplicate header and will be overridden by the x-api-key header generated by Postman.",
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"amount\": \"1000\",\n  \"billId\": \"28\",\n  \"channel\": \"1\",\n  \"clientRequestId\": \"hffjsknyrhgfkfk\",\n  \"meterNumber\": \"123456695049\",\n  \"packageId\": \"104\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"transactionPin\": \"6303\",\n  \"narration\": \"buy elec\",\n  \"saveBeneficiary\": \"false\",\n  \"deviceId\": \"meter1\",\n  \"beneficiaryName\": \"bryan\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"bryan@assurdly\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrlb}}/api/v1/BillsPayment/electricity"
+							},
+							"response": [
+								{
+									"id": "bc620908-884d-4ab0-9a28-448f54438997",
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											},
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"amount\": \"<double>\",\n  \"billId\": \"<integer>\",\n  \"channel\": null,\n  \"clientRequestId\": \"<string>\",\n  \"meterNumber\": \"<string>\",\n  \"packageId\": \"<integer>\",\n  \"sourceAccountId\": \"<long>\",\n  \"transactionPin\": \"0878\",\n  \"narration\": \"<string>\",\n  \"saveBeneficiary\": \"<boolean>\",\n  \"deviceId\": \"<string>\",\n  \"beneficiaryName\": \"<string>\",\n  \"beneficiaryPhone\": \"<string>\",\n  \"beneficiaryEmail\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/api/v1/BillsPayment/electricity"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"amount\": \"<double>\",\n    \"reference\": \"<string>\",\n    \"beneficiary\": \"<string>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"senderName\": \"<string>\",\n    \"senderAccountNumber\": \"<string>\",\n    \"beneficiaryName\": \"<string>\",\n    \"billToken\": \"<string>\"\n  },\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Buy Electricity - Blank meter number",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "beb5574d-35ab-4f4a-82b9-a8df659fa474",
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Reponse body contains error fields\", function () {\r",
+											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+											"    pm.expect(jsonData.successful).to.eql(false);\r",
+											"    pm.expect(jsonData.result).to.be.null;\r",
+											"    pm.expect(jsonData.responseCode).to.be.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"The error message about the empty Meter number is returned\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.validationMessages[0]).to.include(\"The MeterNumber field is required.\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "14ce85cb-41ed-4f0f-8a8f-7fde563c4ec5",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "3c3d7528-3022-44d8-969e-fb5045be5646",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{customer_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									},
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"amount\": \"1000\",\n  \"billId\": \"28\",\n  \"channel\": \"1\",\n  \"clientRequestId\": \"hffjsknyrhgfkfk\",\n  \"meterNumber\": \"\",\n  \"packageId\": \"104\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"transactionPin\": \"6383\",\n  \"narration\": \"buy elec\",\n  \"saveBeneficiary\": \"false\",\n  \"deviceId\": \"meter1\",\n  \"beneficiaryName\": \"bryan\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"bryan@assurdly\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrlb}}/api/v1/BillsPayment/electricity"
+							},
+							"response": [
+								{
+									"id": "35dd7671-2f31-41f3-93ad-6d3043c7ae6a",
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											},
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"amount\": \"<double>\",\n  \"billId\": \"<integer>\",\n  \"channel\": null,\n  \"clientRequestId\": \"<string>\",\n  \"meterNumber\": \"<string>\",\n  \"packageId\": \"<integer>\",\n  \"sourceAccountId\": \"<long>\",\n  \"transactionPin\": \"0878\",\n  \"narration\": \"<string>\",\n  \"saveBeneficiary\": \"<boolean>\",\n  \"deviceId\": \"<string>\",\n  \"beneficiaryName\": \"<string>\",\n  \"beneficiaryPhone\": \"<string>\",\n  \"beneficiaryEmail\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/api/v1/BillsPayment/electricity"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"amount\": \"<double>\",\n    \"reference\": \"<string>\",\n    \"beneficiary\": \"<string>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"senderName\": \"<string>\",\n    \"senderAccountNumber\": \"<string>\",\n    \"beneficiaryName\": \"<string>\",\n    \"billToken\": \"<string>\"\n  },\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Buy Electricity - Invalid meter number",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "beb5574d-35ab-4f4a-82b9-a8df659fa474",
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Reponse body contains error fields\", function () {\r",
+											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+											"    pm.expect(jsonData.successful).to.eql(false);\r",
+											"    pm.expect(jsonData.result).to.be.null;\r",
+											"    pm.expect(jsonData.responseCode).to.be.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"The error message about the invalid Meter number is returned\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.validationMessages[0]).to.include(\"The MeterNumber is invalid.\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "14ce85cb-41ed-4f0f-8a8f-7fde563c4ec5",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "343ef19b-04c1-4f05-a88a-10a80257dc63",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{customer_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									},
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"amount\": \"1000\",\n  \"billId\": \"25\",\n  \"channel\": \"1\",\n  \"clientRequestId\": \"hffjsknyrhgfkfk\",\n  \"meterNumber\": \"s@.dfgr8989e\",\n  \"packageId\": \"99\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"transactionPin\": \"6543\",\n  \"narration\": \"buy elec\",\n  \"saveBeneficiary\": \"false\",\n  \"deviceId\": \"meter1\",\n  \"beneficiaryName\": \"bryan\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"bryan@assurdly\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrlb}}/api/v1/BillsPayment/electricity"
+							},
+							"response": [
+								{
+									"id": "cc202121-e70d-43e0-8e84-c5076efc7237",
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											},
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"amount\": \"<double>\",\n  \"billId\": \"<integer>\",\n  \"channel\": null,\n  \"clientRequestId\": \"<string>\",\n  \"meterNumber\": \"<string>\",\n  \"packageId\": \"<integer>\",\n  \"sourceAccountId\": \"<long>\",\n  \"transactionPin\": \"0878\",\n  \"narration\": \"<string>\",\n  \"saveBeneficiary\": \"<boolean>\",\n  \"deviceId\": \"<string>\",\n  \"beneficiaryName\": \"<string>\",\n  \"beneficiaryPhone\": \"<string>\",\n  \"beneficiaryEmail\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/api/v1/BillsPayment/electricity"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"amount\": \"<double>\",\n    \"reference\": \"<string>\",\n    \"beneficiary\": \"<string>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"senderName\": \"<string>\",\n    \"senderAccountNumber\": \"<string>\",\n    \"beneficiaryName\": \"<string>\",\n    \"billToken\": \"<string>\"\n  },\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
+								}
+							]
+						}
+					],
+					"id": "71dd29f4-125e-476a-abeb-cc6c0c858497"
+				},
+				{
 					"name": "Buy Cable package",
 					"item": [
 						{
