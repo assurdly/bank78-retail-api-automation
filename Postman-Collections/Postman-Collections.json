@@ -15958,6 +15958,208 @@
 							]
 						},
 						{
+							"name": "Successful Bet Account Funding Copy",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "20049788-10fe-493a-9043-005005bc10df",
+										"exec": [
+											"// Generate a random string function\r",
+											"function generateRandomString(length) {\r",
+											"    const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';\r",
+											"    let result = '';\r",
+											"    for (let i = 0; i < length; i++) {\r",
+											"        const randomIndex = Math.floor(Math.random() * characters.length);\r",
+											"        result += characters.charAt(randomIndex);\r",
+											"    }\r",
+											"    return result;\r",
+											"}\r",
+											"\r",
+											"// Update the requestBody with a random clientRequestId\r",
+											"const randomClientId = generateRandomString(10); // Change 10 to the desired length"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "ce439637-2185-4412-92d6-81a142216978",
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {",
+											"  pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required fields\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData).to.have.property('hasResult');",
+											"    pm.expect(responseData).to.have.property('result');",
+											"    pm.expect(responseData).to.have.property('resultType');",
+											"    pm.expect(responseData).to.have.property('message');",
+											"    pm.expect(responseData).to.have.property('validationMessages');",
+											"    pm.expect(responseData).to.have.property('successful');",
+											"    pm.expect(responseData).to.have.property('errorCode');",
+											"    pm.expect(responseData).to.have.property('responseCode');",
+											"});",
+											"",
+											"",
+											"pm.test(\"Amount is a non-negative integer\", function () {",
+											"  const responseData = pm.response.json();",
+											"  ",
+											"  pm.expect(responseData.result.amount).to.exist.and.to.be.a('number').and.to.satisfy((amount) => amount >= 0, \"Amount should be a non-negative integer\");",
+											"});",
+											"",
+											"pm.test(\"Check if transaction reference is present\", function () {",
+											"    var responseBody = pm.response.json();",
+											"    pm.expect(responseBody.result.reference).to.not.be.undefined;",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "13368539-ab1c-4016-9245-8eed3b98abb1",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{customer_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "accept-language",
+										"value": "en-US,en;q=0.9"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjU3REY5MkUxMzYxNUJBNEFBRjRFRUY3RjQxQzIwRkRDIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MjE0MDQwNzEsImV4cCI6MTcyMTQwNzY3MSwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS1kZXYuYmFuazc4LmNvIiwiYXVkIjoiYXBpMSIsImNsaWVudF9pZCI6IkVDQkVFQ0JDN0NFNTQzNERCQTUwOUI5Mzc1MjAzRUMxIiwic3ViIjoiMjEwMTJlNGUtNmIxNy00ODRkLTgxYzQtNGY5ZDMwZTNjNWY3IiwiYXV0aF90aW1lIjoxNzIxNDA0MDcxLCJpZHAiOiJsb2NhbCIsInBob25lTnVtYmVyIjoiODEzNTU3NTgzNCIsInVzZXJJZCI6IjIxMDEyZTRlLTZiMTctNDg0ZC04MWM0LTRmOWQzMGUzYzVmNyIsInVzZXJuYW1lIjoibWF5aW5AeW9wbWFpbC5jb20iLCJpc0FjdGl2ZSI6IlRydWUiLCJ1c2VyVHlwZUlkIjoiMSIsInVzZXJUeXBlIjoiQ3VzdG9tZXIiLCJlbWFpbCI6Im1heWluQHlvcG1haWwuY29tIiwibGFzdE5hbWUiOiJZb3BtYWlsIiwiZmlyc3ROYW1lIjoiTWF5aW4iLCJwZXJtaXNzaW9uIjoie1wic2VjdGlvbnNcIjpbXX0iLCJqdGkiOiI5MDQwMzYwOTJBNzQ0MTNGRjFBMTFBMzUxRUM5RjFFRiIsImlhdCI6MTcyMTQwNDA3MSwic2NvcGUiOlsiYXBpMSIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJjdXN0b20iXX0.hKBxZIUHM_zFOEQsxAtfFrXDKPHUEXRHVd8diHee4nDgq6oHoYB0l8Go0dC_XWj_UHARk-_IN4y_Ou0FgkSeIRa30CHle_xG6yiVqoZlGEQLxS-h_78dnfFJzonuBkJw3VmHilDkqDVzfUCZoQtKYxXZ3r-m5QkICEB5XOKAA-SR2rNYNNm_mXlcotuJmdew7vNkaFhsGjohlPuzrsiie2DZgaSZdE0Ov5k8AIUpaGQg1LxWkZrKt_Hp5Cxn3x0_0b9n6hcpvqD28U3Q9M6mHnY7fXSzIHopTNmlRkf3lGHuwVXTeH2wx-vdtlNWSuA7_0iGTvOt84UfyBo5Mo9mRQ"
+									},
+									{
+										"key": "content-type",
+										"value": "application/json"
+									},
+									{
+										"key": "origin",
+										"value": "https://app-dev.bank78.co"
+									},
+									{
+										"key": "priority",
+										"value": "u=1, i"
+									},
+									{
+										"key": "referer",
+										"value": "https://app-dev.bank78.co/"
+									},
+									{
+										"key": "sec-ch-ua",
+										"value": "\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Google Chrome\";v=\"126\""
+									},
+									{
+										"key": "sec-ch-ua-mobile",
+										"value": "?0"
+									},
+									{
+										"key": "sec-ch-ua-platform",
+										"value": "\"macOS\""
+									},
+									{
+										"key": "sec-fetch-dest",
+										"value": "empty"
+									},
+									{
+										"key": "sec-fetch-mode",
+										"value": "cors"
+									},
+									{
+										"key": "sec-fetch-site",
+										"value": "same-site"
+									},
+									{
+										"key": "user-agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+									},
+									{
+										"key": "x-api-key",
+										"value": "h9tRbOJzcH9O8mDsWRVey6OimYrqYUdg4c4IKNTf"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"transactionPin\": \"6541\",\n    \"channel\": \"Web\",\n    \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n    \"saveBeneficiary\": true,\n    \"deviceId\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36\",\n    \"beneficiaryName\": \"\",\n    \"beneficiaryPhone\": \"07089877770\",\n    \"beneficiaryEmail\": \"\",\n    \"billId\": 29,\n    \"amount\": \"100\",\n    \"phoneNumber\": \"07089877770\",\n    \"packageId\": 107,\n    \"beneficiary\": \"070111726666\",\n    \"canSchedule\": false,\n    \"scheduleInfo\": {}\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://sandbox.bank78.co/bills-payment/api/v1/BillsPayment"
+							},
+							"response": [
+								{
+									"id": "c2837225-0d7a-4b32-a174-55d42bf7318c",
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											},
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"beneficiary\": \"<string>\",\n  \"billId\": \"<integer>\",\n  \"channel\": null,\n  \"clientRequestId\": \"<string>\",\n  \"sourceAccountId\": \"<long>\",\n  \"transactionPin\": \"1620\",\n  \"narration\": \"<string>\",\n  \"saveBeneficiary\": \"<boolean>\",\n  \"deviceId\": \"<string>\",\n  \"beneficiaryName\": \"<string>\",\n  \"beneficiaryPhone\": \"<string>\",\n  \"beneficiaryEmail\": \"<string>\",\n  \"packageId\": \"<integer>\",\n  \"amount\": \"<double>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/api/v1/BillsPayment"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"amount\": \"<double>\",\n    \"reference\": \"<string>\",\n    \"beneficiary\": \"<string>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"senderName\": \"<string>\",\n    \"senderAccountNumber\": \"<string>\",\n    \"beneficiaryName\": \"<string>\",\n    \"billToken\": \"<string>\"\n  },\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
 							"name": "Bet Account Funding - Wrong bill ID",
 							"event": [
 								{
@@ -16182,167 +16384,6 @@
 							"response": [
 								{
 									"id": "641a6fb1-ba35-44f6-8a9e-2291601857d8",
-									"name": "Success",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											},
-											{
-												"key": "Accept",
-												"value": "text/plain"
-											},
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "Authorization",
-												"value": "<API Key>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"beneficiary\": \"<string>\",\n  \"billId\": \"<integer>\",\n  \"channel\": null,\n  \"clientRequestId\": \"<string>\",\n  \"sourceAccountId\": \"<long>\",\n  \"transactionPin\": \"1620\",\n  \"narration\": \"<string>\",\n  \"saveBeneficiary\": \"<boolean>\",\n  \"deviceId\": \"<string>\",\n  \"beneficiaryName\": \"<string>\",\n  \"beneficiaryPhone\": \"<string>\",\n  \"beneficiaryEmail\": \"<string>\",\n  \"packageId\": \"<integer>\",\n  \"amount\": \"<double>\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": "{{baseUrl}}/api/v1/BillsPayment"
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"amount\": \"<double>\",\n    \"reference\": \"<string>\",\n    \"beneficiary\": \"<string>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"senderName\": \"<string>\",\n    \"senderAccountNumber\": \"<string>\",\n    \"beneficiaryName\": \"<string>\",\n    \"billToken\": \"<string>\"\n  },\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
-								}
-							]
-						},
-						{
-							"name": "Bet Account Funding - Invalid Pin",
-							"event": [
-								{
-									"listen": "prerequest",
-									"script": {
-										"id": "20049788-10fe-493a-9043-005005bc10df",
-										"exec": [
-											"// Generate a random string function\r",
-											"function generateRandomString(length) {\r",
-											"    const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';\r",
-											"    let result = '';\r",
-											"    for (let i = 0; i < length; i++) {\r",
-											"        const randomIndex = Math.floor(Math.random() * characters.length);\r",
-											"        result += characters.charAt(randomIndex);\r",
-											"    }\r",
-											"    return result;\r",
-											"}\r",
-											"\r",
-											"// Update the requestBody with a random clientRequestId\r",
-											"const randomClientId = generateRandomString(10); // Change 10 to the desired length\r",
-											"const requestBody = {\r",
-											"    \"transactionPin\": \"6385\",\r",
-											"    \"narration\": \"payment\",\r",
-											"    \"channel\": \"1\",\r",
-											"    \"sourceAccountNumber\": \"{{sourceAccount}}\",\r",
-											"    \"saveBeneficiary\": true,\r",
-											"    \"clientRequestId\": randomClientId,\r",
-											"    \"deviceId\": \"iphone\",\r",
-											"    \"beneficiaryName\": \"bryan\",\r",
-											"    \"beneficiaryPhone\": \"0815597979\",\r",
-											"    \"beneficiaryEmail\": \"bryan@assurdly.com\",\r",
-											"    \"packageId\": \"107\",\r",
-											"    \"billId\": \"29\",\r",
-											"    \"amount\": \"100\",\r",
-											"    \"beneficiary\": \"bryan\"\r",
-											"};\r",
-											"\r",
-											"pm.request.body.raw = JSON.stringify(requestBody);"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								},
-								{
-									"listen": "test",
-									"script": {
-										"id": "80c6e65b-b180-4216-9157-3d2604167548",
-										"exec": [
-											"pm.test(\"Response code is 400 (Bad Request)\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Response structure and properties for 400\", function () {\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"hasResult\", false);\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"result\", null);\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"resultType\", 2);\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"message\", \"Invalid Transaction PIN\");\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"successful\", false);\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"errorCode\", 1003);\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"responseCode\", \"BANK78BP01002\");\r",
-											"});\r",
-											"\r",
-											"\r",
-											"pm.test(\"Error message says Invalid Transaction PIN\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.equal(\"Invalid Transaction PIN\");\r",
-											"});\r",
-											""
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "a39f1a32-32fd-439b-b703-b8e0994d6d5c",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{customer_access_token}}"
-									}
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "text/plain"
-									},
-									{
-										"key": "x-api-key",
-										"value": "{{x-api-key}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"transactionPin\": \"6383\",\n  \"narration\": \"payment\",\n  \"channel\": \"1\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"saveBeneficiary\": true,\n  \"clientRequestId\": \"fundbet\",\n  \"deviceId\": \"iphone\",\n  \"beneficiaryName\": \"bryan\",\n  \"beneficiaryPhone\": \"0815597979\",\n  \"beneficiaryEmail\": \"bryan@assurdly.com\",\n  \"packageId\": \"107\",\n  \"billId\": \"29\",\n  \"amount\": \"100\",\n  \"beneficiary\": \"bryan\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrlb}}/api/v1/BillsPayment"
-							},
-							"response": [
-								{
-									"id": "6624c7d1-be94-4899-8abf-26fea9637d62",
 									"name": "Success",
 									"originalRequest": {
 										"method": "POST",
