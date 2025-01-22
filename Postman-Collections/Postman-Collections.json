@@ -15812,6 +15812,11 @@
 											"  pm.expect(responseData.result.amount).to.exist.and.to.be.a('number').and.to.satisfy((amount) => amount >= 0, \"Amount should be a non-negative integer\");",
 											"});",
 											"",
+											"pm.test(\"Check if transaction reference is present\", function () {",
+											"    var responseBody = pm.response.json();",
+											"    pm.expect(responseBody.result.reference).to.not.be.undefined;",
+											"});",
+											"",
 											""
 										],
 										"type": "text/javascript",
@@ -16022,7 +16027,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"transactionPin\": \"6543\",\n  \"narration\": \"Pay Epin\",\n  \"channel\": \"3\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"1284903\",\n  \"beneficiaryName\": \"Jamb\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"test8033@mailinator.com\",\n  \"billId\": \"999\",\n  \"packageId\": \"109\",\n  \"amount\": \"4700\",\n  \"numberOfPins\": \"1\",\n  \"phone\" : \"07035361770\",\n  \"accountNumber\": \"1111111111\"\n\n}",
+									"raw": "{\n    \"transactionPin\": \"6543\",\n    \"channel\": \"Web\",\n    \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n    \"saveBeneficiary\": true,\n    \"deviceId\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36\",\n    \"beneficiaryName\": \"\",\n    \"beneficiaryPhone\": \"07089877770\",\n    \"beneficiaryEmail\": \"\",\n    \"billId\": 300,\n    \"amount\": \"100\",\n    \"phoneNumber\": \"07089877770\",\n    \"packageId\": 107,\n    \"beneficiary\": \"070111726666\",\n    \"canSchedule\": false,\n    \"scheduleInfo\": {}\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -16030,7 +16035,7 @@
 										}
 									}
 								},
-								"url": "{{baseUrlb}}/api/v1/BillsPayment/education-pins"
+								"url": "https://sandbox.bank78.co/bills-payment/api/v1/BillsPayment"
 							},
 							"response": [
 								{
@@ -16108,12 +16113,26 @@
 									"script": {
 										"id": "c4d12c9e-9646-4534-9500-feadc0883f5f",
 										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
 											"pm.test(\"Status code is 400\", function () {\r",
 											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Status code response is Bad Request\", function () {\r",
 											"    pm.response.to.have.status('Bad Request');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Reponse body contains error fields\", function () {\r",
+											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+											"    pm.expect(jsonData.successful).to.eql(false);\r",
+											"    pm.expect(jsonData.result).to.be.null;\r",
+											"    pm.expect(jsonData.responseCode).to.be.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"The error message about Negative number\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.validationMessages[0]).to.include(\"Kindly specify an amount greater than 0\",);\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -16150,7 +16169,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"transactionPin\": \"6543\",\n  \"narration\": \"test\",\n  \"channel\": \"1\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"saveBeneficiary\": true,\n  \"clientRequestId\": \"fundbet\",\n  \"deviceId\": \"iphone\",\n  \"beneficiaryName\": \"bryan\",\n  \"beneficiaryPhone\": \"0815597979\",\n  \"beneficiaryEmail\": \"bryan@assurdly.com\",\n  \"packageId\": \"107\",\n  \"billId\": \"29\",\n  \"amount\": \"-100\",\n  \"beneficiary\": \"bryan\"\n}",
+									"raw": "{\n    \"transactionPin\": \"6543\",\n    \"channel\": \"Web\",\n    \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n    \"saveBeneficiary\": true,\n    \"deviceId\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36\",\n    \"beneficiaryName\": \"\",\n    \"beneficiaryPhone\": \"07089877770\",\n    \"beneficiaryEmail\": \"\",\n    \"billId\": 29,\n    \"amount\": \"-100\",\n    \"phoneNumber\": \"07089877770\",\n    \"packageId\": 107,\n    \"beneficiary\": \"070111726666\",\n    \"canSchedule\": false,\n    \"scheduleInfo\": {}\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -16158,7 +16177,7 @@
 										}
 									}
 								},
-								"url": "{{baseUrlb}}/api/v1/BillsPayment"
+								"url": "https://sandbox.bank78.co/bills-payment/api/v1/BillsPayment"
 							},
 							"response": [
 								{
