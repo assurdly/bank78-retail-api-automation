@@ -18258,9 +18258,9 @@
 													"    pm.expect(jsonData.responseCode).to.be.null;\r",
 													"});\r",
 													"\r",
-													"pm.test(\"Error message about Invalid account number is returned\", function () {\r",
+													"pm.test(\"Error message about Blank Account Number is returned\", function () {\r",
 													"    var jsonData = pm.response.json();\r",
-													"    pm.expect(jsonData.validationMessages).to.include(\"Account Number can only be between 8-12 digits\");\r",
+													"    pm.expect(jsonData.validationMessages).to.include(\"Account Number is required\");\r",
 													"});\r",
 													"\r",
 													"\r",
@@ -18331,7 +18331,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"beneficiaryName\": \"Peace Joy\",\n  \"bankName\": \"Providus\",\n  \"accountName\": \"{{$randomFullName}}\",\n  \"accountNumber\": \"000\",\n  \"emailAddress\": \"peace@email.com\",\n  \"countryCode\": \"+234\",\n  \"address\": \"Abuja\",\n  \"CurrencyCode\": \"nil\",\n  \"BankRequirementValue\": \"nil\",\n  \"currencyRequirement\": {\n    \"name\": \"NGN\",\n    \"value\": \"100\",\n    \"forms\": [\n      {\n        \"dataLabel\": \"Money\",\n        \"dataValue\": \"Save Money\"\n      }\n    ]\n  }\n}",
+											"raw": "{\n  \"beneficiaryName\": \"{{$randomFullName}}\",\n  \"bankName\": \"Providus\",\n  \"accountName\": \"{{$randomFullName}}\",\n  \"accountNumber\": \"\",\n  \"emailAddress\": \"peace@email.com\",\n  \"countryCode\": \"+234\",\n  \"address\": \"Abuja\",\n  \"CurrencyCode\": \"nil\",\n  \"BankRequirementValue\": \"nil\",\n  \"currencyRequirement\": {\n    \"name\": \"NGN\",\n    \"value\": \"100\",\n    \"forms\": [\n      {\n        \"dataLabel\": \"Money\",\n        \"dataValue\": \"Save Money\"\n      }\n    ]\n  }\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -18459,6 +18459,121 @@
 									"response": [
 										{
 											"id": "f7d971f5-4627-4055-a15a-4f498debf2da",
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"accountName\": \" iL \",\n  \"accountNumber\": \"759117742\",\n  \"bankName\": \"Aju 6\\fW \",\n  \"beneficiaryName\": \"VxU\\tP\",\n  \"countryCode\": \"<string>\",\n  \"currencyRequirement\": {\n    \"name\": \"<string>\",\n    \"value\": \"<string>\",\n    \"forms\": [\n      {\n        \"dataLabel\": \"<string>\",\n        \"dataValue\": \"<string>\"\n      },\n      {\n        \"dataLabel\": \"<string>\",\n        \"dataValue\": \"<string>\"\n      }\n    ]\n  },\n  \"emailAddress\": \"<email>\",\n  \"address\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{baseUrl}}/api/v1/transfers/beneficiaries"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"message\": \"<string>\"\n  },\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Add Beneficiary - No Currency Code",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "918113a2-0257-4c46-abd8-c19c4ebcaa1a",
+												"exec": [
+													"var jsonData = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Reponse body contains standard error fields\", function () {\r",
+													"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+													"    pm.expect(jsonData.successful).to.eql(false);\r",
+													"    pm.expect(jsonData.result).to.be.null;\r",
+													"    pm.expect(jsonData.responseCode).to.be.null;\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Error message about Invalid account number is returned\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"        pm.expect(jsonData.validationMessages).to.include(\"The CurrencyCode field is required.\");\r",
+													"\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "96385d62-f606-4959-894b-282678347fc7",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{customer_access_token}}"
+											}
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "// \n\n{\n  \"beneficiaryName\": \"Laa Laa\",\n  \"bankName\": \"Bank78\",\n  \"accountName\": \"Lala Ogee\",\n  \"accountNumber\":\"9035000122\",\n  \"emailAddress\": \"la@mailinator.com\",\n  \"countryCode\": \"+234\",\n  \"address\": \"Lagos\",\n  \"bankRequirementId\": 1,\n  \"CurrencyCode\": \"\",\n  \"BankRequirementValue\": \"110072\",\n  \"nameEnquiryId\": 1680,\n  \"bankId\": 335\n  \n    \n  }",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://transfer-dev.bank78.co/api/v1/transfers/beneficiaries"
+									},
+									"response": [
+										{
+											"id": "531611a4-7839-4707-9f0c-f8d8931c716f",
 											"name": "Success",
 											"originalRequest": {
 												"method": "POST",
