@@ -1177,7 +1177,13 @@
 											"pm.environment.set(\"firstname\", firstName)\r",
 											"\r",
 											"let lastName = pm.variables.replaceIn(\"{{$randomLastName}}\")\r",
-											"pm.environment.set(\"lastname\", lastName)"
+											"pm.environment.set(\"lastname\", lastName)\r",
+											"\r",
+											"\r",
+											"// Generate a random 11-digit number\r",
+											"// let randomNumber = Math.floor(10000000000 + Math.random() * 90000000000); // Ensures 11 digits\r",
+											"// pm.environment.set(\"random11Digit\", randomNumber.toString()); // Save to an environment variable\r",
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
