@@ -16838,7 +16838,7 @@
 							]
 						},
 						{
-							"name": "Bet Account Funding - Phone Number",
+							"name": "Bet Account Funding - Beneficiary",
 							"event": [
 								{
 									"listen": "prerequest",
@@ -16880,8 +16880,8 @@
 											"    pm.expect(pm.response.json()).to.not.have.property(\"responseCode\",  \"null\");\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Error message matches the expected value for 400\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.equal(\"Source Account: Account does not exist\");\r",
+											"pm.test(\"Error message address invalid beneficiary\",function () {\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Invalid Beneficiary\");\r",
 											"});\r",
 											""
 										],
@@ -16919,7 +16919,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"transactionPin\": \"6543\",\n  \"narration\": \"payment\",\n  \"channel\": \"1\",\n  \"sourceAccountNumber\": \"101000171b\",\n  \"saveBeneficiary\": true,\n  \"clientRequestId\": \"fundbet\",\n  \"deviceId\": \"iphone\",\n  \"beneficiaryName\": \"bryan\",\n  \"beneficiaryPhone\": \"0815597979\",\n  \"beneficiaryEmail\": \"bryan@assurdly.com\",\n  \"packageId\": \"107\",\n  \"billId\": \"29\",\n  \"amount\": \"100\",\n  \"beneficiary\": \"bryan\"\n}",
+									"raw": "{\n    \"transactionPin\": \"6543\",\n    \"channel\": \"Web\",\n    \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n    \"saveBeneficiary\": true,\n    \"deviceId\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36\",\n    \"beneficiaryName\": \"\",\n    \"beneficiaryPhone\": \"07089877770\",\n    \"beneficiaryEmail\": \"\",\n    \"billId\": 29,\n    \"amount\": \"100\",\n    \"phoneNumber\": \"07000940333\",\n    \"packageId\": 107,\n    \"beneficiary\": \"0\",\n    \"canSchedule\": false,\n    \"scheduleInfo\": {}\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -16927,7 +16927,7 @@
 										}
 									}
 								},
-								"url": "{{baseUrlb}}/api/v1/BillsPayment"
+								"url": "https://sandbox.bank78.co/bills-payment/api/v1/BillsPayment"
 							},
 							"response": [
 								{
