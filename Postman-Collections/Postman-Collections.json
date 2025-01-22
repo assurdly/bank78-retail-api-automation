@@ -16707,24 +16707,27 @@
 							]
 						},
 						{
-							"name": "Buy Jamb - Invalid Beneficiary email Copy",
+							"name": "Bet Account Funding - Invalid Beneficiary email",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
 										"id": "36f5a182-cdf3-4d56-b57e-b6ff59f446f9",
 										"exec": [
-											"var jsonData = pm.response.json();\r",
-											"\r",
-											"pm.test(\"Status code is 400\", function () {\r",
+											"pm.test(\"Response code is 400 (Bad Request)\", function () {\r",
 											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Reponse body contains error fields\", function () {\r",
-											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
-											"    pm.expect(jsonData.successful).to.eql(false);\r",
-											"    pm.expect(jsonData.result).to.be.null;\r",
+											"pm.test(\"Response structure and properties for 400\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"hasResult\", false);\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"result\", null);\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"resultType\", 2);\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\", \"Invalid 78 PIN\");\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"successful\", false);\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"errorCode\", 1003);\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"responseCode\", \"BANK78BP01002\");\r",
 											"});\r",
+											"\r",
 											"\r",
 											"pm.test(\"The error message about invalid Beneficiary email is returned\", function () {\r",
 											"    var jsonData = pm.response.json();\r",
@@ -16784,7 +16787,7 @@
 										}
 									}
 								},
-								"url": "{{baseUrlb}}/api/v1/BillsPayment/education-pins"
+								"url": "https://sandbox.bank78.co/bills-payment/api/v1/BillsPayment"
 							},
 							"response": [
 								{
