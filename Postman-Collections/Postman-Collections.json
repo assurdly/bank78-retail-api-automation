@@ -17108,44 +17108,27 @@
 									"script": {
 										"id": "8e6f901d-e320-45d2-8d6b-1dd4ae245c7f",
 										"exec": [
-											"pm.test(\"Response status code is 400\", function () {\r",
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
 											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Response code response is Bad Request\", function () {\r",
-											"    pm.response.to.have.status(\"Bad Request\");\r",
+											"pm.test(\"Status code response is Bad Request\", function () {\r",
+											"    pm.response.to.have.status('Bad Request');\r",
 											"});\r",
 											"\r",
+											"pm.test(\"Reponse body contains error fields\", function () {\r",
+											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+											"    pm.expect(jsonData.successful).to.eql(false);\r",
+											"    pm.expect(jsonData.result).to.be.null;\r",
+											"    pm.expect(jsonData.responseCode).to.be.null;\r",
+											"});\r",
 											"\r",
-											"// pm.test(\"The 'amount' field should be a number\", function () {\r",
-											"//     const responseData = pm.response.json();\r",
-											"//     pm.expect(responseData).to.be.an('object');\r",
-											"//     pm.expect(responseData.result.amount).to.be.a('number');\r",
-											"// });\r",
-											"\r",
-											"// pm.test(\"Response structure and properties for 200\", function () {\r",
-											"//     pm.expect(pm.response.json()).to.have.property(\"hasResult\", true);\r",
-											"//     pm.expect(pm.response.json()).to.have.property(\"result\");\r",
-											"//     pm.expect(pm.response.json()).to.have.property(\"resultType\", 1);\r",
-											"//     pm.expect(pm.response.json()).to.have.property(\"message\", \"Successful\");\r",
-											"//     pm.expect(pm.response.json()).to.have.property(\"successful\", true);\r",
-											"//     pm.expect(pm.response.json()).to.have.property(\"errorCode\", 0);\r",
-											"//     pm.expect(pm.response.json()).to.have.property(\"responseCode\", \"200\");\r",
-											"// });\r",
-											"\r",
-											"// pm.test(\"Result object properties for 200\", function () {\r",
-											"//     var result = pm.response.json().result;\r",
-											"    \r",
-											"//     pm.expect(result).to.have.property(\"message\", \"Successful\");\r",
-											"//     pm.expect(result).to.have.property(\"status\", \"Success\");\r",
-											"//     pm.expect(result).to.have.property(\"billToken\").to.be.null;\r",
-											"// });\r",
-											"\r",
-											"\r",
-											"// pm.test(\"Check if transaction reference is present\", function () {\r",
-											"//     var responseBody = pm.response.json();\r",
-											"//     pm.expect(responseBody.result.reference).to.not.be.undefined;\r",
-											"// });"
+											"pm.test(\"The error message about Negative number\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.validationMessages[0]).to.include(\"Kindly specify an amount greater than 0\",);\r",
+											"});"
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -17262,7 +17245,295 @@
 							]
 						},
 						{
-							"name": "Invalid pin input",
+							"name": "Buy Airtime - negative amount Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8e6f901d-e320-45d2-8d6b-1dd4ae245c7f",
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is Bad Request\", function () {\r",
+											"    pm.response.to.have.status('Bad Request');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Reponse body contains error fields\", function () {\r",
+											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+											"    pm.expect(jsonData.successful).to.eql(false);\r",
+											"    pm.expect(jsonData.result).to.be.null;\r",
+											"    pm.expect(jsonData.responseCode).to.be.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"The error message about Negative number\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.validationMessages[0]).to.include(\"Kindly specify an amount greater than 0\",);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "3924026c-bc6d-4756-9006-cced1c5628d1",
+										"exec": [
+											"// Generate a random string function\r",
+											"function generateRandomString(length) {\r",
+											"    const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';\r",
+											"    let result = '';\r",
+											"    for (let i = 0; i < length; i++) {\r",
+											"        const randomIndex = Math.floor(Math.random() * characters.length);\r",
+											"        result += characters.charAt(randomIndex);\r",
+											"    }\r",
+											"    return result;\r",
+											"}\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "c6569fe0-69be-4609-87f4-603f34ce8813",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{customer_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									},
+									{
+										"key": "x-api-key",
+										"value": "h9tRbOJzcH9O8mDsWRVey6OimYrqYUdg4c4IKNTf",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"transactionPin\": \"6543\",\n    \"narration\": \"airtime\",\n    \"channel\": \"Web\",\n    \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n    \"saveBeneficiary\": true,\n    \"deviceId\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36\",\n    \"beneficiaryName\": \"\",\n    \"beneficiaryPhone\": \"07011725297\",\n    \"beneficiaryEmail\": \"\",\n    \"billId\": 3,\n    \"amount\": -100,\n    \"phoneNumber\": \"07011725297\",\n    \"canSchedule\": false,\n    \"scheduleInfo\": {}\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrlb}}/api/v1/BillsPayment/airtime"
+							},
+							"response": [
+								{
+									"id": "817f6f3c-8458-4c8e-b543-c2d1911de993",
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											},
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"amount\": \"<double>\",\n  \"billId\": \"<integer>\",\n  \"channel\": null,\n  \"clientRequestId\": \"<string>\",\n  \"phoneNumber\": \"29847059374\",\n  \"sourceAccountId\": \"<long>\",\n  \"transactionPin\": \"4769\",\n  \"narration\": \"<string>\",\n  \"saveBeneficiary\": \"<boolean>\",\n  \"deviceId\": \"<string>\",\n  \"beneficiaryName\": \"<string>\",\n  \"beneficiaryPhone\": \"<string>\",\n  \"beneficiaryEmail\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/api/v1/BillsPayment/airtime"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"amount\": \"<double>\",\n    \"reference\": \"<string>\",\n    \"beneficiary\": \"<string>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"senderName\": \"<string>\",\n    \"senderAccountNumber\": \"<string>\",\n    \"beneficiaryName\": \"<string>\",\n    \"billToken\": \"<string>\"\n  },\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Buy Airtime - negative amount Copy 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8e6f901d-e320-45d2-8d6b-1dd4ae245c7f",
+										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is Bad Request\", function () {\r",
+											"    pm.response.to.have.status('Bad Request');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Reponse body contains error fields\", function () {\r",
+											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+											"    pm.expect(jsonData.successful).to.eql(false);\r",
+											"    pm.expect(jsonData.result).to.be.null;\r",
+											"    pm.expect(jsonData.responseCode).to.be.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"The error message about Negative number\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.validationMessages[0]).to.include(\"Kindly specify an amount greater than 0\",);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "3924026c-bc6d-4756-9006-cced1c5628d1",
+										"exec": [
+											"// Generate a random string function\r",
+											"function generateRandomString(length) {\r",
+											"    const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';\r",
+											"    let result = '';\r",
+											"    for (let i = 0; i < length; i++) {\r",
+											"        const randomIndex = Math.floor(Math.random() * characters.length);\r",
+											"        result += characters.charAt(randomIndex);\r",
+											"    }\r",
+											"    return result;\r",
+											"}\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "07ec2d1f-0ac8-4be3-b211-dee728d13b4f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{customer_access_token}}"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									},
+									{
+										"key": "x-api-key",
+										"value": "h9tRbOJzcH9O8mDsWRVey6OimYrqYUdg4c4IKNTf",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"transactionPin\": \"6543\",\n    \"narration\": \"airtime\",\n    \"channel\": \"Web\",\n    \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n    \"saveBeneficiary\": true,\n    \"deviceId\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36\",\n    \"beneficiaryName\": \"\",\n    \"beneficiaryPhone\": \"07011725297\",\n    \"beneficiaryEmail\": \"\",\n    \"billId\": 3,\n    \"amount\": -100,\n    \"phoneNumber\": \"07011725297\",\n    \"canSchedule\": false,\n    \"scheduleInfo\": {}\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrlb}}/api/v1/BillsPayment/airtime"
+							},
+							"response": [
+								{
+									"id": "f50740ed-2f88-4e60-b883-c22068733ae7",
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											},
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"amount\": \"<double>\",\n  \"billId\": \"<integer>\",\n  \"channel\": null,\n  \"clientRequestId\": \"<string>\",\n  \"phoneNumber\": \"29847059374\",\n  \"sourceAccountId\": \"<long>\",\n  \"transactionPin\": \"4769\",\n  \"narration\": \"<string>\",\n  \"saveBeneficiary\": \"<boolean>\",\n  \"deviceId\": \"<string>\",\n  \"beneficiaryName\": \"<string>\",\n  \"beneficiaryPhone\": \"<string>\",\n  \"beneficiaryEmail\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/api/v1/BillsPayment/airtime"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"amount\": \"<double>\",\n    \"reference\": \"<string>\",\n    \"beneficiary\": \"<string>\",\n    \"message\": \"<string>\",\n    \"status\": \"<string>\",\n    \"senderName\": \"<string>\",\n    \"senderAccountNumber\": \"<string>\",\n    \"beneficiaryName\": \"<string>\",\n    \"billToken\": \"<string>\"\n  },\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Buy Airtime Invalid Transaction PIN",
 							"event": [
 								{
 									"listen": "test",
@@ -17404,7 +17675,7 @@
 							]
 						},
 						{
-							"name": "Invalid Amount",
+							"name": "Buy Airtime - Invalid Amount",
 							"event": [
 								{
 									"listen": "test",
