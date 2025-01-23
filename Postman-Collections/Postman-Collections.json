@@ -18947,6 +18947,43 @@
 							"item": [
 								{
 									"name": "Edit Beneficiary Details",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "7c92751e-1457-466a-bc8d-71fe174b1482",
+												"exec": [
+													"// Fixed TypeError by using correct chaining syntax",
+													"pm.test(\"Response status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"pm.test(\"Response code is 200 for success\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"",
+													"pm.test(\"Response structure and properties for 200\", function () {",
+													"    pm.expect(pm.response.json()).to.have.property(\"hasResult\", true);",
+													"    pm.expect(pm.response.json()).to.have.property(\"result\");",
+													"    pm.expect(pm.response.json()).to.have.property(\"resultType\", 1);",
+													"    pm.expect(pm.response.json()).to.have.property(\"message\", null);",
+													"    pm.expect(pm.response.json()).to.have.property(\"successful\", true);",
+													"    pm.expect(pm.response.json()).to.have.property(\"errorCode\", 0);",
+													"    pm.expect(pm.response.json()).to.have.property(\"responseCode\", null);",
+													"});",
+													"",
+													"pm.test(\"Success message is present\", function () {",
+													"    var responseBody = pm.response.json();",
+													"    pm.expect(responseBody.result.message).to.equal(\"Beneficiary successfully updated\");",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
 									"id": "03c59b0b-c432-4f11-a766-b4a4d4a84454",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -18971,7 +19008,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"id\": \"22\",\n  \"beneficiaryName\": \"Golden Boy\",\n  \"bankName\": \"GoMoney\",\n  \"accountName\": \"Gold Launderrrrrrr\",\n  \"accountNumber\": \"9402762900\",\n  \"emailAddress\": \"user22@example.com\",\n  \"countryCode\": \"+234\",\n  \"currencyRequirement\": {\n    \"name\": \"NGN\",\n    \"value\": \"200\",\n    \"forms\": [\n      {\n        \"dataLabel\": \"Save\",\n        \"dataValue\": \"Money\"\n      }\n    ]\n  },\n  \"address\": \"Port Harcourt\"\n}",
+											"raw": "{\n  \"id\": \"946\",\n  \"beneficiaryName\": \"Golden Boy\",\n  \"bankName\": \"GoMoney\",\n  \"accountName\": \"Gold Launderrrrrrr\",\n  \"accountNumber\": \"9402762900\",\n  \"emailAddress\": \"user22@example.com\",\n  \"countryCode\": \"+234\",\n  \"currencyRequirement\": {\n    \"name\": \"NGN\",\n    \"value\": \"200\",\n    \"forms\": [\n      {\n        \"dataLabel\": \"Save\",\n        \"dataValue\": \"Money\"\n      }\n    ]\n  },\n  \"address\": \"Port Harcourt\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
