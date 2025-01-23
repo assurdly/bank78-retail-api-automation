@@ -18826,6 +18826,43 @@
 							"item": [
 								{
 									"name": "List all beneficiaries by page",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "dac86ed9-7321-46cd-9534-08860dc99506",
+												"exec": [
+													"var jsonData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"pm.test(\"Response has required fields\", function () {",
+													"    pm.expect(jsonData).to.have.property('hasResult', true);",
+													"    pm.expect(jsonData).to.have.property('result');",
+													"    pm.expect(jsonData.result).to.be.an('object');",
+													"    pm.expect(jsonData.result.items).to.be.an('array');",
+													"    pm.expect(jsonData.result.items[0]).to.have.property('id');",
+													"    pm.expect(jsonData.result.items[0]).to.have.property('accountName');",
+													"    pm.expect(jsonData.result.items[0]).to.have.property('accountNumber');",
+													"    pm.expect(jsonData.result.items[0]).to.have.property('bankName');",
+													"    pm.expect(jsonData.result.items[0]).to.have.property('countryCode');",
+													"    pm.expect(jsonData.result.items[0]).to.have.property('currencyCode');",
+													"});",
+													"pm.test(\"Currency code is not nil\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    jsonData.result.items.forEach(function(item) {",
+													"        pm.expect(item.currencyCode).to.not.equal('nil');",
+													"    });",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
 									"id": "6aa9f4fb-0663-468c-bb01-53af2e904f94",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
