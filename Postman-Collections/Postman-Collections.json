@@ -11819,7 +11819,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the invalid Bill package is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.validationMessages).to.include(\"Invalid package\");\r",
 											"});"
 										],
@@ -11937,7 +11936,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the Bill payment amount is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.validationMessages[0]).to.include(\"Fixed package amount: Invalid amount paid. Amount passed is lesser than the bill package amount\");\r",
 											"});"
 										],
@@ -12066,7 +12064,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the Bill payment amount is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.validationMessages[0]).to.include(\"Bill amount is required\");\r",
 											"});"
 										],
@@ -12195,7 +12192,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the Bill payment amount is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.validationMessages[0]).to.include(\"Kindly specify an amount greater than 0\");\r",
 											"});"
 										],
@@ -12324,7 +12320,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the Bill payment channel is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.validationMessages[0]).to.include(\"Channel is required\");\r",
 											"});"
 										],
@@ -12453,7 +12448,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the Bill payment amount is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.message).to.include(\"Amount must be 2500\");\r",
 											"});"
 										],
@@ -12582,7 +12576,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the customer phone number is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.validationMessages[0]).to.include(\"Phone number can only be digits with a length of 11\");\r",
 											"});"
 										],
