@@ -18087,6 +18087,211 @@
 											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"message\": \"<string>\"\n  },\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
 										}
 									]
+								},
+								{
+									"name": "Add Beneficiary - Successful",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "5af92fd5-fc1d-4aa8-89fd-6af6725c1a82",
+												"exec": [
+													"// Verify that the response has a result object\r",
+													"pm.test(\"Response has a 'result' object\", function () {\r",
+													"    const responseBody = pm.response.json();\r",
+													"    pm.expect(responseBody).to.have.property(\"result\");\r",
+													"});\r",
+													"\r",
+													"// Verify that the 'result' object has the expected 'message' property\r",
+													"pm.test(\"Result object has 'message' property with value 'Beneficiary successfully added'\", function () {\r",
+													"    const result = pm.response.json().result;\r",
+													"    pm.expect(result).to.have.property(\"message\", \"Beneficiary successfully added\");\r",
+													"});\r",
+													"\r",
+													"// Verify that the 'resultType' is 1\r",
+													"pm.test(\"Result type is 1 (Expected)\", function () {\r",
+													"    const resultType = pm.response.json().resultType;\r",
+													"    pm.expect(resultType).to.equal(1);\r",
+													"});\r",
+													"\r",
+													"// Verify that the 'message' property is null\r",
+													"pm.test(\"'message' property is null (Expected)\", function () {\r",
+													"    const message = pm.response.json().message;\r",
+													"    pm.expect(message).to.be.null;\r",
+													"});\r",
+													"\r",
+													"// Verify that 'validationMessages' property is null\r",
+													"pm.test(\"'validationMessages' property is null (Expected)\", function () {\r",
+													"    const validationMessages = pm.response.json().validationMessages;\r",
+													"    pm.expect(validationMessages).to.be.null;\r",
+													"});\r",
+													"\r",
+													"// Verify that 'successful' property is true\r",
+													"pm.test(\"'successful' property is true (Expected)\", function () {\r",
+													"    const successful = pm.response.json().successful;\r",
+													"    pm.expect(successful).to.be.true;\r",
+													"});\r",
+													"\r",
+													"// Verify that 'errorCode' property is 0\r",
+													"pm.test(\"'errorCode' property is 0 (Expected)\", function () {\r",
+													"    const errorCode = pm.response.json().errorCode;\r",
+													"    pm.expect(errorCode).to.equal(0);\r",
+													"});\r",
+													"\r",
+													"// Verify that 'responseCode' property is null\r",
+													"pm.test(\"'responseCode' property is null (Expected)\", function () {\r",
+													"    const responseCode = pm.response.json().responseCode;\r",
+													"    pm.expect(responseCode).to.be.null;\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "87f3fe34-4336-44de-953b-a61339a92fe3",
+												"exec": [
+													"// Function to generate a random 10-digit accountNumber\r",
+													"function generateRandomAccountNumber() {\r",
+													"    return Math.floor(Math.random() * 9000000000) + 1000000000;\r",
+													"}\r",
+													"\r",
+													"// Function to generate a random email address\r",
+													"function generateRandomEmail() {\r",
+													"    const emailDomain = \"example.com\"; // You can replace this with your desired domain\r",
+													"    const randomString = Math.random().toString(36).substring(7);\r",
+													"    return `random_${randomString}@${emailDomain}`;\r",
+													"}\r",
+													"\r",
+													"// Function to generate random alphabetic characters\r",
+													"function generateRandomAlphabets(length) {\r",
+													"    const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';\r",
+													"    let result = '';\r",
+													"    for (let i = 0; i < length; i++) {\r",
+													"        const randomIndex = Math.floor(Math.random() * characters.length);\r",
+													"        result += characters.charAt(randomIndex);\r",
+													"    }\r",
+													"    return result;\r",
+													"}\r",
+													"\r",
+													"// Generate random values\r",
+													"// const randomAccountNumber = generateRandomAccountNumber();\r",
+													"// const randomEmail = generateRandomEmail();\r",
+													"// const randomAlphabets = generateRandomAlphabets(10); // Generate 10 random alphabetic characters\r",
+													"\r",
+													"// // Update the requestBody with random values\r",
+													"// const requestBody = {\r",
+													"//     \"beneficiaryName\": randomAlphabets,\r",
+													"//     \"bankName\": \"Providus\",\r",
+													"//     \"accountName\": randomAlphabets,\r",
+													"//     \"accountNumber\": randomAccountNumber.toString(), // Convert to string\r",
+													"//     \"emailAddress\": randomEmail,\r",
+													"//     \"countryCode\": \"+234\",\r",
+													"//     \"address\": \"Lagos\",\r",
+													"//     \"currencyRequirement\": {\r",
+													"//         \"name\": \"NGN\",\r",
+													"//         \"value\": \"100\",\r",
+													"//         \"forms\": [\r",
+													"//             {\r",
+													"//                 \"dataLabel\": \"new beneficiary\",\r",
+													"//                 \"dataValue\": \"Save\"\r",
+													"//             }\r",
+													"//         ]\r",
+													"//     }\r",
+													"// };\r",
+													"\r",
+													"// pm.request.body.raw = JSON.stringify(requestBody);\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "932b420e-8d63-4e72-bda5-d5513beaefba",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{customer_access_token}}"
+											}
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "// \n\n{\n  \"beneficiaryName\": \"Lala Ogee\",\n  \"bankName\": \"Bank78\",\n  \"accountName\": \"Lala Ogee\",\n  \"accountNumber\":\"{{$randomBankAccount}}\",\n  \"emailAddress\": \"lala@mailinator.com\",\n  \"countryCode\": \"+234\",\n  \"address\": \"Lagos\",\n  \"bankRequirementId\": 1,\n  \"CurrencyCode\": \"NGN\",\n  \"BankRequirementValue\": \"110072\",\n  \"nameEnquiryId\": 1680,\n  \"bankId\": 335\n  \n    \n  }",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://transfer-dev.bank78.co/api/v1/transfers/beneficiaries"
+									},
+									"response": [
+										{
+											"id": "359e31f6-e18c-450a-a60a-886e6aaf80ba",
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"accountName\": \" iL \",\n  \"accountNumber\": \"759117742\",\n  \"bankName\": \"Aju 6\\fW \",\n  \"beneficiaryName\": \"VxU\\tP\",\n  \"countryCode\": \"<string>\",\n  \"currencyRequirement\": {\n    \"name\": \"<string>\",\n    \"value\": \"<string>\",\n    \"forms\": [\n      {\n        \"dataLabel\": \"<string>\",\n        \"dataValue\": \"<string>\"\n      },\n      {\n        \"dataLabel\": \"<string>\",\n        \"dataValue\": \"<string>\"\n      }\n    ]\n  },\n  \"emailAddress\": \"<email>\",\n  \"address\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{baseUrl}}/api/v1/transfers/beneficiaries"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"message\": \"<string>\"\n  },\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
+										}
+									]
 								}
 							],
 							"id": "084f8783-a723-46e3-8b2a-eb2899d573f1"
@@ -19203,211 +19408,6 @@
 								}
 							],
 							"id": "3312fec3-dcbc-4309-8ebc-d9d3f957b978"
-						},
-						{
-							"name": "New Beneficiary",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "5af92fd5-fc1d-4aa8-89fd-6af6725c1a82",
-										"exec": [
-											"// Verify that the response has a result object\r",
-											"pm.test(\"Response has a 'result' object\", function () {\r",
-											"    const responseBody = pm.response.json();\r",
-											"    pm.expect(responseBody).to.have.property(\"result\");\r",
-											"});\r",
-											"\r",
-											"// Verify that the 'result' object has the expected 'message' property\r",
-											"pm.test(\"Result object has 'message' property with value 'Beneficiary successfully added'\", function () {\r",
-											"    const result = pm.response.json().result;\r",
-											"    pm.expect(result).to.have.property(\"message\", \"Beneficiary successfully added\");\r",
-											"});\r",
-											"\r",
-											"// Verify that the 'resultType' is 1\r",
-											"pm.test(\"Result type is 1 (Expected)\", function () {\r",
-											"    const resultType = pm.response.json().resultType;\r",
-											"    pm.expect(resultType).to.equal(1);\r",
-											"});\r",
-											"\r",
-											"// Verify that the 'message' property is null\r",
-											"pm.test(\"'message' property is null (Expected)\", function () {\r",
-											"    const message = pm.response.json().message;\r",
-											"    pm.expect(message).to.be.null;\r",
-											"});\r",
-											"\r",
-											"// Verify that 'validationMessages' property is null\r",
-											"pm.test(\"'validationMessages' property is null (Expected)\", function () {\r",
-											"    const validationMessages = pm.response.json().validationMessages;\r",
-											"    pm.expect(validationMessages).to.be.null;\r",
-											"});\r",
-											"\r",
-											"// Verify that 'successful' property is true\r",
-											"pm.test(\"'successful' property is true (Expected)\", function () {\r",
-											"    const successful = pm.response.json().successful;\r",
-											"    pm.expect(successful).to.be.true;\r",
-											"});\r",
-											"\r",
-											"// Verify that 'errorCode' property is 0\r",
-											"pm.test(\"'errorCode' property is 0 (Expected)\", function () {\r",
-											"    const errorCode = pm.response.json().errorCode;\r",
-											"    pm.expect(errorCode).to.equal(0);\r",
-											"});\r",
-											"\r",
-											"// Verify that 'responseCode' property is null\r",
-											"pm.test(\"'responseCode' property is null (Expected)\", function () {\r",
-											"    const responseCode = pm.response.json().responseCode;\r",
-											"    pm.expect(responseCode).to.be.null;\r",
-											"});\r",
-											""
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								},
-								{
-									"listen": "prerequest",
-									"script": {
-										"id": "87f3fe34-4336-44de-953b-a61339a92fe3",
-										"exec": [
-											"// Function to generate a random 10-digit accountNumber\r",
-											"function generateRandomAccountNumber() {\r",
-											"    return Math.floor(Math.random() * 9000000000) + 1000000000;\r",
-											"}\r",
-											"\r",
-											"// Function to generate a random email address\r",
-											"function generateRandomEmail() {\r",
-											"    const emailDomain = \"example.com\"; // You can replace this with your desired domain\r",
-											"    const randomString = Math.random().toString(36).substring(7);\r",
-											"    return `random_${randomString}@${emailDomain}`;\r",
-											"}\r",
-											"\r",
-											"// Function to generate random alphabetic characters\r",
-											"function generateRandomAlphabets(length) {\r",
-											"    const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';\r",
-											"    let result = '';\r",
-											"    for (let i = 0; i < length; i++) {\r",
-											"        const randomIndex = Math.floor(Math.random() * characters.length);\r",
-											"        result += characters.charAt(randomIndex);\r",
-											"    }\r",
-											"    return result;\r",
-											"}\r",
-											"\r",
-											"// Generate random values\r",
-											"// const randomAccountNumber = generateRandomAccountNumber();\r",
-											"// const randomEmail = generateRandomEmail();\r",
-											"// const randomAlphabets = generateRandomAlphabets(10); // Generate 10 random alphabetic characters\r",
-											"\r",
-											"// // Update the requestBody with random values\r",
-											"// const requestBody = {\r",
-											"//     \"beneficiaryName\": randomAlphabets,\r",
-											"//     \"bankName\": \"Providus\",\r",
-											"//     \"accountName\": randomAlphabets,\r",
-											"//     \"accountNumber\": randomAccountNumber.toString(), // Convert to string\r",
-											"//     \"emailAddress\": randomEmail,\r",
-											"//     \"countryCode\": \"+234\",\r",
-											"//     \"address\": \"Lagos\",\r",
-											"//     \"currencyRequirement\": {\r",
-											"//         \"name\": \"NGN\",\r",
-											"//         \"value\": \"100\",\r",
-											"//         \"forms\": [\r",
-											"//             {\r",
-											"//                 \"dataLabel\": \"new beneficiary\",\r",
-											"//                 \"dataValue\": \"Save\"\r",
-											"//             }\r",
-											"//         ]\r",
-											"//     }\r",
-											"// };\r",
-											"\r",
-											"// pm.request.body.raw = JSON.stringify(requestBody);\r",
-											""
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "932b420e-8d63-4e72-bda5-d5513beaefba",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{customer_access_token}}"
-									}
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "text/plain"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "// \n\n{\n  \"beneficiaryName\": \"Lala Ogee\",\n  \"bankName\": \"Bank78\",\n  \"accountName\": \"Lala Ogee\",\n  \"accountNumber\":\"{{$randomBankAccount}}\",\n  \"emailAddress\": \"lala@mailinator.com\",\n  \"countryCode\": \"+234\",\n  \"address\": \"Lagos\",\n  \"bankRequirementId\": 1,\n  \"CurrencyCode\": \"NGN\",\n  \"BankRequirementValue\": \"110072\",\n  \"nameEnquiryId\": 1680,\n  \"bankId\": 335\n  \n    \n  }",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "https://transfer-dev.bank78.co/api/v1/transfers/beneficiaries"
-							},
-							"response": [
-								{
-									"id": "359e31f6-e18c-450a-a60a-886e6aaf80ba",
-									"name": "Success",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											},
-											{
-												"key": "Accept",
-												"value": "text/plain"
-											},
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "Authorization",
-												"value": "<API Key>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"accountName\": \" iL \",\n  \"accountNumber\": \"759117742\",\n  \"bankName\": \"Aju 6\\fW \",\n  \"beneficiaryName\": \"VxU\\tP\",\n  \"countryCode\": \"<string>\",\n  \"currencyRequirement\": {\n    \"name\": \"<string>\",\n    \"value\": \"<string>\",\n    \"forms\": [\n      {\n        \"dataLabel\": \"<string>\",\n        \"dataValue\": \"<string>\"\n      },\n      {\n        \"dataLabel\": \"<string>\",\n        \"dataValue\": \"<string>\"\n      }\n    ]\n  },\n  \"emailAddress\": \"<email>\",\n  \"address\": \"<string>\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": "{{baseUrl}}/api/v1/transfers/beneficiaries"
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"message\": \"<string>\"\n  },\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
-								}
-							]
 						}
 					],
 					"id": "ca232648-36ac-42cf-84f2-96f13a285dbe"
