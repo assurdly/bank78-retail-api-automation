@@ -18888,7 +18888,7 @@
 													"});",
 													"",
 													"pm.test(\"The message about the required Account Name is returned\", function () {",
-													"    pm.expect(jsonData.validationMessages[0]).to.equal(\"Bank Name is required\");",
+													"    pm.expect(jsonData.validationMessages[0]).to.equal(\"Account Name is required\");",
 													"});",
 													""
 												],
@@ -18998,8 +18998,8 @@
 													"    pm.expect(jsonData.successful).to.eql(false);",
 													"});",
 													"",
-													"pm.test(\"The message about the required Beneficiary ID was returned\", function () {",
-													"    pm.expect(jsonData.result.message).to.equal(\"Beneficiary ID is required\");",
+													"pm.test(\"The message about the required Account Number is returned\", function () {",
+													"   pm.expect(jsonData.validationMessages[0]).to.equal(\"Account Number is required\");",
 													"});",
 													""
 												],
@@ -19032,7 +19032,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"beneficiaryName\": \"Golden Boy\",\n  \"bankName\": \"GoMoney\",\n  \"accountName\": \"Gold Launderrrrrrr\",\n  \"accountNumber\": \"9402762900\",\n  \"emailAddress\": \"user22@example.com\",\n  \"countryCode\": \"+234\",\n  \"currencyRequirement\": {\n    \"name\": \"NGN\",\n    \"value\": \"200\",\n    \"forms\": [\n      {\n        \"dataLabel\": \"Save\",\n        \"dataValue\": \"Money\"\n      }\n    ]\n  },\n  \"address\": \"Port Harcourt\"\n}",
+											"raw": "{\n  \"beneficiaryName\": \"Golden Boy\",\n  \"bankName\": \"GoMoney\",\n  \"accountName\": \"Gold Launderrrrrrr\",\n  \"accountNumber\": \"\",\n  \"emailAddress\": \"user22@example.com\",\n  \"countryCode\": \"+234\",\n  \"currencyRequirement\": {\n    \"name\": \"NGN\",\n    \"value\": \"200\",\n    \"forms\": [\n      {\n        \"dataLabel\": \"Save\",\n        \"dataValue\": \"Money\"\n      }\n    ]\n  },\n  \"address\": \"Port Harcourt\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -19109,8 +19109,8 @@
 													"    pm.expect(jsonData.successful).to.eql(false);",
 													"});",
 													"",
-													"pm.test(\"The message about the required Beneficiary ID was returned\", function () {",
-													"    pm.expect(jsonData.result.message).to.equal(\"Beneficiary ID is required\");",
+													"pm.test(\"The message about the required Account Number is returned\", function () {",
+													"   pm.expect(jsonData.validationMessages[0]).to.equal(\"The EmailAddress field is required.\");",
 													"});",
 													""
 												],
@@ -19143,7 +19143,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"beneficiaryName\": \"Golden Boy\",\n  \"bankName\": \"GoMoney\",\n  \"accountName\": \"Gold Launderrrrrrr\",\n  \"accountNumber\": \"9402762900\",\n  \"emailAddress\": \"user22@example.com\",\n  \"countryCode\": \"+234\",\n  \"currencyRequirement\": {\n    \"name\": \"NGN\",\n    \"value\": \"200\",\n    \"forms\": [\n      {\n        \"dataLabel\": \"Save\",\n        \"dataValue\": \"Money\"\n      }\n    ]\n  },\n  \"address\": \"Port Harcourt\"\n}",
+											"raw": "{\n  \"beneficiaryName\": \"Golden Boy\",\n  \"bankName\": \"GoMoney\",\n  \"accountName\": \"Gold Launderrrrrrr\",\n  \"accountNumber\": \"9402762900\",\n  \"emailAddress\": \"\",\n  \"countryCode\": \"+234\",\n  \"currencyRequirement\": {\n    \"name\": \"NGN\",\n    \"value\": \"200\",\n    \"forms\": [\n      {\n        \"dataLabel\": \"Save\",\n        \"dataValue\": \"Money\"\n      }\n    ]\n  },\n  \"address\": \"Port Harcourt\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
