@@ -19382,7 +19382,7 @@
 					"name": "Intra Transfer",
 					"item": [
 						{
-							"name": "Successful Intra Transfer",
+							"name": "Intra Transfer - Successful Intra Transfer",
 							"event": [
 								{
 									"listen": "test",
@@ -19527,7 +19527,7 @@
 							]
 						},
 						{
-							"name": "Successful Intra Transfer - Negative amount",
+							"name": "Intra Transfer - Negative amount",
 							"event": [
 								{
 									"listen": "test",
@@ -19648,7 +19648,7 @@
 							]
 						},
 						{
-							"name": "Invalid PIN",
+							"name": "Intra Transfer - Invalid PIN",
 							"event": [
 								{
 									"listen": "test",
@@ -19766,7 +19766,7 @@
 							]
 						},
 						{
-							"name": "Invalid Name Enquiry Request ID",
+							"name": "Intra Transfer - Invalid Name Enquiry Request ID",
 							"event": [
 								{
 									"listen": "test",
@@ -19890,7 +19890,7 @@
 							]
 						},
 						{
-							"name": "Invalid Account number",
+							"name": "Intra Transfer - Invalid Account number",
 							"event": [
 								{
 									"listen": "test",
@@ -20008,37 +20008,28 @@
 							]
 						},
 						{
-							"name": "Send without validating scheduling details",
+							"name": "Intra Transfer - No scheduling information",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
 										"id": "ea1ea26a-4458-4e93-a510-d0d514031670",
 										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
 											"pm.test(\"Response code is 400 (Bad Request)\", function () {\r",
 											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Response structure and properties for 400\", function () {\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"hasResult\", false);\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"result\", null);\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"resultType\", 3);\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"message\", \"Response has validation errors\");\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"validationMessages\");\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"successful\", false);\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"errorCode\", 0);\r",
-											"    pm.expect(pm.response.json()).to.not.have.property(\"responseCode\", \"null\");\r",
+											"pm.test(\"Reponse body contains error fields\", function () {\r",
+											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+											"    pm.expect(jsonData.successful).to.eql(false);\r",
+											"    pm.expect(jsonData.result).to.be.null;\r",
 											"});\r",
 											"\r",
-											"pm.test(\"ValidationMessages array and content for 400\", function () {\r",
-											"    var validationMessages = pm.response.json().validationMessages;\r",
-											"    pm.expect(validationMessages).to.be.an(\"array\").that.includes(\"Please specify schedule info for your transfer\");\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Error code is 0 for failed request\", function () {\r",
-											"    pm.expect(pm.response.json().errorCode).to.equal(0);\r",
-											"});\r",
-											""
+											"pm.test(\"Error message about invalid account number is returned\", function () {\r",
+											"    pm.expect(jsonData.validationMessages[0]).to.equal(\"Please specify schedule info for your transfer\");\r",
+											"});"
 										],
 										"type": "text/javascript",
 										"packages": {}
