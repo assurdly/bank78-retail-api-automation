@@ -5210,7 +5210,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the invalid PIN length is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.validationMessages[0]).to.include(\"PIN length should not exceed 4 digits\");\r",
 											"});"
 										],
