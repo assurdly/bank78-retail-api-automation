@@ -12864,7 +12864,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the invalid Bill ID is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.message).to.include(\"Invalid Bill ID selected\");\r",
 											"});"
 										],
