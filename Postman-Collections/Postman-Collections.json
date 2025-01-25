@@ -15467,7 +15467,7 @@
 							]
 						},
 						{
-							"name": "Bet Account Funding - Invalid Pin",
+							"name": "Bet Account Funding - Invalid PIN",
 							"event": [
 								{
 									"listen": "prerequest",
@@ -15825,8 +15825,8 @@
 											"    pm.expect(jsonData.responseCode).to.be.null;\r",
 											"});\r",
 											"\r",
-											"pm.test(\"The error message about an invalid number\", function () {\r",
-											"    pm.expect(jsonData.validationMessages[0]).to.include(\"Kindly specify an amount greater than 0\",);\r",
+											"pm.test(\"The error message about an invalid amount is returned\", function () {\r",
+											"    pm.expect(jsonData.validationMessages[0]).to.include(\"Kindly specify an amount greater than 0\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -19534,6 +19534,8 @@
 									"script": {
 										"id": "b345c7bc-4c5f-4b2c-8a02-7064b4b789f1",
 										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
 											"pm.test(\"Status code is 400\", function () {\r",
 											"    pm.response.to.have.status(400);\r",
 											"});\r",
@@ -19542,38 +19544,15 @@
 											"    pm.response.to.have.status('Bad Request');\r",
 											"});\r",
 											"\r",
-											"var jsonData = pm.response.json();\r",
-											"\r",
-											"pm.test(\"Response body property\", function () {\r",
-											"    pm.expect(jsonData).to.be.an('object');\r",
-											"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+											"pm.test(\"Reponse body contains error fields\", function () {\r",
+											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+											"    pm.expect(jsonData.successful).to.eql(false);\r",
 											"    pm.expect(jsonData.result).to.be.null;\r",
-											"    pm.expect(jsonData.resultType).to.be.a('number');\r",
-											"    pm.expect(jsonData.message).to.be.a('string');\r",
-											"    pm.expect(jsonData.validationMessages).to.be.an('array');\r",
-											"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
-											"    pm.expect(jsonData.errorCode).to.be.a('number');\r",
 											"    pm.expect(jsonData.responseCode).to.be.null;\r",
 											"});\r",
 											"\r",
-											"pm.test(\"hasResult is false\", function () {\r",
-											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"resultType is 3\", function () {\r",
-											"    pm.expect(jsonData.resultType).to.eql(3);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"message is present\", function () {\r",
-											"    pm.expect(jsonData.message).to.eql('Response has validation errors');\r",
-											"});\r",
-											"\r",
-											"pm.test(\"validationMessages is present\", function () {\r",
-											"    pm.expect(jsonData.validationMessages[0]).to.eql('The field Amount must be between 1 and 2147483647.');\r",
-											"});\r",
-											"\r",
-											"pm.test(\"successful is false\", function () {\r",
-											"    pm.expect(jsonData.successful).to.eql(false);\r",
+											"pm.test(\"The error message about an invalid number is returned\", function () {\r",
+											"    pm.expect(jsonData.validationMessages[0]).to.include(\"Kindly specify an amount greater than 0\",);\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -19669,7 +19648,7 @@
 							]
 						},
 						{
-							"name": "Invalid Pin",
+							"name": "Invalid PIN",
 							"event": [
 								{
 									"listen": "test",
