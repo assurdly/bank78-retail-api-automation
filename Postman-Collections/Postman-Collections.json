@@ -10022,7 +10022,7 @@
 							]
 						},
 						{
-							"name": "Change Password - password rules not met",
+							"name": "Change Password - Password rules not met",
 							"event": [
 								{
 									"listen": "test",
@@ -10516,7 +10516,7 @@
 											"    pm.expect(responseData.message).to.eql('Success');\r",
 											"});\r",
 											"\r",
-											"pm.test(\"OTP message is displayed\", function () {\r",
+											"pm.test(\"A message about an OTP being sent is displayed\", function () {\r",
 											"     pm.expect(responseData.message).to.equal('Passcode Reset OTP sent');\r",
 											"});"
 										],
