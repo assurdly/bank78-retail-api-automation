@@ -8268,7 +8268,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Error message about the missing ResetTokenId is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.validationMessages[0]).to.include(\"The ResetTokenId field is required\");\r",
 											"});"
 										],
@@ -8439,7 +8438,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the required OTP field is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.validationMessages[0]).to.include(\"The OTP field is required.\");\r",
 											"});"
 										],
@@ -8557,7 +8555,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the required Password field is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.validationMessages[0]).to.include(\"The Password field is required.\");\r",
 											"});"
 										],
@@ -9026,7 +9023,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the password mismatch is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.message).to.include(\"Password and confirm password do not match\");\r",
 											"});"
 										],
@@ -9150,7 +9146,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Error message about invalid username is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.message).to.include(\"Provided Password is invalid\");\r",
 											"});"
 										],
@@ -9502,7 +9497,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Error message about the incorrect password is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.message).to.include(\"Incorrect password.\");\r",
 											"});"
 										],
@@ -9620,7 +9614,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Error message about the mismatched passwords are returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.message).to.include(\"Password and confirm password do not match\");\r",
 											"});"
 										],
