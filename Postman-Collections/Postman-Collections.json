@@ -5473,7 +5473,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the same PIN used is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.message).to.include(\"You can't use your previous PIN. Please use a different PIN\");\r",
 											"});"
 										],
@@ -5602,7 +5601,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the unmet PIN condition is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.message).to.include(\"PIN condition not met\");\r",
 											"});"
 										],
@@ -5720,7 +5718,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the unmet PIN condition is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.message).to.include(\"Incorrect PIN\");\r",
 											"});"
 										],
