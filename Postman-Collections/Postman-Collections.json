@@ -7651,7 +7651,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Error messages about the invalid email format is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.message).to.include(\"Invalid email format\");\r",
 											"});"
 										],
@@ -7769,7 +7768,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Error message about the missing email is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.validationMessages[0]).to.include(\"The Username field is required.\");\r",
 											"});"
 										],
@@ -8024,7 +8022,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Error message about an invalid OTP is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.message).to.include(\"Invalid OTP\");\r",
 											"});"
 										],
@@ -8107,7 +8104,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Error message about an incorrect OTP is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.message).to.include(\"Invalid OTP\");\r",
 											"});"
 										],
@@ -8190,7 +8186,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Error message about the missing OTP is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.validationMessages[0]).to.include(\"The OTP field is required\");\r",
 											"});"
 										],
