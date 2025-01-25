@@ -1823,7 +1823,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Error messages about existing username is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.message).to.include(\"This email is already registered.\");\r",
 											"});"
 										],
@@ -1978,14 +1977,19 @@
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Response has required successful fields\", function () {\r",
-											"    pm.expect(responseData.result).to.be.an('object');\r",
+											"pm.test(\"Response has required fields\", function () {\r",
 											"    pm.expect(responseData.message).to.equal('Success');\r",
-											"    pm.expect(responseData.result.firstName).is.not.empty;\r",
-											"    pm.expect(responseData.result.lastName).is.not.empty;\r",
-											"    pm.expect(responseData.result.userName).is.not.empty;\r",
-											"    pm.expect(responseData.result.email).is.not.empty;\r",
-											"    pm.environment.set(\"latest_cust_email\", responseData.result.email);\r",
+											"    pm.expect(responseData.hasResult).to.be.a('boolean');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Successful Sign up information is returned\", function () {\r",
+											"    pm.expect(responseData.result.firstName).to.equal(pm.environment.get('firstname'));\r",
+											"    pm.expect(responseData.result.lastName).to.equal(pm.environment.get('lastname'));\r",
+											"    pm.expect(responseData.result.userName).to.equal(pm.environment.get('cust_email'));\r",
+											"    pm.expect(responseData.result.email).to.equal(pm.environment.get('cust_email'));\r",
+											"    pm.expect(responseData.result.phoneNumber).to.equal(pm.environment.get('number'));\r",
+											"    pm.expect(responseData.result.phoneNumberCountryCode).to.be.a('string');\r",
+											"    pm.expect(responseData.result.phoneNumber).to.have.lengthOf(10);\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -2126,7 +2130,7 @@
 							]
 						},
 						{
-							"name": "Signup - Blank username",
+							"name": "Signup - Empty username",
 							"event": [
 								{
 									"listen": "test",
@@ -2312,7 +2316,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"All error messages about the password fields are returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.validationMessages[0]).to.include(\"Password must contain a number\");\r",
 											"    pm.expect(jsonData.validationMessages[1]).to.include(\"Password must include Upper Case Character\");\r",
 											"    pm.expect(jsonData.validationMessages[2]).to.include(\"Password must contain Special Characters\");\r",
@@ -2477,7 +2480,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Phone number country code validation error is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.message).to.include(\"Invalid phone number country code\");\r",
 											"});"
 										],
@@ -2619,7 +2621,7 @@
 							]
 						},
 						{
-							"name": "Signup - All blank fields",
+							"name": "Signup - All empty fields",
 							"event": [
 								{
 									"listen": "test",
@@ -2641,7 +2643,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"All error messages about required fields are returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.validationMessages[0]).to.include(\"'First Name' must not be empty.\");\r",
 											"    pm.expect(jsonData.validationMessages[1]).to.include(\"'Last Name' must not be empty.\");\r",
 											"    pm.expect(jsonData.validationMessages[2]).to.include(\"'Password' must not be empty.\");\r",
@@ -2972,7 +2973,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"All error messages about the password fields are returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.validationMessages[0]).to.include(\"Password must not be empty\");\r",
 											"    pm.expect(jsonData.validationMessages[1]).to.include(\"Password must contain a number\");\r",
 											"    pm.expect(jsonData.validationMessages[2]).to.include(\"Password must include an Upper Case Character\");\r",
@@ -3651,15 +3651,6 @@
 									"script": {
 										"id": "5cbbe3ec-ec6a-449c-b893-0f648dd308b6",
 										"exec": [
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Access token is a non-empty string\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
-											"    pm.expect(jsonData.access_token).to.be.a('string').and.to.not.be.empty;\r",
-											"});\r",
-											"\r",
 											"pm.test(\"Set access token as an environmental variable\", function () {\r",
 											"    var jsonData = pm.response.json();\r",
 											"    pm.environment.set(\"customer_access_token\", jsonData.access_token);\r",
