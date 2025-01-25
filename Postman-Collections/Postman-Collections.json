@@ -21369,29 +21369,26 @@
 									"script": {
 										"id": "2148fc59-6bdd-48c8-b7d8-b7b11983c31f",
 										"exec": [
-											"pm.test(\"Response code is 400 (Bad Request)\", function () {",
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
 											"    pm.response.to.have.status(400);",
 											"});",
 											"",
-											"pm.test(\"Response structure and properties for 400\", function () {",
-											"    pm.expect(pm.response.json()).to.have.property(\"hasResult\", false);",
-											"    pm.expect(pm.response.json()).to.have.property(\"result\", null);",
-											"    pm.expect(pm.response.json()).to.have.property(\"resultType\", 3);",
-											"    pm.expect(pm.response.json()).to.have.property(\"message\", \"Response has validation errors\");",
-											"    pm.expect(pm.response.json()).to.have.property(\"validationMessages\");",
-											"    pm.expect(pm.response.json()).to.have.property(\"successful\", false);",
-											"    pm.expect(pm.response.json()).to.have.property(\"errorCode\", 0);",
-											"    pm.expect(pm.response.json()).to.not.have.property(\"responseCode\", \"null\");",
+											"pm.test(\"Status code response is Bad Request\", function () {",
+											"    pm.response.to.have.status('Bad Request');",
 											"});",
 											"",
-											"pm.test(\"Error message matches the expected value for 400\", function () {",
-											"    pm.expect(pm.response.json().message).to.equal(\"Response has validation errors\");",
+											"pm.test(\"Reponse body contains error fields\", function () {",
+											"    pm.expect(jsonData.hasResult).to.eql(false);",
+											"    pm.expect(jsonData.successful).to.eql(false);",
+											"    pm.expect(jsonData.result).to.be.null;",
+											"    pm.expect(jsonData.responseCode).to.be.null;",
 											"});",
 											"",
-											"pm.test(\"Error code is 0 for failed request\", function () {",
-											"    pm.expect(pm.response.json().errorCode).to.equal(0);",
-											"});",
-											""
+											"pm.test(\"The error message about an invalid number is returned\", function () {",
+											"    pm.expect(jsonData.message).to.include(\"Schedule date cannot be in the past\");",
+											"});"
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -21401,8 +21398,11 @@
 									"listen": "prerequest",
 									"script": {
 										"id": "26e74852-d3c8-4473-b334-b39f8c76aec4",
-										"exec": [],
-										"type": "text/javascript"
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
 									}
 								}
 							],
@@ -21435,7 +21435,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"accountNumber\": \"1780004070\",\n  \"amount\": \"700\",\n  \"channel\": \"1\",\n  \"nameEnquiryRequestId\": \"10\",\n  \"narration\": \"New Schedule\",\n  \"repeatFrequency\": \"1\",\n  \"scheduledStartDate\": \"2022-09-01T09:00:00.942Z\",\n  \"sourceAccountNo\": \"{{sourceAccount}}\",\n  \"transactionPin\": \"6543\",\n  \"scheduledEndDate\": \"2023-09-02T09:00:00.942Z\",\n  \"repeatWeekDay\": \"1\",\n  \"repeatCount\": \"1\",\n  \"saveBeneficiary\": \"false\",\n  \"deviceId\": \"iphone\",\n  \"repeatMonthDay\": \"0\"\n}",
+									"raw": "\n{\n  \"amount\": \"100\",\n  \"transactionPin\": \"6543\",\n  \"narration\": \"Transfer this particualar amount\",\n  \"channel\": \"1\",\n  \"sourceAccountNo\": 8135575834,\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"phoneX\",\n  \"canSchedule\": \"true\",\n  \"scheduleInfo\": {\n    \"scheduledStartDate\": \"2023-09-05T14:50:46.856Z\",\n    \"scheduledEndDate\": \"2023-01-30T16:10:46.856Z\",\n    \"repeatFrequency\": \"5\",\n    \"repeatWeekDay\": \"1\",\n    \"repeatMonthDay\": \"10\",\n    \"repeatCount\": \"5\"\n  },\n  \"accountNumber\": \"1010001367\",\n  \"nameEnquiryRequestId\": \"15\",\n  \"currency\": \"NGN\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
