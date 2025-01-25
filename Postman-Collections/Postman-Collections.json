@@ -23,12 +23,9 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Access token is present in the response\", function () {\r",
-									"   \r",
 									"    pm.expect(jsonData.access_token).to.be.a('string').and.to.not.be.empty;\r",
-									"});\r",
-									"\r",
-									"pm.environment.set(\"customer_access_token\", jsonData.access_token);\r",
-									""
+									"    pm.environment.set(\"customer_access_token\", jsonData.access_token);\r",
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -326,12 +323,13 @@
 							"script": {
 								"id": "5cbbe3ec-ec6a-449c-b893-0f648dd308b6",
 								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
 									"pm.test(\"Status code is 400\", function () {\r",
 									"    pm.response.to.have.status(400, \"Bad Request\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"error message is 'invalid_grant'\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData.error_description).to.eql(\"Your account is inactive. Contact the system administrator\");\r",
 									"});\r",
 									"\r",
@@ -488,7 +486,6 @@
 									"});\r",
 									"\r",
 									"pm.test(\"error message is 'invalid_grant'\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData.error_description).to.eql(\"Invalid Username or password\");\r",
 									"});\r",
 									"\r",
@@ -1146,10 +1143,6 @@
 											"    pm.expect(responseData.result.phoneNumberCountryCode).to.be.a('string');\r",
 											"    pm.expect(responseData.hasResult).to.be.a('boolean');\r",
 											"});\r",
-											"\r",
-											"//pm.test(\"Email is in a valid format\", function () {\r",
-											"//    pm.expect(responseData.result.email).to.match(/^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$/);\r",
-											"//});\r",
 											"\r",
 											"pm.test(\"Phone number has a valid length\", function () {\r",
 											"    pm.expect(responseData.result.phoneNumber).to.have.lengthOf(10);\r",
@@ -12704,7 +12697,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the Beneficiary phone number is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.validationMessages[0]).to.include(\"Phone number can only be digits with a length of 11\");\r",
 											"});"
 										],
