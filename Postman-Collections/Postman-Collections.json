@@ -18095,28 +18095,27 @@
 							"name": "Single Beneficiary",
 							"item": [
 								{
-									"name": "Get Single beneficiary details",
+									"name": "Get Single beneficiary details - ID does not exist",
 									"event": [
 										{
 											"listen": "test",
 											"script": {
 												"id": "51a11f28-78f0-4573-8e52-5a43ac895905",
 												"exec": [
-													"var responseData = pm.response.json();",
+													"var jsonData = pm.response.json();",
 													"",
-													"pm.test(\"Status code is 200\", function () {",
-													"    pm.response.to.have.status(200);",
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
 													"});",
 													"",
-													"pm.test(\"Response has standard success fields\", function () {",
-													"    pm.expect(responseData.successful).to.eql(true);",
-													"    pm.expect(responseData.hasResult).to.eql(true);",
-													"    pm.expect(responseData.message).to.eql('Success');",
+													"pm.test(\"Reponse body contains standard error fields\", function () {",
+													"    pm.expect(jsonData.hasResult).to.eql(false);",
+													"    pm.expect(jsonData.successful).to.eql(false);",
+													"    pm.expect(jsonData.result).to.be.null;",
 													"});",
 													"",
-													"pm.test(\"Security questions are returned\", function () {",
-													"    pm.expect(responseData.result[0].name).is.not.empty;",
-													"    pm.expect(responseData.result[0].id).is.not.empty;",
+													"pm.test(\"The error message about no Beneficiary record found is returned\", function () {",
+													"    pm.expect(pm.response.json().message).to.equal(\"Beneficiary record not found\");",
 													"});"
 												],
 												"type": "text/javascript",
@@ -18152,6 +18151,112 @@
 									"response": [
 										{
 											"id": "0fce9a1b-c401-4bb2-a0b6-6454348ce57a",
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/transfers/beneficiaries/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"transfers",
+														"beneficiaries",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"accountName\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"bankName\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"emailAddress\": \"<string>\",\n    \"nameEnquiryId\": \"<integer>\",\n    \"accountId\": \"<long>\",\n    \"bankId\": \"<integer>\",\n    \"transferType\": \"<string>\"\n  },\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Get Single beneficiary details - valid",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "51a11f28-78f0-4573-8e52-5a43ac895905",
+												"exec": [
+													"var responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"pm.test(\"Response has standard success fields\", function () {",
+													"    pm.expect(responseData.successful).to.eql(true);",
+													"    pm.expect(responseData.hasResult).to.eql(true);",
+													"    pm.expect(responseData.message).to.eql('Success');",
+													"});",
+													"",
+													"pm.test(\"Security questions are returned\", function () {",
+													"    pm.expect(responseData.result[0].name).is.not.empty;",
+													"    pm.expect(responseData.result[0].id).is.not.empty;",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "0650f6c5-0baa-4743-8c6c-2385d1906cd1",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{customer_access_token}}"
+											}
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											},
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
+											}
+										],
+										"url": "https://transfer-dev.bank78.co/api/v1/transfers/beneficiaries/1"
+									},
+									"response": [
+										{
+											"id": "2e74150e-d05c-44d7-87c7-8f20853493d1",
 											"name": "Success",
 											"originalRequest": {
 												"method": "GET",
