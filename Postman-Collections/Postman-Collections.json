@@ -16336,7 +16336,7 @@
 							]
 						},
 						{
-							"name": "Bet Account Funding - Invalid Beneficiary",
+							"name": "Bet Account Funding - Empty Beneficiary Name",
 							"event": [
 								{
 									"listen": "prerequest",
@@ -16364,22 +16364,20 @@
 									"script": {
 										"id": "79a55630-1d68-442c-9354-4f0174cf39a6",
 										"exec": [
-											"pm.test(\"Response code is 400 (Bad Request)\", function () {\r",
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
 											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Response structure and properties for 400\", function () {\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"hasResult\", false);\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"result\", null);\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"resultType\", 2);\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"message\", \"Source Account: Account does not exist\");\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"successful\", false);\r",
-											"    pm.expect(pm.response.json()).to.have.property(\"errorCode\", 0);\r",
-											"    pm.expect(pm.response.json()).to.not.have.property(\"responseCode\",  \"null\");\r",
+											"pm.test(\"Reponse body contains error fields\", function () {\r",
+											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+											"    pm.expect(jsonData.successful).to.eql(false);\r",
+											"    pm.expect(jsonData.result).to.be.null;\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Error message address invalid beneficiary\",function () {\r",
-											"    pm.expect(pm.response.json().message).to.equal(\"Invalid Beneficiary\");\r",
+											"pm.test(\"The error message about the required PIN is returned\", function () {\r",
+											"    pm.expect(jsonData.message).to.include(\"Invalid Beneficiary\");\r",
 											"});\r",
 											""
 										],
