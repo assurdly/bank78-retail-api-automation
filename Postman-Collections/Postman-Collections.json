@@ -18096,6 +18096,34 @@
 							"item": [
 								{
 									"name": "Get Single beneficiary details",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "51a11f28-78f0-4573-8e52-5a43ac895905",
+												"exec": [
+													"var responseData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"pm.test(\"Response has standard success fields\", function () {",
+													"    pm.expect(responseData.successful).to.eql(true);",
+													"    pm.expect(responseData.hasResult).to.eql(true);",
+													"    pm.expect(responseData.message).to.eql('Success');",
+													"});",
+													"",
+													"pm.test(\"Security questions are returned\", function () {",
+													"    pm.expect(responseData.result[0].name).is.not.empty;",
+													"    pm.expect(responseData.result[0].id).is.not.empty;",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
 									"id": "f6fb6fd5-9418-4814-a20a-8d7e4098a25b",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
