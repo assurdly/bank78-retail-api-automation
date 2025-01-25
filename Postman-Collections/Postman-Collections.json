@@ -18216,12 +18216,15 @@
 													"pm.test(\"Response has standard success fields\", function () {",
 													"    pm.expect(responseData.successful).to.eql(true);",
 													"    pm.expect(responseData.hasResult).to.eql(true);",
-													"    pm.expect(responseData.message).to.eql('Success');",
 													"});",
 													"",
-													"pm.test(\"Security questions are returned\", function () {",
-													"    pm.expect(responseData.result[0].name).is.not.empty;",
-													"    pm.expect(responseData.result[0].id).is.not.empty;",
+													"pm.test(\"Beneficiary details are returned\", function () {",
+													"    pm.expect(responseData.result.id).is.not.null;",
+													"    pm.expect(responseData.result.bankCode).is.not.empty;",
+													"    pm.expect(responseData.result.accountName).is.not.empty;",
+													"    pm.expect(responseData.result.accountNumber).is.not.empty;",
+													"    pm.expect(responseData.result.userId).is.not.empty;",
+													"    pm.expect(responseData.result.emailAddress).is.not.empty;",
 													"});"
 												],
 												"type": "text/javascript",
@@ -18252,7 +18255,7 @@
 												"type": "text"
 											}
 										],
-										"url": "https://transfer-dev.bank78.co/api/v1/transfers/beneficiaries/1"
+										"url": "https://transfer-dev.bank78.co/api/v1/transfers/beneficiaries/952"
 									},
 									"response": [
 										{
