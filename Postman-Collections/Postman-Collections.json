@@ -8035,16 +8035,18 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Response has standard success fields\", function () {\r",
-											"     pm.expect(responseData.message).to.equal('Success');\r",
-											"    pm.expect(responseData.result.message).to.equal(\"Passcode Reset OTP sent\");\r",
-											"    pm.expect(responseData.result.resetTokenId).is.not.empty;\r",
+											"    pm.expect(responseData.message).to.equal('Success');\r",
 											"    pm.expect(responseData.result.requireMfaSms).to.be.a('boolean');\r",
 											"    pm.expect(responseData.result.requiresBvnDobCheck).to.be.a('boolean');\r",
 											"    pm.expect(responseData.message).to.equal(\"Success\");\r",
 											"    pm.expect(responseData.successful).to.be.a('boolean');\r",
 											"});\r",
 											"\r",
-											"pm.environment.set(\"resetTokenId\", responseData.result.resetTokenId)"
+											"pm.test(\"The reset OTP is sent and the reset token ID is returned\", function () {\r",
+											"    pm.expect(responseData.result.message).to.equal(\"Passcode Reset OTP sent\");\r",
+											"    pm.expect(responseData.result.resetTokenId).is.not.empty;\r",
+											"    pm.environment.set(\"resetTokenId\", responseData.result.resetTokenId)\r",
+											"});"
 										],
 										"type": "text/javascript",
 										"packages": {}
