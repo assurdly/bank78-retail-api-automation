@@ -11547,7 +11547,7 @@
 									"script": {
 										"id": "0688d75f-2490-401c-87b9-734d79858238",
 										"exec": [
-											"var jsonData = pm.response.json().result;\r",
+											"var jsonData = pm.response.json();\r",
 											"\r",
 											"pm.test(\"Response status code is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
@@ -11560,7 +11560,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Successful transaction details are returned\", function () {\r",
-											"    pm.expect(jsonData.result.amount).to.eql(\"2500\");\r",
+											"    pm.expect(jsonData.result.amount).to.eql(2500);\r",
 											"    pm.expect(jsonData.result.reference).is.not.null;\r",
 											"    pm.expect(jsonData.result.vendor).is.not.null;\r",
 											"    pm.expect(jsonData.result.currencySymbol).is.not.null;\r",
