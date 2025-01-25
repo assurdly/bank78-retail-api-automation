@@ -14908,8 +14908,7 @@
 											"    pm.expect(jsonData.result).to.be.null;\r",
 											"});\r",
 											"\r",
-											"pm.test(\"The error message about Number of pins is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
+											"pm.test(\"The error message about the required number of pins is returned\", function () {\r",
 											"    pm.expect(jsonData.validationMessages[0]).to.include(\"Number of pins cannot be empty\");\r",
 											"});"
 										],
