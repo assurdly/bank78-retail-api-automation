@@ -13563,7 +13563,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the invalid Meter number is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.validationMessages[0]).to.include(\"The MeterNumber is invalid.\");\r",
 											"});"
 										],
