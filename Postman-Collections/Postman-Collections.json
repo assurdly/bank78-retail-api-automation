@@ -18758,7 +18758,7 @@
 									]
 								},
 								{
-									"name": "Edit Beneficiary Details - No beneficiary ID Copy",
+									"name": "Edit Beneficiary Details - Empty blank name",
 									"event": [
 										{
 											"listen": "test",
@@ -18823,6 +18823,339 @@
 									"response": [
 										{
 											"id": "2909666d-7278-4c5d-81db-f54c9206d24b",
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"accountName\": \" iL \",\n  \"accountNumber\": \"759117742\",\n  \"bankName\": \"Aju 6\\fW \",\n  \"beneficiaryName\": \"VxU\\tP\",\n  \"countryCode\": \"<string>\",\n  \"currencyRequirement\": {\n    \"name\": \"<string>\",\n    \"value\": \"<string>\",\n    \"forms\": [\n      {\n        \"dataLabel\": \"<string>\",\n        \"dataValue\": \"<string>\"\n      },\n      {\n        \"dataLabel\": \"<string>\",\n        \"dataValue\": \"<string>\"\n      }\n    ]\n  },\n  \"emailAddress\": \"<email>\",\n  \"address\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{baseUrl}}/api/v1/transfers/beneficiaries"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"message\": \"<string>\"\n  },\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Edit Beneficiary Details - Empty Account Name",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "7c92751e-1457-466a-bc8d-71fe174b1482",
+												"exec": [
+													"var jsonData = pm.response.json();",
+													"",
+													"pm.test(\"Response status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"",
+													"pm.test(\"Response body contains the standard failure response\", function () {",
+													"   pm.expect(jsonData.hasResult).to.eql(false);",
+													"    pm.expect(jsonData.successful).to.eql(false);",
+													"});",
+													"",
+													"pm.test(\"The message about the required Beneficiary ID was returned\", function () {",
+													"    pm.expect(jsonData.result.message).to.equal(\"Beneficiary ID is required\");",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "074422b1-1515-445a-ab82-8be0ee67b8e2",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{customer_access_token}}"
+											}
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"beneficiaryName\": \"Golden Boy\",\n  \"bankName\": \"GoMoney\",\n  \"accountName\": \"Gold Launderrrrrrr\",\n  \"accountNumber\": \"9402762900\",\n  \"emailAddress\": \"user22@example.com\",\n  \"countryCode\": \"+234\",\n  \"currencyRequirement\": {\n    \"name\": \"NGN\",\n    \"value\": \"200\",\n    \"forms\": [\n      {\n        \"dataLabel\": \"Save\",\n        \"dataValue\": \"Money\"\n      }\n    ]\n  },\n  \"address\": \"Port Harcourt\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://transfer-dev.bank78.co/api/v1/transfers/beneficiaries"
+									},
+									"response": [
+										{
+											"id": "34e96c51-435d-4ee2-91e9-6c6320d1d481",
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"accountName\": \" iL \",\n  \"accountNumber\": \"759117742\",\n  \"bankName\": \"Aju 6\\fW \",\n  \"beneficiaryName\": \"VxU\\tP\",\n  \"countryCode\": \"<string>\",\n  \"currencyRequirement\": {\n    \"name\": \"<string>\",\n    \"value\": \"<string>\",\n    \"forms\": [\n      {\n        \"dataLabel\": \"<string>\",\n        \"dataValue\": \"<string>\"\n      },\n      {\n        \"dataLabel\": \"<string>\",\n        \"dataValue\": \"<string>\"\n      }\n    ]\n  },\n  \"emailAddress\": \"<email>\",\n  \"address\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{baseUrl}}/api/v1/transfers/beneficiaries"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"message\": \"<string>\"\n  },\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Edit Beneficiary Details - Empty Account Number",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "7c92751e-1457-466a-bc8d-71fe174b1482",
+												"exec": [
+													"var jsonData = pm.response.json();",
+													"",
+													"pm.test(\"Response status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"",
+													"pm.test(\"Response body contains the standard failure response\", function () {",
+													"   pm.expect(jsonData.hasResult).to.eql(false);",
+													"    pm.expect(jsonData.successful).to.eql(false);",
+													"});",
+													"",
+													"pm.test(\"The message about the required Beneficiary ID was returned\", function () {",
+													"    pm.expect(jsonData.result.message).to.equal(\"Beneficiary ID is required\");",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "3a57e0fb-621b-4e0b-9bce-a502972eeb91",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{customer_access_token}}"
+											}
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"beneficiaryName\": \"Golden Boy\",\n  \"bankName\": \"GoMoney\",\n  \"accountName\": \"Gold Launderrrrrrr\",\n  \"accountNumber\": \"9402762900\",\n  \"emailAddress\": \"user22@example.com\",\n  \"countryCode\": \"+234\",\n  \"currencyRequirement\": {\n    \"name\": \"NGN\",\n    \"value\": \"200\",\n    \"forms\": [\n      {\n        \"dataLabel\": \"Save\",\n        \"dataValue\": \"Money\"\n      }\n    ]\n  },\n  \"address\": \"Port Harcourt\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://transfer-dev.bank78.co/api/v1/transfers/beneficiaries"
+									},
+									"response": [
+										{
+											"id": "b4217e54-7cbb-4255-95eb-a743915da8b9",
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"accountName\": \" iL \",\n  \"accountNumber\": \"759117742\",\n  \"bankName\": \"Aju 6\\fW \",\n  \"beneficiaryName\": \"VxU\\tP\",\n  \"countryCode\": \"<string>\",\n  \"currencyRequirement\": {\n    \"name\": \"<string>\",\n    \"value\": \"<string>\",\n    \"forms\": [\n      {\n        \"dataLabel\": \"<string>\",\n        \"dataValue\": \"<string>\"\n      },\n      {\n        \"dataLabel\": \"<string>\",\n        \"dataValue\": \"<string>\"\n      }\n    ]\n  },\n  \"emailAddress\": \"<email>\",\n  \"address\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{baseUrl}}/api/v1/transfers/beneficiaries"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"message\": \"<string>\"\n  },\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Edit Beneficiary Details - No beneficiary ID Copy 4",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "7c92751e-1457-466a-bc8d-71fe174b1482",
+												"exec": [
+													"var jsonData = pm.response.json();",
+													"",
+													"pm.test(\"Response status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"",
+													"pm.test(\"Response body contains the standard failure response\", function () {",
+													"   pm.expect(jsonData.hasResult).to.eql(false);",
+													"    pm.expect(jsonData.successful).to.eql(false);",
+													"});",
+													"",
+													"pm.test(\"The message about the required Beneficiary ID was returned\", function () {",
+													"    pm.expect(jsonData.result.message).to.equal(\"Beneficiary ID is required\");",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "ed0b9658-7e51-4efa-9ba2-cb7d78e45fa3",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{customer_access_token}}"
+											}
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"beneficiaryName\": \"Golden Boy\",\n  \"bankName\": \"GoMoney\",\n  \"accountName\": \"Gold Launderrrrrrr\",\n  \"accountNumber\": \"9402762900\",\n  \"emailAddress\": \"user22@example.com\",\n  \"countryCode\": \"+234\",\n  \"currencyRequirement\": {\n    \"name\": \"NGN\",\n    \"value\": \"200\",\n    \"forms\": [\n      {\n        \"dataLabel\": \"Save\",\n        \"dataValue\": \"Money\"\n      }\n    ]\n  },\n  \"address\": \"Port Harcourt\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://transfer-dev.bank78.co/api/v1/transfers/beneficiaries"
+									},
+									"response": [
+										{
+											"id": "c58dc43a-5aef-4002-b4ad-eee93afe9d26",
 											"name": "Success",
 											"originalRequest": {
 												"method": "POST",
