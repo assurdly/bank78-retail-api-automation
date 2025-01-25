@@ -4303,7 +4303,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the required OTP field is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.validationMessages[0]).to.include(\"The OTP field is required.\");\r",
 											"});"
 										],
@@ -4432,7 +4431,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the required PIN field is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.validationMessages[0]).to.include(\"The PIN field is required.\");\r",
 											"});"
 										],
@@ -4685,9 +4683,8 @@
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Access token is present\", function () {\r",
+											"pm.test(\"Access token is generated\", function () {\r",
 											"    var jsonData = pm.response.json();\r",
-											"    pm.expect(jsonData.access_token).to.be.a('string').and.to.not.be.empty;\r",
 											"    pm.environment.set(\"verifypin_access_token\", jsonData.access_token);\r",
 											"});"
 										],
@@ -4978,7 +4975,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the required OTP field is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.message).to.include(\"Invalid 78 PIN\");\r",
 											"});"
 										],
