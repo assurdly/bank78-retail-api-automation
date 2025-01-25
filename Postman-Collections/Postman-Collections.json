@@ -5338,7 +5338,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the invalid PIN is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.message).to.include(\"Transaction PIN can only be digits with a length of 4\");\r",
 											"});"
 										],
@@ -6076,7 +6075,7 @@
 											"    pm.expect(responseData.hasResult).to.eql(true);\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Successful PIN verification message is displayed\", function () {\r",
+											"pm.test(\"A message about the OTP being sent is displayed\", function () {\r",
 											"    pm.expect(responseData.result.message).to.eql('PIN OTP Sent successfully');\r",
 											"});"
 										],
@@ -6175,7 +6174,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the required username is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.validationMessages[0]).to.include(\"Email is required.\");\r",
 											"});"
 										],
@@ -6275,7 +6273,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Error messages about the invalid email format is returned\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.message).to.include(\"Invalid email format\");\r",
 											"});"
 										],
@@ -6364,11 +6361,12 @@
 											"    pm.response.to.have.status(401);\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Status code response is Unauthorized\", function () {\r",
+											"pm.test(\"Error message about the user being unauthorized is displayed\", function () {\r",
 											"    pm.response.to.have.status(\"Unauthorized\");\r",
 											"});"
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {}
 									}
 								}
 							],
@@ -7024,130 +7022,6 @@
 						}
 					],
 					"id": "f8a22507-c869-4f5e-8d74-9ec3c3760e90"
-				},
-				{
-					"name": "Request PIN OTP_is this needed?",
-					"item": [
-						{
-							"name": "Request PIN OTP_what is this used for?",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "915bbb31-2106-4e57-977d-0867b1ee3436",
-										"exec": [
-											"\r",
-											"pm.test(\"Response status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											""
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								},
-								{
-									"listen": "prerequest",
-									"script": {
-										"id": "46338115-e626-42be-bc5e-fa595a95a5ee",
-										"exec": [
-											""
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "3fcfe2ad-9300-4ece-97d7-2553af1ba7cc",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{customer_access_token}}"
-									}
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "x-api-key",
-										"value": "{{x-api-key}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"confirmPin\": \"6383\",\n  \"pin\": \"6383\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/identity/api/v1/users/pin/request-pin-otp"
-							},
-							"response": [
-								{
-									"id": "21a9aff4-9d45-4baf-924a-cf44b09f36d1",
-									"name": "Success",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											},
-											{
-												"key": "Accept",
-												"value": "application/json"
-											},
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "Authorization",
-												"value": "<API Key>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"confirmPin\": \"7181\",\n  \"pin\": \"5013\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": "{{baseUrl}}/api/v1/users/pin/request-pin-otp"
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"message\": \"<string>\"\n  },\n  \"resultType\": \"Warning\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
-								}
-							]
-						}
-					],
-					"id": "d062fe63-dedd-4e2b-ab26-d7bcfa0bfa5b"
 				},
 				{
 					"name": "Reset PIN",
