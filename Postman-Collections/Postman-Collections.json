@@ -15317,11 +15317,10 @@
 											"   pm.expect(jsonData.hasResult).to.eql(true);",
 											"    pm.expect(jsonData.successful).to.eql(true);",
 											"    pm.expect(jsonData.message).to.eql(\"Successful\");",
-											"    pm.expect(jsonData.message).to.eql(\"Cable TV Subscription successful\");",
 											"});",
 											"",
 											"pm.test(\"Successful cable transaction details are returned\", function () {",
-											"    pm.expect(jsonData.result.amount).to.eql(700);",
+											"    pm.expect(jsonData.result.amount).to.eql(100);",
 											"    pm.expect(jsonData.result.reference).is.not.null;",
 											"    pm.expect(jsonData.result.vendor).is.not.null;",
 											"    pm.expect(jsonData.result.currencySymbol).is.not.null;",
@@ -15411,7 +15410,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"transactionPin\": \"6543\",\n    \"channel\": \"Web\",\n    \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n    \"saveBeneficiary\": true,\n    \"deviceId\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36\",\n    \"beneficiaryName\": \"\",\n    \"beneficiaryPhone\": \"07089877770\",\n    \"beneficiaryEmail\": \"\",\n    \"billId\": 29,\n    \"amount\": \"100\",\n    \"phoneNumber\": \"07089877770\",\n    \"packageId\": 107,\n    \"beneficiary\": \"070111726666\",\n    \"canSchedule\": false,\n    \"scheduleInfo\": {}\n}",
+									"raw": "{\n    \"transactionPin\": \"6543\",\n    \"channel\": \"Web\",\n    \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n    \"saveBeneficiary\": true,\n    \"deviceId\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko)\",\n    \"beneficiaryName\": \"\",\n    \"beneficiaryPhone\": \"07089877770\",\n    \"beneficiaryEmail\": \"\",\n    \"billId\": 29,\n    \"amount\": \"100\",\n    \"phoneNumber\": \"07089877770\",\n    \"packageId\": 107,\n    \"beneficiary\": \"070111726666\",\n    \"canSchedule\": false,\n    \"scheduleInfo\": {}\n}",
 									"options": {
 										"raw": {
 											"language": "json"
