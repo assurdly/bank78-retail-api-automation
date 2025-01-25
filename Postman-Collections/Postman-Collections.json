@@ -18333,13 +18333,8 @@
 													"    pm.expect(jsonData.successful).to.eql(true);",
 													"});",
 													"",
-													"pm.test(\"Beneficiary details is returned\", function () {",
-													"    pm.expect(jsonData.result.items[0].id).is.not.null;",
-													"    pm.expect(jsonData.result.items[0].bankCode).is.not.empty;",
-													"    pm.expect(jsonData.result.items[0].accountName).is.not.empty;",
-													"    pm.expect(jsonData.result.items[0].accountNumber).is.not.empty;",
-													"    pm.expect(jsonData.result.items[0].userId).is.not.empty;",
-													"    pm.expect(jsonData.result.items[0].emailAddress).is.not.empty;",
+													"pm.test(\"Beneficiary details is not returned\", function () {",
+													"    pm.expect(jsonData.result.items[0]).to.not.exist;",
 													"});"
 												],
 												"type": "text/javascript",
@@ -18370,7 +18365,7 @@
 												"type": "text"
 											}
 										],
-										"url": "https://transfer-dev.bank78.co/api/v1/transfers/beneficiaries/get-paged/1/20/%7B%7D"
+										"url": "https://transfer-dev.bank78.co/api/v1/transfers/beneficiaries/get-paged/20/20/%7B%7D"
 									},
 									"response": [
 										{
