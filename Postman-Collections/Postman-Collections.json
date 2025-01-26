@@ -22457,9 +22457,16 @@
 												"exec": [
 													"pm.test(\"Response status code is 200\", function () {\r",
 													"    pm.response.to.have.status(200);\r",
-													"});"
+													"});\r",
+													"\r",
+													"pm.test(\"Template columns are returned\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Bank 78\");\r",
+													"     pm.expect(pm.response.text()).to.include(\"110072\");\r",
+													"});\r",
+													""
 												],
-												"type": "text/javascript"
+												"type": "text/javascript",
+												"packages": {}
 											}
 										}
 									],
