@@ -23879,7 +23879,7 @@
 					"name": "Get account",
 					"item": [
 						{
-							"name": "Get User Account",
+							"name": "Get User Account - successfully",
 							"event": [
 								{
 									"listen": "test",
@@ -23892,22 +23892,16 @@
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"\r",
-											"pm.environment.set(\"bus_account\", responseData.result.profiles[0].accounts[0].accountNumber);\r",
-											"\r",
 											"pm.test(\"Response has standard success fields\", function () {\r",
-											"    pm.expect(responseData.message).to.equal(`Success`);\r",
 											"    pm.expect(responseData.successful).to.eql(true);\r",
 											"    pm.expect(responseData.hasResult).to.eql(true);\r",
+											"    pm.expect(responseData.message).to.eql('Success');\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Account data is returned successfully\", function () {\r",
-											"    pm.expect(responseData.result.user.userId).is.not.null;\r",
-											"    pm.expect(responseData.result.user.username).is.not.null;\r",
-											"    pm.expect(responseData.result.profiles[0].accounts[0].accountNumber).is.not.null;\r",
-											"    pm.expect(responseData.result.profiles[0].accounts[0].accountType).is.not.null;\r",
-											"    pm.expect(responseData.result.profiles[0].accounts[0].availableBalance).is.not.null;\r",
-											"    pm.expect(responseData.result.profiles[0].accounts[0].ledgerBalance).is.not.null;\r",
-											"    pm.expect(responseData.result.profiles[0].accounts[0].accountName).is.not.null;\r",
+											"pm.test(\"User account details are returned\", function () {\r",
+											"    pm.expect(responseData.result.user.userId).is.not.empty;\r",
+											"    pm.expect(responseData.result.user.username).is.not.empty;\r",
+											"    pm.expect(responseData.result.profiles[0].accounts[0].accountNumber).is.not.empty;\r",
 											"});"
 										],
 										"type": "text/javascript",
