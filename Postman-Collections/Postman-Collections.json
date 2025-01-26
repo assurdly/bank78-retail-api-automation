@@ -23520,21 +23520,31 @@
 							]
 						},
 						{
-							"name": "Create Account - Blank currency Code",
+							"name": "Create Account - Blank Currency Code",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
 										"id": "2673f0aa-1dd3-4d24-93de-de51eeb8ef0a",
 										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
 											"pm.test(\"Status code is 400\", function () {\r",
 											"    pm.response.to.have.status(400);\r",
 											"});\r",
-											"pm.test(\"Response body should Have validationMessages\", function () {\r",
-											"    pm.response.to.have.jsonBody('validationMessages');\r",
+											"\r",
+											"pm.test(\"Reponse body contains error fields\", function () {\r",
+											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+											"    pm.expect(jsonData.successful).to.eql(false);\r",
+											"    pm.expect(jsonData.result).to.be.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"The error message about too many accounts is returned\", function () {\r",
+											"    pm.expect(jsonData.validationMessages[0]).to.include(\"The CurrencyCode field is required.\");\r",
 											"});"
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {}
 									}
 								}
 							],
