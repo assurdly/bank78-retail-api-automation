@@ -22091,10 +22091,10 @@
 					"name": "File Bulk Transfer",
 					"item": [
 						{
-							"name": "validate-upload",
+							"name": "Validate Upload",
 							"item": [
 								{
-									"name": "Valid entry",
+									"name": "Validate Upload - Valid entry",
 									"event": [
 										{
 											"listen": "test",
@@ -22113,8 +22113,9 @@
 													"});\r",
 													"\r",
 													"pm.test(\"A successful file validation response is returned\", function () {\r",
-													"    pm.expect(jsonData.result.accountName).to.eql(\"Bulk process has started. Please check notification center for result\");\r",
-													"    pm.expect(jsonData.result.batchReference).is.not.null;\r",
+													"    pm.expect(jsonData.result.accountName).is.not.null;\r",
+													"    pm.expect(jsonData.result.accountNumber).is.not.null;\r",
+													"    pm.expect(jsonData.result.isValid).to.eql(true);\r",
 													"});"
 												],
 												"type": "text/javascript",
@@ -22210,28 +22211,28 @@
 									]
 								},
 								{
-									"name": "Invalid entry",
+									"name": "Validate Upload - Invalid entry",
 									"event": [
 										{
 											"listen": "test",
 											"script": {
 												"id": "e41a53a3-f097-4e25-aced-28de7cf7cf89",
 												"exec": [
-													"pm.test(\"Status code is 400 Bad Request\", function () {\r",
+													"var jsonData = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Status code is 400\", function () {\r",
 													"    pm.response.to.have.status(400);\r",
 													"});\r",
 													"\r",
-													"pm.test(\"Response has expected structure\", function () {\r",
-													"    pm.expect(pm.response.json()).to.have.property(\"hasResult\", false);\r",
-													"    pm.expect(pm.response.json()).to.have.property(\"result\", null);\r",
-													"    pm.expect(pm.response.json()).to.have.property(\"resultType\", 2);\r",
-													"    pm.expect(pm.response.json()).to.have.property(\"message\", \"Error validating upload\");\r",
-													"    pm.expect(pm.response.json()).to.have.property(\"validationMessages\", null);\r",
-													"    pm.expect(pm.response.json()).to.have.property(\"successful\", false);\r",
-													"    pm.expect(pm.response.json()).to.have.property(\"errorCode\", 0);\r",
-													"    pm.expect(pm.response.json()).to.have.property(\"responseCode\", null);\r",
+													"pm.test(\"Reponse body contains error fields\", function () {\r",
+													"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+													"    pm.expect(jsonData.successful).to.eql(false);\r",
+													"    pm.expect(jsonData.result).to.be.null;\r",
 													"});\r",
-													""
+													"\r",
+													"pm.test(\"The error message about the file uploaded is returned\", function () {\r",
+													"    pm.expect(jsonData.message).to.include(\"Error validating upload\");\r",
+													"});"
 												],
 												"type": "text/javascript",
 												"packages": {}
@@ -22241,8 +22242,11 @@
 											"listen": "prerequest",
 											"script": {
 												"id": "33de51d6-ab8a-429f-b560-4982767c8228",
-												"exec": [],
-												"type": "text/javascript"
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
 											}
 										}
 									],
@@ -22332,136 +22336,12 @@
 											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": [\n    {\n      \"accountName\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"isValid\": \"<boolean>\",\n      \"bankCode\": \"<string>\",\n      \"bankName\": \"<string>\",\n      \"nameEnquiryId\": \"<integer>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"accountName\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"isValid\": \"<boolean>\",\n      \"bankCode\": \"<string>\",\n      \"bankName\": \"<string>\",\n      \"nameEnquiryId\": \"<integer>\",\n      \"message\": \"<string>\"\n    }\n  ],\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
 										}
 									]
-								},
-								{
-									"name": "Missing column",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "e41a53a3-f097-4e25-aced-28de7cf7cf89",
-												"exec": [
-													"pm.test(\"Status code is 400 Bad Request\", function () {\r",
-													"    pm.response.to.have.status(400);\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response has expected structure\", function () {\r",
-													"    pm.expect(pm.response.json()).to.have.property(\"hasResult\", false);\r",
-													"    pm.expect(pm.response.json()).to.have.property(\"result\", null);\r",
-													"    pm.expect(pm.response.json()).to.have.property(\"resultType\", 2);\r",
-													"    pm.expect(pm.response.json()).to.have.property(\"message\", \"Error validating upload\");\r",
-													"    pm.expect(pm.response.json()).to.have.property(\"validationMessages\", null);\r",
-													"    pm.expect(pm.response.json()).to.have.property(\"successful\", false);\r",
-													"    pm.expect(pm.response.json()).to.have.property(\"errorCode\", 0);\r",
-													"    pm.expect(pm.response.json()).to.have.property(\"responseCode\", null);\r",
-													"});\r",
-													""
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										},
-										{
-											"listen": "prerequest",
-											"script": {
-												"id": "a4dbad35-2d32-41b5-865f-26397f09e7ef",
-												"exec": [],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"id": "2d4a22a1-11b1-4a79-8759-5faaf3d25f1d",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": {
-												"token": "{{customer_access_token}}"
-											}
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											},
-											{
-												"key": "Accept",
-												"value": "text/plain"
-											},
-											{
-												"key": "x-api-key",
-												"value": "{{x-api-key}}",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"fileUrl\": \"https://bank78-dev-file-uploads.s3.eu-west-1.amazonaws.com/638345484657715591-Buktrans2.csv\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": "{{baseUrl}}/transfer/api/v1/transfer/bulk/validate-upload"
-									},
-									"response": [
-										{
-											"id": "b44c5a05-ee15-45dc-892a-8ada55b9585b",
-											"name": "Success",
-											"originalRequest": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													},
-													{
-														"key": "Accept",
-														"value": "text/plain"
-													},
-													{
-														"description": "Added as a part of security scheme: apikey",
-														"key": "Authorization",
-														"value": "<API Key>"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"fileUrl\": \"<string>\"\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/api/v1/transfer/bulk/validate-upload"
-											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"responseTime": null,
-											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": [\n    {\n      \"accountName\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"isValid\": \"<boolean>\",\n      \"bankCode\": \"<string>\",\n      \"bankName\": \"<string>\",\n      \"nameEnquiryId\": \"<integer>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"accountName\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"isValid\": \"<boolean>\",\n      \"bankCode\": \"<string>\",\n      \"bankName\": \"<string>\",\n      \"nameEnquiryId\": \"<integer>\",\n      \"message\": \"<string>\"\n    }\n  ],\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
-										}
-									]
 								}
 							],
 							"id": "8bee5f73-433d-4d77-854b-1c58ef6eff65"
 						},
 						{
-							"name": "download-template",
+							"name": "Download Template",
 							"item": [
 								{
 									"name": "/api/v1/transfer/bulk/download-template",
