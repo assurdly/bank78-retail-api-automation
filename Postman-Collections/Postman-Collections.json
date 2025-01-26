@@ -24227,38 +24227,28 @@
 							]
 						},
 						{
-							"name": "Add security-questions",
+							"name": "Add security questions - already exists",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
 										"id": "018bd18f-aef8-482f-817a-6d6087e35656",
 										"exec": [
-											"// pm.test(\"Status code is 201\", function () {\r",
-											"//     pm.response.to.have.status(201);\r",
-											"// });\r",
-											"// pm.test(\"Has result equal to true\", function () {\r",
-											"//      pm.expect(pm.response.json().hasResult).to.equal(true);\r",
-											"// });\r",
+											"var jsonData = pm.response.json();\r",
 											"\r",
-											"// pm.test(\"resultType equal to 1\", function () {\r",
-											"//      pm.expect(pm.response.json().resultType).to.equal(1);\r",
-											"// });\r",
-											"// pm.test(\"message equal to success\", function () {\r",
-											"//     pm.expect(pm.response.json().message).to.equal(\"Success\");\r",
-											"// });\r",
-											"// pm.test(\"validationMessages\", function () {\r",
-											"//     pm.expect(pm.response.json().validationMessages).to.equal(null);\r",
-											"// });\r",
-											"// pm.test(\"successful\", function () {\r",
-											"//     pm.expect(pm.response.json().successful).to.equal(true);\r",
-											"// });\r",
-											"// pm.test(\"errorCode\", function () {\r",
-											"//     pm.expect(pm.response.json().errorCode).to.equal(0);\r",
-											"// });\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
 											"\r",
+											"pm.test(\"Reponse body contains error fields\", function () {\r",
+											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+											"    pm.expect(jsonData.successful).to.eql(false);\r",
+											"    pm.expect(jsonData.result).to.be.null;\r",
+											"});\r",
 											"\r",
-											"//This is commented out because all security questions have been added"
+											"pm.test(\"The error message about the incorrect PIN is returned\", function () {\r",
+											"    pm.expect(jsonData.message).to.include(\"Security Question Already Created\");\r",
+											"});"
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -24287,82 +24277,6 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\r\n  \"responses\": [\r\n    {\r\n      \"questionId\":\"24cfec88-134a-4349-9be8-5da15fcc96c0\",\r\n      \"response\": \"Test\"\r\n    }\r\n  ]\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/identity/v1/accounts/security-questions/add"
-							},
-							"response": []
-						},
-						{
-							"name": "Add security-questions that exist",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "018bd18f-aef8-482f-817a-6d6087e35656",
-										"exec": [
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"pm.test(\"Has result equal to false\", function () {\r",
-											"     pm.expect(pm.response.json().hasResult).to.equal(false);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"resultType equal to 2\", function () {\r",
-											"     pm.expect(pm.response.json().resultType).to.equal(2);\r",
-											"});\r",
-											"pm.test(\"message equal to success\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.equal(\"Security Question Already Created\");\r",
-											"});\r",
-											"pm.test(\"validationMessages\", function () {\r",
-											"    pm.expect(pm.response.json().validationMessages).to.equal(null);\r",
-											"});\r",
-											"pm.test(\"successful\", function () {\r",
-											"    pm.expect(pm.response.json().successful).to.equal(false);\r",
-											"});\r",
-											"pm.test(\"errorCode\", function () {\r",
-											"    pm.expect(pm.response.json().errorCode).to.equal(0);\r",
-											"});\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								},
-								{
-									"listen": "prerequest",
-									"script": {
-										"id": "1032009e-15f4-4d24-930a-34b724f254ed",
-										"exec": [],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "69105b3e-7a75-43cf-b460-63aaf6332504",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{customer_access_token}}"
-									}
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "x-api-key",
-										"value": "{{x-api-key}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"responses\": [\r\n    {\r\n      \"questionId\":\"85073817-cc32-4589-9a7e-67fdbf31629f\",\r\n      \"response\": \"string\"\r\n    }\r\n  ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -24424,7 +24338,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"responses\": [\r\n    {\r\n      \"questionId\":\"88oookkj98\",\r\n      \"response\": \"string\"\r\n    }\r\n  ]\r\n}",
+									"raw": "{\r\n  \"responses\": [\r\n    {\r\n      \"questionId\":\"98abs\",\r\n      \"response\": \"string\"\r\n    }\r\n  ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
