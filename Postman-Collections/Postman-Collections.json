@@ -23293,35 +23293,21 @@
 									"script": {
 										"id": "098228cc-8aed-4918-9cf1-e30ae612f406",
 										"exec": [
-											"pm.test('Status code is 400', function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"})\r",
+											"var jsonData = pm.response.json();\r",
 											"\r",
-											"// pm.test(\"Response body should Have id\", function () {\r",
-											"//     pm.response.to.have.jsonBody('result.id');\r",
-											"// });\r",
-											"// pm.test(\"Response body should Have walletGroupId\", function () {\r",
-											"//     pm.response.to.have.jsonBody('result.walletGroupId');\r",
-											"// });\r",
-											"// pm.test(\"Response body should Have customerId\", function () {\r",
-											"//     pm.response.to.have.jsonBody('result.customerId');\r",
-											"// });\r",
-											"// pm.test(\"Response body should Have availableBalance\", function () {\r",
-											"//     pm.response.to.have.jsonBody('result.availableBalance');\r",
-											"// });\r",
-											"// pm.test(\"Response body should Have ledgerBalance\", function () {\r",
-											"//     pm.response.to.have.jsonBody('result.ledgerBalance');\r",
-											"// });\r",
-											"// pm.test(\"Response body should Have accountNumber\", function () {\r",
-											"//     pm.response.to.have.jsonBody('result.virtualAccount.accountNumber');\r",
-											"// });\r",
-											"// pm.test(\"Response body should Have bankCode\", function () {\r",
-											"//     pm.response.to.have.jsonBody('result.virtualAccount.bankCode');\r",
-											"// });\r",
-											"// pm.test(\"Response body should Have bankName\", function () {\r",
-											"//     pm.response.to.have.jsonBody('result.virtualAccount.bankName');\r",
-											"// });\r",
-											""
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Reponse body contains error fields\", function () {\r",
+											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+											"    pm.expect(jsonData.successful).to.eql(false);\r",
+											"    pm.expect(jsonData.result).to.be.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"The error message about too many accounts is returned\", function () {\r",
+											"    pm.expect(jsonData.message).to.include(\"You can only open maximum of 2 Savings accounts\");\r",
+											"});"
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -23357,7 +23343,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"currencyCode\": \"USD\",\n  \"name\": \"Shopping\",\n  \"accountType\": \"Savings\"\n}",
+									"raw": "{\n  \"currencyCode\": \"NGN\",\n  \"name\": \"Shopping\",\n  \"accountType\": \"Savings\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -23640,21 +23626,31 @@
 							]
 						},
 						{
-							"name": "Create Account - Blank name",
+							"name": "Create Account - Empty name",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
 										"id": "a0dc0c7f-2310-48b1-874a-1f3f92ba48a8",
 										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
 											"pm.test(\"Status code is 400\", function () {\r",
 											"    pm.response.to.have.status(400);\r",
 											"});\r",
-											"pm.test(\"Response body should Have validationMessages\", function () {\r",
-											"    pm.response.to.have.jsonBody('validationMessages');\r",
+											"\r",
+											"pm.test(\"Reponse body contains error fields\", function () {\r",
+											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+											"    pm.expect(jsonData.successful).to.eql(false);\r",
+											"    pm.expect(jsonData.result).to.be.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"The error message about too many accounts is returned\", function () {\r",
+											"    pm.expect(jsonData.validationMessages[0]).to.include(\"The Name field is required.\");\r",
 											"});"
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {}
 									}
 								}
 							],
