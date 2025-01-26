@@ -22344,7 +22344,7 @@
 							"name": "Download Template",
 							"item": [
 								{
-									"name": "/api/v1/transfer/bulk/download-template",
+									"name": "Download Template - successful",
 									"event": [
 										{
 											"listen": "test",
@@ -22445,10 +22445,10 @@
 							"id": "22b06dbd-4cf1-4929-82eb-a74591f20df9"
 						},
 						{
-							"name": "download-bank-codes",
+							"name": "Download Bank Codes",
 							"item": [
 								{
-									"name": "/api/v1/transfer/bulk/download-bank-codes",
+									"name": "Download Bank Codes - successful",
 									"event": [
 										{
 											"listen": "test",
