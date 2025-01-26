@@ -23100,7 +23100,36 @@
 					"name": "Username",
 					"item": [
 						{
-							"name": "Fetch unregistered user",
+							"name": "Fetch registered user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "33ebb7d9-ca8d-47e9-8be4-628a6b95f1f3",
+										"exec": [
+											"var responseData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Response has standard success fields\", function () {",
+											"    pm.expect(responseData.successful).to.eql(true);",
+											"    pm.expect(responseData.hasResult).to.eql(true);",
+											"    pm.expect(responseData.message).to.eql('Success');",
+											"});",
+											"",
+											"pm.test(\"User account details are returned\", function () {",
+											"    pm.expect(responseData.result.user.userId).is.not.empty;",
+											"    pm.expect(responseData.result.user.username).is.not.empty;",
+											"    pm.expect(responseData.result.profiles[0].accounts[0].accountNumber).is.not.empty;",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "d3bcd446-d9f3-4a15-8245-ecd9ef1b78e7",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -23121,6 +23150,11 @@
 									{
 										"key": "Content-Type",
 										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
 										"type": "text"
 									}
 								],
@@ -23195,6 +23229,33 @@
 						},
 						{
 							"name": "Fetch invalid user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "eb6bef04-4e2e-4bee-8096-4f77dfa3312e",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Reponse body contains error fields\", function () {",
+											"    pm.expect(jsonData.hasResult).to.eql(false);",
+											"    pm.expect(jsonData.successful).to.eql(false);",
+											"    pm.expect(jsonData.result).to.be.null;",
+											"});",
+											"",
+											"pm.test(\"The error message about the invalid user is returned\", function () {",
+											"    pm.expect(jsonData.message).to.include(\"User not found\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "02b96ef2-c997-4fb1-8bc0-42a181a0371b",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -23226,9 +23287,8 @@
 									],
 									"variable": [
 										{
-											"id": "0242c917-e3c8-49e3-8f6c-5b46f7f3aa23",
 											"key": "username",
-											"value": "<string>"
+											"value": "hehe@test.com"
 										}
 									]
 								}
