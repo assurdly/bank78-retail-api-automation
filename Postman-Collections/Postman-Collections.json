@@ -21618,7 +21618,7 @@
 							]
 						},
 						{
-							"name": "Invalid PIN in all transfers",
+							"name": "Bulk Transfer - Invalid PIN",
 							"event": [
 								{
 									"listen": "test",
@@ -21734,7 +21734,7 @@
 							]
 						},
 						{
-							"name": "Invalid Account Details for one transfer",
+							"name": "Bulk Transfer - Invalid Account Details for one transfer",
 							"event": [
 								{
 									"listen": "test",
@@ -21865,7 +21865,7 @@
 							]
 						},
 						{
-							"name": "Invalid Account details for all transfers",
+							"name": "Bulk Transfer - Invalid Account details for all transfers",
 							"event": [
 								{
 									"listen": "test",
@@ -21998,7 +21998,7 @@
 							]
 						},
 						{
-							"name": "Schedule Bulk Transfer",
+							"name": "Bulk Transfer - Schedule successfully",
 							"event": [
 								{
 									"listen": "test",
