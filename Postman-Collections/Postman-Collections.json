@@ -23116,7 +23116,12 @@
 								"header": [
 									{
 										"key": "Accept",
-										"value": "text/plain"
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
 									}
 								],
 								"url": {
@@ -23132,9 +23137,8 @@
 									],
 									"variable": [
 										{
-											"id": "0242c917-e3c8-49e3-8f6c-5b46f7f3aa23",
 											"key": "username",
-											"value": "<string>"
+											"value": "mayin@yopmail.com"
 										}
 									]
 								}
@@ -23759,14 +23763,25 @@
 									"script": {
 										"id": "650fcddb-0e6e-4ac3-a967-d81d60f4df00",
 										"exec": [
+											"var jsonData = pm.response.json();\r",
+											"\r",
 											"pm.test(\"Status code is 400\", function () {\r",
 											"    pm.response.to.have.status(400);\r",
 											"});\r",
-											"pm.test(\"Response body should Have validationMessages\", function () {\r",
-											"    pm.response.to.have.jsonBody('validationMessages');\r",
+											"\r",
+											"pm.test(\"Reponse body contains error fields\", function () {\r",
+											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+											"    pm.expect(jsonData.successful).to.eql(false);\r",
+											"    pm.expect(jsonData.result).to.be.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"An error message about the required account type is returned\", function () {\r",
+											"    pm.expect(jsonData.validationMessages[0]).to.include(\"The Account Type field is required.\");\r",
+											"    pm.expect(jsonData.validationMessages[1]).to.not.include(\"Error converting value \\\"\\\" to type 'Library.Common.Models.AccountTypeEnum'. Path 'accountType', line 4, position 19.\");\r",
 											"});"
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {}
 									}
 								}
 							],
@@ -23864,7 +23879,7 @@
 					"name": "Get account",
 					"item": [
 						{
-							"name": "Get Account",
+							"name": "Get User Account",
 							"event": [
 								{
 									"listen": "test",
