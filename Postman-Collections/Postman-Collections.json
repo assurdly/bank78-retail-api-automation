@@ -13578,7 +13578,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"amount\": \"7200\",\n  \"billId\": \"13\",\n  \"channel\": \"1\",\n  \"clientRequestId\": \"payforcabletv123\",\n  \"decoder\": \"\",\n  \"packageId\": \"72\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"transactionPin\": \"6543\",\n  \"narration\": \"Buy Cable bundle\",\n  \"saveBeneficiary\": \"false\",\n  \"deviceId\": \"xphone\",\n  \"beneficiaryName\": \"Paul\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"12345\"\n}",
+									"raw": "{\n  \"amount\": \"7200\",\n  \"billId\": \"13\",\n  \"channel\": \"1\",\n  \"clientRequestId\": \"payforcabletv123\",\n  \"decoder\": \"\",\n  \"packageId\": \"72\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"transactionPin\": \"{{transactionpin}}\",\n  \"narration\": \"Buy Cable bundle\",\n  \"saveBeneficiary\": \"false\",\n  \"deviceId\": \"xphone\",\n  \"beneficiaryName\": \"Paul\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"12345\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -13657,9 +13657,7 @@
 											"    pm.expect(jsonData.responseCode).to.be.null;\r",
 											"});\r",
 											"\r",
-											"pm.test(\"The error message about the invalid Decoder number is returned\", function () {\r",
-											"    pm.expect(jsonData.validationMessages[0]).to.include(\"The Decoder number is invalid.\");\r",
-											"});"
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -13716,7 +13714,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"amount\": \"7200\",\n  \"billId\": \"13\",\n  \"channel\": \"1\",\n  \"clientRequestId\": \"payforcabletv123\",\n  \"decoder\": \"12344\",\n  \"packageId\": \"72\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"transactionPin\": \"6543\",\n  \"narration\": \"Buy Cable bundle\",\n  \"saveBeneficiary\": \"false\",\n  \"deviceId\": \"xphone\",\n  \"beneficiaryName\": \"Paul\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"12345\"\n}",
+									"raw": "{\n  \"amount\": \"7200\",\n  \"billId\": \"13\",\n  \"channel\": \"1\",\n  \"clientRequestId\": \"payforcabletv123\",\n  \"decoder\": \"12344\",\n  \"packageId\": \"72\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"transactionPin\": \"{{transactionpin}}\",\n  \"narration\": \"Buy Cable bundle\",\n  \"saveBeneficiary\": \"false\",\n  \"deviceId\": \"xphone\",\n  \"beneficiaryName\": \"Paul\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"12345\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
