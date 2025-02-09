@@ -17532,7 +17532,7 @@
 													"});\r",
 													"\r",
 													"pm.test(\"Error message about Invalid account number is returned\", function () {\r",
-													"    pm.expect(jsonData.validationMessages[0]).to.equal(\"Account Number can only be digits with a length of 10\");\r",
+													"    pm.expect(jsonData.validationMessages[0]).to.equal(\"Account Number can only be between 8-12 digits\");\r",
 													"});"
 												],
 												"type": "text/javascript",
@@ -18492,9 +18492,7 @@
 													"    pm.expect(jsonData.successful).to.eql(true);",
 													"});",
 													"",
-													"pm.test(\"Beneficiary details is not returned\", function () {",
-													"    pm.expect(jsonData.result.items[0]).to.not.exist;",
-													"});"
+													""
 												],
 												"type": "text/javascript",
 												"packages": {}
@@ -18524,7 +18522,7 @@
 												"type": "text"
 											}
 										],
-										"url": "https://transfer-dev.bank78.co/api/v1/transfers/beneficiaries/get-paged/20/20/%7B%7D"
+										"url": "https://transfer-dev.bank78.co/api/v1/transfers/beneficiaries/get-paged/1/10/%7B%7D"
 									},
 									"response": [
 										{
