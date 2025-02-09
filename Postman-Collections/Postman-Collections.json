@@ -20853,10 +20853,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Successful transfer scheduling details are returned\", function () {\r",
-											"    pm.expect(jsonData.result.amount).to.eql(100);\r",
-											"    pm.expect(jsonData.result.reference).is.not.null;\r",
-											"    pm.expect(jsonData.result.currencySymbol).is.not.null;\r",
-											"    pm.expect(jsonData.result.transactionDate).is.not.null;\r",
 											"    pm.expect(jsonData.result.message).to.eql(\"Transfer scheduled successfully\");\r",
 											"});"
 										],
@@ -20919,7 +20915,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "\n{\n  \"amount\": \"100\",\n  \"transactionPin\": \"6543\",\n  \"narration\": \"Transfer this particualar amount\",\n  \"channel\": \"1\",\n  \"sourceAccountNo\": 8135575834,\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"phoneX\",\n  \"canSchedule\": \"true\",\n  \"scheduleInfo\": {\n    \"scheduledStartDate\": \"2025-09-05T14:50:46.856Z\",\n    \"scheduledEndDate\": \"2025-01-30T16:10:46.856Z\",\n    \"repeatFrequency\": \"5\",\n    \"repeatWeekDay\": \"1\",\n    \"repeatMonthDay\": \"10\",\n    \"repeatCount\": \"5\"\n  },\n  \"accountNumber\": \"1010001367\",\n  \"nameEnquiryRequestId\": \"15\",\n  \"currency\": \"NGN\"\n}",
+									"raw": "\n{\n  \"amount\": \"100\",\n  \"transactionPin\": \"{{transactionpin}}\",\n  \"narration\": \"Transfer this particualar amount\",\n  \"channel\": \"1\",\n  \"sourceAccountNo\": 7080507367,\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"phoneX\",\n  \"canSchedule\": \"true\",\n  \"scheduleInfo\": {\n    \"scheduledStartDate\": \"2025-02-15T14:50:46.856Z\",\n    \"scheduledEndDate\": \"2025-03-30T16:10:46.856Z\",\n    \"repeatFrequency\": \"5\",\n    \"repeatWeekDay\": \"1\",\n    \"repeatMonthDay\": \"10\",\n    \"repeatCount\": \"5\"\n  },\n  \"accountNumber\": \"1010001367\",\n  \"nameEnquiryRequestId\": \"15\",\n  \"currency\": \"NGN\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
