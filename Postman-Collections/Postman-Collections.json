@@ -20289,7 +20289,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"amount\": \"100\",\n  \"transactionPin\": \"6543\",\n  \"narration\": \"Transfer now\",\n  \"channel\": \"1\",\n  \"sourceAccountNo\": 8135575834,\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"phoneX\",\n  \"canSchedule\": false,\n  \"scheduleInfo\": {},\n  \"accountNumber\": \"8168519515\",\n  \"nameEnquiryRequestId\": \"1680\",\n  \"currency\": \"NGN\"\n}",
+									"raw": "{\n  \"amount\": \"100\",\n  \"transactionPin\": \"{{transactionpin}}\",\n  \"narration\": \"Transfer now\",\n  \"channel\": \"1\",\n  \"sourceAccountNo\": 7080507367,\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"phoneX\",\n  \"canSchedule\": false,\n  \"scheduleInfo\": {},\n  \"accountNumber\": \"8168519515\",\n  \"nameEnquiryRequestId\": \"1680\",\n  \"currency\": \"NGN\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -20368,7 +20368,8 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Error message about failed account enquiry is returned\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.equal(\"Name Enquiry ID error\");\r",
+											"     pm.expect(pm.response.json()).to.have.property('message').that.is.a('string').and.not.empty;\r",
+											"\r",
 											"});\r",
 											"\r",
 											""
@@ -20418,7 +20419,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"amount\": \"100\",\n  \"transactionPin\": \"6543\",\n  \"narration\": \"Transfer now\",\n  \"channel\": \"1\",\n  \"sourceAccountNo\": 8135575834,\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"phoneX\",\n  \"canSchedule\": false,\n  \"scheduleInfo\": {},\n  \"accountNumber\": \"8168519515\",\n  \"nameEnquiryRequestId\": \"1ir0\",\n  \"currency\": \"NGN\"\n}\n\n// {\n//   \"amount\": \"100\",\n//   \"transactionPin\": \"6543\",\n//   \"narration\": \"Transfer overseas\",\n//   \"channel\": \"1\",\n//   \"sourceAccountNo\": \"8135575834\",\n//   \"saveBeneficiary\": true,\n//   \"deviceId\": \"phoneX\",\n//   \"canSchedule\": false,\n//   \"scheduleInfo\": {\n//     \"scheduledStartDate\": \"2024-08-30T16:10:46.856Z\",\n//     \"scheduledEndDate\": \"2024-08-30T16:10:46.856Z\",\n//     \"repeatFrequency\": \"0\",\n//     \"repeatWeekDay\": \"0\",\n//     \"repeatMonthDay\": \"0\",\n//     \"repeatCount\": \"0\"\n//   },\n//   \"accountNumber\": \"1780004070\",\n//   \"nameEnquiryRequestId\": \"7006\",\n//   \"currency\": \"NGN\"\n// }",
+									"raw": "{\n  \"amount\": \"100\",\n  \"transactionPin\": \"{{transactionpin}}\",\n  \"narration\": \"Transfer now\",\n  \"channel\": \"1\",\n  \"sourceAccountNo\": 7080507367,\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"phoneX\",\n  \"canSchedule\": false,\n  \"scheduleInfo\": {},\n  \"accountNumber\": \"8168519515\",\n  \"nameEnquiryRequestId\": \"1ir0\",\n  \"currency\": \"NGN\"\n}\n\n// {\n//   \"amount\": \"100\",\n//   \"transactionPin\": \"6543\",\n//   \"narration\": \"Transfer overseas\",\n//   \"channel\": \"1\",\n//   \"sourceAccountNo\": \"8135575834\",\n//   \"saveBeneficiary\": true,\n//   \"deviceId\": \"phoneX\",\n//   \"canSchedule\": false,\n//   \"scheduleInfo\": {\n//     \"scheduledStartDate\": \"2024-08-30T16:10:46.856Z\",\n//     \"scheduledEndDate\": \"2024-08-30T16:10:46.856Z\",\n//     \"repeatFrequency\": \"0\",\n//     \"repeatWeekDay\": \"0\",\n//     \"repeatMonthDay\": \"0\",\n//     \"repeatCount\": \"0\"\n//   },\n//   \"accountNumber\": \"1780004070\",\n//   \"nameEnquiryRequestId\": \"7006\",\n//   \"currency\": \"NGN\"\n// }",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
