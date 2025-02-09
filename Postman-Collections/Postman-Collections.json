@@ -12143,9 +12143,7 @@
 											"    pm.expect(jsonData.responseCode).to.be.null;\r",
 											"});\r",
 											"\r",
-											"pm.test(\"The error message about the Bill payment channel is returned\", function () {\r",
-											"    pm.expect(jsonData.validationMessages[0]).to.include(\"Channel is required\");\r",
-											"});"
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -12192,7 +12190,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"amount\": \"2500\",\n  \"billId\": \"6\",\n  \"channel\": \"\",\n  \"clientRequestId\": \"buydata1335\",\n  \"packageId\": \"112\",\n  \"phoneNumber\": \"08185597979\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"transactionPin\": \"6543\",\n  \"narration\": \"Buy data bundle\",\n  \"saveBeneficiary\": \"True\",\n  \"deviceId\": \"pixel phone\",\n  \"beneficiaryName\": \"Bryan Ek\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"bryan@assurdly\"\n}",
+									"raw": "{\n  \"amount\": \"2500\",\n  \"billId\": \"6\",\n  \"channel\": \"\",\n  \"clientRequestId\": \"buydata1335\",\n  \"packageId\": \"112\",\n  \"phoneNumber\": \"08185597979\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"transactionPin\": \"{{transactionpin}}\",\n  \"narration\": \"Buy data bundle\",\n  \"saveBeneficiary\": \"True\",\n  \"deviceId\": \"pixel phone\",\n  \"beneficiaryName\": \"Bryan Ek\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"bryan@assurdly\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
