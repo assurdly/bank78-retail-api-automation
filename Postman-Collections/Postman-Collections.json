@@ -14319,7 +14319,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"transactionPin\": \"6543\",\n  \"narration\": \"Pay Epin\",\n  \"channel\": \"3\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"1284903\",\n  \"beneficiaryName\": \"Jamb\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"test8033@mailinator.com\",\n  \"billId\": \"30\",\n  \"packageId\": \"109\",\n  \"amount\": \"4700\",\n  \"numberOfPins\": \"1\",\n  \"phone\" : \"07035361770\",\n  \"accountNumber\": \"1111111111\"\n\n}",
+									"raw": "{\n  \"transactionPin\": \"{{transactionpin}}\",\n  \"narration\": \"Pay Epin\",\n  \"channel\": \"3\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"1284903\",\n  \"beneficiaryName\": \"Jamb\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"test8033@mailinator.com\",\n  \"billId\": \"30\",\n  \"packageId\": \"109\",\n  \"amount\": \"4700\",\n  \"numberOfPins\": \"1\",\n  \"phone\" : \"07035361770\",\n  \"accountNumber\": \"1111111111\"\n\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
