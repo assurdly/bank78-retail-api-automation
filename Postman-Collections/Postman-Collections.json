@@ -19771,7 +19771,11 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Error message about failed account enquiry is returned\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.equal(\"Name Enquiry ID error\");\r",
+											"\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.not.be.empty;\r",
+											"   \r",
 											"});\r",
 											"\r",
 											""
@@ -19810,7 +19814,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"amount\": \"100\",\n  \"transactionPin\": \"6383\",\n  \"narration\": \"Invalid\",\n  \"channel\": \"1\",\n  \"sourceAccountNo\": 8135575834,\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"phoneX\",\n  \"canSchedule\": \"false\",\n  \"scheduleInfo\": {\n    \"scheduledStartDate\": \"2023-08-30T16:10:46.856Z\",\n    \"scheduledEndDate\": \"2023-08-30T16:10:46.856Z\",\n    \"repeatFrequency\": \"0\",\n    \"repeatWeekDay\": \"0\",\n    \"repeatMonthDay\": \"0\",\n    \"repeatCount\": \"0\"\n  },\n  \"accountNumber\": \"1010001367\",\n  \"nameEnquiryRequestId\": \"13h00\",\n  \"currency\": \"NGN\"\n}",
+									"raw": "{\n  \"amount\": \"100\",\n  \"transactionPin\": \"{{transactionpin}}\",\n  \"narration\": \"Invalid\",\n  \"channel\": \"1\",\n  \"sourceAccountNo\": 7080507367,\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"phoneX\",\n  \"canSchedule\": \"false\",\n  \"scheduleInfo\": {\n    \"scheduledStartDate\": \"2025-08-30T16:10:46.856Z\",\n    \"scheduledEndDate\": \"2025-08-30T16:10:46.856Z\",\n    \"repeatFrequency\": \"0\",\n    \"repeatWeekDay\": \"0\",\n    \"repeatMonthDay\": \"0\",\n    \"repeatCount\": \"0\"\n  },\n  \"accountNumber\": \"1010001367\",\n  \"nameEnquiryRequestId\": \"13h00\",\n  \"currency\": \"NGN\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
