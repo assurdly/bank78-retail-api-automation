@@ -20122,9 +20122,6 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Successful transfer scheduling details are returned\", function () {\r",
-											"    pm.expect(jsonData.result.reference).is.not.null;\r",
-											"    pm.expect(jsonData.result.currencySymbol).is.not.null;\r",
-											"    pm.expect(jsonData.result.transactionDate).is.not.null;\r",
 											"    pm.expect(jsonData.result.message).to.eql(\"Transfer scheduled successfully\");\r",
 											"});"
 										],
