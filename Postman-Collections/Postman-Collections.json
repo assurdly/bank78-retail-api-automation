@@ -14954,7 +14954,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"transactionPin\": \"6543\",\n  \"narration\": \"Pay Epin\",\n  \"channel\": \"3\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"1284903\",\n  \"beneficiaryName\": \"Jamb\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"test8033@mailinator.com\",\n  \"billId\": \"30\",\n  \"packageId\": \"109\",\n  \"amount\": \"4700\",\n  \"numberOfPins\": \"\",\n  \"phone\" : \"07035362343\",\n  \"accountNumber\": \"1111111111\"\n\n}",
+									"raw": "{\n  \"transactionPin\": \"{{transactionpin}}\",\n  \"narration\": \"Pay Epin\",\n  \"channel\": \"3\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"1284903\",\n  \"beneficiaryName\": \"Jamb\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"test8033@mailinator.com\",\n  \"billId\": \"30\",\n  \"packageId\": \"109\",\n  \"amount\": \"4700\",\n  \"numberOfPins\": \"\",\n  \"phone\" : \"07035362343\",\n  \"accountNumber\": \"1111111111\"\n\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -15033,7 +15033,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the PIN length is returned\", function () {\r",
-											"    pm.expect(jsonData.validationMessages[0]).to.include(\"The TransactionPIN field is required\");\r",
+											"    pm.expect(jsonData.validationMessages[0]).to.include(\"The TransactionPin field is required\");\r",
 											"});"
 										],
 										"type": "text/javascript",
