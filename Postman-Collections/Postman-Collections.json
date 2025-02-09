@@ -18414,7 +18414,7 @@
 												"type": "text"
 											}
 										],
-										"url": "https://transfer-dev.bank78.co/api/v1/transfers/beneficiaries/952"
+										"url": "https://transfer-dev.bank78.co/api/v1/transfers/beneficiaries/980"
 									},
 									"response": [
 										{
@@ -18822,7 +18822,7 @@
 													"});",
 													"",
 													"pm.test(\"The message about the required Beneficiary ID is returned\", function () {",
-													"    pm.expect(jsonData.result.validationMessages[0]).to.equal(\"BeneficiaryID is required\");",
+													"    pm.expect(jsonData.message).to.equal(\"Beneficiary details not found\");",
 													"});",
 													""
 												],
