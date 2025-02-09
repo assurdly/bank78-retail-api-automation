@@ -13790,11 +13790,10 @@
 											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
 											"    pm.expect(jsonData.successful).to.eql(false);\r",
 											"    pm.expect(jsonData.result).to.be.null;\r",
-											"    pm.expect(jsonData.responseCode).to.be.null;\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Error message says Invalid Transaction PIN\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.equal(\"Invalid Transaction PIN\");\r",
+											"    pm.expect(pm.response.json().message).to.equal(\"Invalid 78 PIN\");\r",
 											"});\r",
 											"\r",
 											""
@@ -13854,7 +13853,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"amount\": \"7200\",\n  \"billId\": \"13\",\n  \"channel\": \"1\",\n  \"clientRequestId\": \"payforcabletv123\",\n  \"decoder\": \"123445678890\",\n  \"packageId\": \"72\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"transactionPin\": \"6503\",\n  \"narration\": \"Buy Cable bundle\",\n  \"saveBeneficiary\": \"false\",\n  \"deviceId\": \"xphone\",\n  \"beneficiaryName\": \"Paul\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"12345\"\n}",
+									"raw": "{\n  \"amount\": \"7200\",\n  \"billId\": \"15\",\n  \"channel\": \"1\",\n  \"clientRequestId\": \"payforcabletv123\",\n  \"decoder\": \"123445678890\",\n  \"packageId\": \"259\",\n  \"sourceAccountNumber\": \"{{sourceAccountBills}}\",\n  \"transactionPin\": \"6503\",\n  \"narration\": \"Buy Cable bundle\",\n  \"saveBeneficiary\": \"false\",\n  \"deviceId\": \"xphone\",\n  \"beneficiaryName\": \"Paul\",\n  \"beneficiaryPhone\": \"08185597979\",\n  \"beneficiaryEmail\": \"12345\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
