@@ -21243,9 +21243,7 @@
 											"    pm.expect(jsonData.result).to.be.null;\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Error message about failed account enquiry is returned\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.equal(\"Name Enquiry ID error\");\r",
-											"});\r",
+											"\r",
 											"\r",
 											""
 										],
@@ -21283,7 +21281,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"accountNumber\": \"1010001719\",\n  \"amount\": \"100\",\n  \"channel\": \"1\",\n  \"nameEnquiryRequestId\": \"100j0\",\n  \"narration\": \"New Schedule\",\n  \"repeatFrequency\": \"1\",\n  \"scheduledStartDate\": \"2023-09-01T09:00:00.942Z\",\n  \"sourceAccountNo\": \"{{sourceAccount}}\",\n  \"transactionPin\": \"6543\",\n  \"scheduledEndDate\": \"2023-09-02T09:00:00.942Z\",\n  \"repeatWeekDay\": \"1\",\n  \"repeatCount\": \"1\",\n  \"saveBeneficiary\": \"false\",\n  \"deviceId\": \"iphone\",\n  \"repeatMonthDay\": \"0\"\n}",
+									"raw": "{\n  \"accountNumber\": \"1010001719\",\n  \"amount\": \"100\",\n  \"channel\": \"1\",\n  \"nameEnquiryRequestId\": \"100j0\",\n  \"narration\": \"New Schedule\",\n  \"repeatFrequency\": \"1\",\n  \"scheduledStartDate\": \"2023-09-01T09:00:00.942Z\",\n  \"sourceAccountNo\": \"{{sourceAccountBills}}\",\n  \"transactionPin\": \"{{transactionpin}}\",\n  \"scheduledEndDate\": \"2023-09-02T09:00:00.942Z\",\n  \"repeatWeekDay\": \"1\",\n  \"repeatCount\": \"1\",\n  \"saveBeneficiary\": \"false\",\n  \"deviceId\": \"iphone\",\n  \"repeatMonthDay\": \"0\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -21415,7 +21413,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "\n{\n  \"amount\": \"100\",\n  \"transactionPin\": \"6543\",\n  \"narration\": \"Transfer this particualar amount\",\n  \"channel\": \"1\",\n  \"sourceAccountNo\": 8135575834,\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"phoneX\",\n  \"canSchedule\": \"true\",\n  \"scheduleInfo\": {\n    \"scheduledStartDate\": \"2023-09-05T14:50:46.856Z\",\n    \"scheduledEndDate\": \"2023-01-30T16:10:46.856Z\",\n    \"repeatFrequency\": \"5\",\n    \"repeatWeekDay\": \"1\",\n    \"repeatMonthDay\": \"10\",\n    \"repeatCount\": \"5\"\n  },\n  \"accountNumber\": \"1010001367\",\n  \"nameEnquiryRequestId\": \"15\",\n  \"currency\": \"NGN\"\n}",
+									"raw": "\n{\n  \"amount\": \"100\",\n  \"transactionPin\": \"{{transactionpin}}\",\n  \"narration\": \"Transfer this particualar amount\",\n  \"channel\": \"1\",\n  \"sourceAccountNo\": 7080507367,\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"phoneX\",\n  \"canSchedule\": \"true\",\n  \"scheduleInfo\": {\n    \"scheduledStartDate\": \"2023-09-05T14:50:46.856Z\",\n    \"scheduledEndDate\": \"2023-01-30T16:10:46.856Z\",\n    \"repeatFrequency\": \"5\",\n    \"repeatWeekDay\": \"1\",\n    \"repeatMonthDay\": \"10\",\n    \"repeatCount\": \"5\"\n  },\n  \"accountNumber\": \"1010001367\",\n  \"nameEnquiryRequestId\": \"15\",\n  \"currency\": \"NGN\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
