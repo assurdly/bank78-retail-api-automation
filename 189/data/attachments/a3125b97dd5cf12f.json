@@ -1,0 +1,18 @@
+{
+    "Date": "Thu, 13 Feb 2025 18:30:41 GMT",
+    "Content-Type": "application/json; charset=utf-8",
+    "Content-Length": "285",
+    "Connection": "keep-alive",
+    "x-amzn-RequestId": "28a05dab-f95e-42b4-a2d3-f738cdd210ab",
+    "CF-RAY": "9116e41ac9a6c204-DUB",
+    "cf-cache-status": "DYNAMIC",
+    "x-amzn-Remapped-Content-Length": "285",
+    "x-amzn-Remapped-Connection": "keep-alive",
+    "x-amz-apigw-id": "F74MuFmrDoEEFfQ=",
+    "x-amzn-Remapped-Server": "cloudflare",
+    "server-timing": "cfL4;desc=\"?proto=TCP&rtt=1007&min_rtt=991&rtt_var=308&sent=6&recv=11&lost=0&retrans=0&sent_bytes=2832&recv_bytes=5783&delivery_rate=2750237&cwnd=252&unsent_bytes=0&cid=436e654be862e395&ts=89&x=0\"",
+    "Report-To": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=VPSwuT8yp9l4gdboWIA9uwVpbI3aoTJYIE7%2B7HcxXIDSVhOnB%2FT%2BCjuITWwselb039CrHGTxZRK8nUIdrzjyNezQKt8PKkTgMyH6VCG5o6MZtvRAOUTGWxvkNjrSZuyM6brhi9dDg2pt\"}],\"group\":\"cf-nel\",\"max_age\":604800}",
+    "NEL": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}",
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "x-amzn-Remapped-Date": "Thu, 13 Feb 2025 18:30:41 GMT"
+}
