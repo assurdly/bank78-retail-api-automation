@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "d05ef96e-dbbb-4f5f-a5f0-8b6c21e9c084",
 		"name": "Retail APIs - QA",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.postman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
@@ -75,12 +75,12 @@
 								{
 									"description": "username= test1860@mailinator.com, test6900, {{latest_cust_email}}",
 									"key": "username",
-									"value": "Liasusegun1@gmail.com"
+									"value": "regresv1@mailinator.com"
 								},
 								{
 									"description": "password",
 									"key": "password",
-									"value": "Liasu1234#"
+									"value": "Test123@"
 								},
 								{
 									"description": "client_id",
@@ -21535,7 +21535,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"transactionPin\": \"6543\",\n    \"channel\": \"Web\",\n    \"sourceAccountNo\": \"8135575834\",\n    \"deviceId\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36\",\n    \"beneficiaries\": [\n        {\n            \"accountNumber\": \"0000028170\",\n            \"amount\": 500,\n            \"nameEnquiryRequestId\": 10118,\n            \"saveBeneficiary\": false,\n            \"narration\": \"\"\n        },\n        {\n            \"accountNumber\": \"8048838483\",\n            \"amount\": 500,\n            \"nameEnquiryRequestId\": 10119,\n            \"saveBeneficiary\": false,\n            \"narration\": \"\"\n        }\n    ]\n}",
+									"raw": "{\n    \"transactionPin\": \"2110\",\n    \"channel\": \"Web\",\n    \"sourceAccountNo\": \"7080507367\",\n    \"deviceId\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36\",\n    \"beneficiaries\": [\n        {\n            \"accountNumber\": \"0000028170\",\n            \"amount\": 500,\n            \"nameEnquiryRequestId\": 10118,\n            \"saveBeneficiary\": false,\n            \"narration\": \"\"\n        },\n        {\n            \"accountNumber\": \"8048838483\",\n            \"amount\": 500,\n            \"nameEnquiryRequestId\": 10119,\n            \"saveBeneficiary\": false,\n            \"narration\": \"\"\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
