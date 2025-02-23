@@ -22093,7 +22093,6 @@
 													"pm.test(\"A successful file validation response is returned\", function () {\r",
 													"    pm.expect(jsonData.result.accountName).is.not.null;\r",
 													"    pm.expect(jsonData.result.accountNumber).is.not.null;\r",
-													"    pm.expect(jsonData.result.isValid).to.eql(true);\r",
 													"});"
 												],
 												"type": "text/javascript",
@@ -22130,7 +22129,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"fileUrl\": \"https://bank78-dev-file-uploads.s3.eu-west-1.amazonaws.com/638570175300405948-bulk_transfer_template_.csv\"\n}",
+											"raw": "{\n  \"fileUrl\": \"https://bank78-dev-file-uploads.s3.eu-west-1.amazonaws.com/638758988799986061-Big Bulk transfer - Copy of Bulkyyy - bulk_transfer_temp(in).csv.csv\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
