@@ -20913,7 +20913,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "\n{\n  \"amount\": \"100\",\n  \"transactionPin\": \"{{transactionpin}}\",\n  \"narration\": \"Transfer this particualar amount\",\n  \"channel\": \"1\",\n  \"sourceAccountNo\": 7080507367,\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"phoneX\",\n  \"canSchedule\": \"true\",\n  \"scheduleInfo\": {\n    \"scheduledStartDate\": \"2025-02-15T14:50:46.856Z\",\n    \"scheduledEndDate\": \"2025-03-30T16:10:46.856Z\",\n    \"repeatFrequency\": \"5\",\n    \"repeatWeekDay\": \"1\",\n    \"repeatMonthDay\": \"10\",\n    \"repeatCount\": \"5\"\n  },\n  \"accountNumber\": \"1010001367\",\n  \"nameEnquiryRequestId\": \"15\",\n  \"currency\": \"NGN\"\n}",
+									"raw": "\n{\n  \"amount\": \"100\",\n  \"transactionPin\": \"{{transactionpin}}\",\n  \"narration\": \"Transfer this particualar amount\",\n  \"channel\": \"1\",\n  \"sourceAccountNo\": {{sourceAccountretail}},\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"phoneX\",\n  \"canSchedule\": \"true\",\n  \"scheduleInfo\": {\n    \"scheduledStartDate\": \"2025-03-15T14:50:46.856Z\",\n    \"scheduledEndDate\": \"2025-06-30T16:10:46.856Z\",\n    \"repeatFrequency\": \"5\",\n    \"repeatWeekDay\": \"1\",\n    \"repeatMonthDay\": \"10\",\n    \"repeatCount\": \"5\"\n  },\n  \"accountNumber\": \"1010001367\",\n  \"nameEnquiryRequestId\": \"15\",\n  \"currency\": \"NGN\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -21163,7 +21163,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"accountNumber\": \"1780004070\",\n  \"amount\": \"100\",\n  \"channel\": \"1\",\n  \"nameEnquiryRequestId\": \"10\",\n  \"narration\": \"New Schedule for 9 in the morning Sharp\",\n  \"repeatFrequency\": \"1\",\n  \"scheduledStartDate\": \"2025-02-10T09:00:00.942Z\",\n  \"sourceAccountNo\": \"{{sourceAccountBills}}\",\n  \"transactionPin\": \"{{transactionpin}}\",\n  \"scheduledEndDate\": \"2025-09-02T10:00:00.942Z\",\n  \"repeatWeekDay\": \"1\",\n  \"repeatCount\": \"1\",\n  \"saveBeneficiary\": \"false\",\n  \"deviceId\": \"iphone19\",\n  \"repeatMonthDay\": \"0\"\n}",
+									"raw": "{\n  \"accountNumber\": \"1780004070\",\n  \"amount\": \"100\",\n  \"channel\": \"1\",\n  \"nameEnquiryRequestId\": \"10\",\n  \"narration\": \"New Schedule for 9 in the morning Sharp\",\n  \"repeatFrequency\": \"1\",\n  \"scheduledStartDate\": \"2025-04-10T09:00:00.942Z\",\n  \"sourceAccountNo\": \"{{sourceAccountBills}}\",\n  \"transactionPin\": \"{{transactionpin}}\",\n  \"scheduledEndDate\": \"2025-09-02T10:00:00.942Z\",\n  \"repeatWeekDay\": \"1\",\n  \"repeatCount\": \"1\",\n  \"saveBeneficiary\": \"false\",\n  \"deviceId\": \"iphone19\",\n  \"repeatMonthDay\": \"0\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -21338,7 +21338,7 @@
 							]
 						},
 						{
-							"name": "Date in the past",
+							"name": "Schedule - Date in the past",
 							"event": [
 								{
 									"listen": "test",
