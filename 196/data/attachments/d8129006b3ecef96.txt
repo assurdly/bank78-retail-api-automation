@@ -1,0 +1,31 @@
+{
+  "channel": "1",
+  "sourceAccountNo": "{{sourceAccountretail}}",
+  "transactionPin": "{{transactionpin}}",
+  "deviceId": "iphone",
+  "beneficiaries": [
+    {
+      "accountNumber": "1010001367",
+      "amount": "100",
+      "NameEnquiryRequestId": "15",
+      "narration": "My sister",
+      "saveBeneficiary": "true"
+    },
+    {
+      "accountNumber": "1780004070",
+      "amount": "100",
+      "NameEnquiryRequestId": "10",
+      "narration": "My sister",
+      "saveBeneficiary": "true"
+    },
+    {
+      "accountNumber": "1010001dgjhd",
+      "amount": "100",
+      "NameEnquiryRequestId": "15",
+      "narration": "Have fun",
+      "saveBeneficiary": "true"
+    }
+  
+  ],
+  "currency": "NGN"
+}
