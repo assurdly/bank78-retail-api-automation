@@ -20256,6 +20256,17 @@
 										"type": "text/javascript",
 										"packages": {}
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "a32d7f76-0121-438a-99d9-f4a6532b2d92",
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
 								}
 							],
 							"id": "4ad7aeb3-4a27-40f8-bdb8-b1870d3f8a6c",
@@ -20287,7 +20298,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"amount\": \"1000\",\n  \"transactionPin\": \"{{transactionpin}}\",\n  \"narration\": \"Transfer now\",\n  \"channel\": \"1\",\n  \"sourceAccountNo\": {{sourceAccountretail}},\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"phoneX\",\n  \"canSchedule\": false,\n  \"scheduleInfo\": {},\n  \"accountNumber\": \"7080507367\",\n  \"nameEnquiryRequestId\": \"1680\",\n  \"currency\": \"NGN\"\n}",
+									"raw": "{\n  \"amount\": \"2000\",\n  \"transactionPin\": \"{{transactionpin}}\",\n  \"narration\": \"Transfer now\",\n  \"channel\": \"1\",\n  \"sourceAccountNo\": {{sourceAccountretail}},\n  \"saveBeneficiary\": true,\n  \"deviceId\": \"phoneX\",\n  \"canSchedule\": false,\n  \"scheduleInfo\": {},\n  \"accountNumber\": \"7080008000\",\n  \"nameEnquiryRequestId\": \"17351\",\n  \"currency\": \"NGN\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
