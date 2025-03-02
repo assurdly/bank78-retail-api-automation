@@ -1,0 +1,29 @@
+{
+    "transactionPin": "{{transactionpin}}",
+    "channel": "Web",
+    "sourceAccountNo": "7080008000",
+    "deviceId": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+    "beneficiaries": [
+        {
+            "accountNumber": "9035000122",
+            "amount": 500,
+            "nameEnquiryRequestId": 17230,
+            "saveBeneficiary": false,
+            "narration": ""
+        },
+        {
+            "accountNumber": "8048838483",
+            "amount": 500,
+            "nameEnquiryRequestId": 17231,
+            "saveBeneficiary": false,
+            "narration": ""
+        },
+        {
+            "accountNumber": "7080507367",
+            "amount": 500,
+            "nameEnquiryRequestId": 17232,
+            "saveBeneficiary": false,
+            "narration": ""
+        }
+    ]
+}
