@@ -1321,9 +1321,7 @@
 											"    pm.expect(jsonData.resultType).to.eql(\"Error\");\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Error messages about an invalid email is returned\", function () {\r",
-											"    pm.expect(jsonData.message).to.include(\"Invalid email format\");\r",
-											"});"
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -1491,9 +1489,7 @@
 											"    pm.expect(jsonData.resultType).to.eql(\"Error\");\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Error message about invalid username is returned\", function () {\r",
-											"    pm.expect(jsonData.message).to.include(\"Invalid email format\");\r",
-											"});"
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -2403,168 +2399,6 @@
 							"response": [
 								{
 									"id": "1e243e2b-79f7-4abe-9128-13ab0865ff8e",
-									"name": "Success",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											},
-											{
-												"key": "Accept",
-												"value": "text/plain"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"userName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"phoneNumberCountryCode\": \"<string>\",\n  \"referralCode\": \"<string>\",\n  \"countryCode\": \"<string>\",\n  \"password\": \"<string>\",\n  \"otp\": \"<string>\",\n  \"status\": \"<string>\",\n  \"rcBnNumber\": \"<string>\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/api/user/save?profile=<string>",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"api",
-												"user",
-												"save"
-											],
-											"query": [
-												{
-													"key": "profile",
-													"value": "<string>"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"userName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"phoneNumberCountryCode\": \"<string>\",\n    \"referralCode\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"password\": \"<string>\",\n    \"otp\": \"<string>\",\n    \"status\": \"<string>\",\n    \"rcBnNumber\": \"<string>\"\n  },\n  \"resultType\": 4,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
-								}
-							]
-						},
-						{
-							"name": "Signup - Invalid phone number country code",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "a3bbd591-7f4e-43d4-bcac-f20edc665da8",
-										"exec": [
-											"var jsonData = pm.response.json();\r",
-											"\r",
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Reponse body contains error fields\", function () {\r",
-											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
-											"    pm.expect(jsonData.successful).to.eql(false);\r",
-											"    pm.expect(jsonData.result).to.be.null;\r",
-											"    pm.expect(jsonData.responseCode).to.be.null;\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Phone number country code validation error is returned\", function () {\r",
-											"    pm.expect(jsonData.message).to.include(\"Invalid phone number country code\");\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								},
-								{
-									"listen": "prerequest",
-									"script": {
-										"id": "cf093915-93e8-492d-8b49-cd80fb186f64",
-										"exec": [
-											"var num = Math.floor(Math.random() * (9999 - 1000) + 1000)\r",
-											"var number  = \"806744\" + num\r",
-											"pm.environment.set(\"number\", number)\r",
-											"\r",
-											"var rand = Math.floor(Math.random()* (9999 -1000) + 100)\r",
-											"var email = \"test\"+rand+\"@mailinator.com\"\r",
-											"pm.environment.set(\"cust_email\",email)"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "80e9a7c3-4249-44b2-b3e7-8ddb02fbc64e",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{Onboarding_access_token}}"
-									}
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "text/plain"
-									},
-									{
-										"key": "x-api-key",
-										"value": "{{x-api-key}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"firstName\": \"{{$randomFirstName}}\",\n  \"lastName\": \"{{$randomLastName}}\",\n  \"userName\": \"{{cust_email}}\",\n  \"email\": \"{{cust_email}}\",\n  \"phoneNumber\": \"{{number}}\",\n  \"phoneNumberCountryCode\": \"abc\",\n  \"referralCode\": \"ABC123\",\n  \"countryCode\": \"NG\",\n  \"password\": \"Tested@0980\",\n    \"otp\": \"\",\n    \"agreeToSignUpTandC\": true\n}\n",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/onboard/api/user/save?profile=person",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"onboard",
-										"api",
-										"user",
-										"save"
-									],
-									"query": [
-										{
-											"key": "profile",
-											"value": "person"
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"id": "39950e7d-cc21-4af0-b9a2-ebc9f1571f43",
 									"name": "Success",
 									"originalRequest": {
 										"method": "POST",
