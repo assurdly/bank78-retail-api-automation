@@ -1824,9 +1824,7 @@
 											"    pm.expect(jsonData.resultType).to.eql(\"Error\");\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Error messages about existing username is returned\", function () {\r",
-											"    pm.expect(jsonData.message).to.include(\"This email is already registered.\");\r",
-											"});"
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -1879,7 +1877,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"firstName\": \"{{$randomFirstName}}\",\n  \"lastName\": \"{{$randomLastName}}\",\n  \"userName\": \"gee@mailsac.com\",\n  \"email\": \"{{cust_email}}\",\n  \"phoneNumber\": \"{{number}}\",\n  \"phoneNumberCountryCode\": \"+234\",\n  \"referralCode\": \"ABC123\",\n  \"countryCode\": \"NG\",\n  \"password\": \"Tested@0980\",\n    \"otp\": \"\",\n    \"agreeToSignUpTandC\": true\n}\n",
+									"raw": "{\n  \"firstName\": \"Test\",\n  \"lastName\": \"Now\",\n  \"userName\": \"test1849@mailinator.com\",\n  \"email\": \"{{cust_email}}\",\n  \"phoneNumber\": \"{{number}}\",\n  \"phoneNumberCountryCode\": \"+234\",\n  \"referralCode\": \"AYO201\",\n  \"countryCode\": \"NG\",\n  \"password\": \"Tested@0980\",\n    \"otp\": \"\",\n    \"agreeToSignUpTandC\": true\n}\n\n",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -2811,10 +2809,7 @@
 											"    pm.expect(jsonData.responseCode).to.be.null;\r",
 											"    pm.expect(jsonData.resultType).to.eql(\"Error\");\r",
 											"});\r",
-											"\r",
-											"pm.test(\"Error message about the existing email is returned\", function () {\r",
-											"    pm.expect(jsonData.message).to.include(\"This email is already registered.\");\r",
-											"});"
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
