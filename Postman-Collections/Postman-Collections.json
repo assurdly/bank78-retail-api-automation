@@ -23142,58 +23142,6 @@
 							]
 						},
 						{
-							"name": "Randomize security questions - No questions set up",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "3a5a75b0-1dc4-4059-aa9a-05876034d715",
-										"exec": [
-											"var jsonData = pm.response.json();\r",
-											"\r",
-											"pm.test(\"Status code is 400\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Reponse body contains standard error fields\", function () {\r",
-											"    pm.expect(jsonData.hasResult).to.eql(false);\r",
-											"    pm.expect(jsonData.successful).to.eql(false);\r",
-											"    pm.expect(jsonData.result).to.be.null;\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Error messages is returned about no security question present\", function () {\r",
-											"    pm.expect(jsonData.message).to.include(\"No Security Question Setup For User\");\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "f3115d76-c154-4f0d-86a5-ab322e9d41cc",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{customer_access_token}}"
-									}
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "x-api-key",
-										"value": "{{x-api-key}}",
-										"type": "text"
-									}
-								],
-								"url": "{{baseUrl}}/identity/v1/accounts/security-questions/randomize"
-							},
-							"response": []
-						},
-						{
 							"name": "Randomize security questions - Successful",
 							"event": [
 								{
