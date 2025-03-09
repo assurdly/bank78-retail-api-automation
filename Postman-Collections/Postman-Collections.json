@@ -5708,7 +5708,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the required username is returned\", function () {\r",
-											"    pm.expect(jsonData.validationMessages[0]).to.include(\"PIN OTP Sent successfully\");\r",
+											"    pm.expect(jsonData.result.message).to.include(\"PIN OTP Sent successfully\");\r",
 											"});"
 										],
 										"type": "text/javascript",
