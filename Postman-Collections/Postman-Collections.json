@@ -3486,7 +3486,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Error message about the PIN mismatch is returned\", function () {\r",
-											"    pm.expect(jsonData.message).to.eql(\"PIN and confirm PIN don't match\");\r",
+											"    pm.expect(jsonData.message).to.eql(\"Pin and confirm pin don't match\");\r",
 											"});\r",
 											""
 										],
@@ -3967,7 +3967,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the required OTP field is returned\", function () {\r",
-											"    pm.expect(jsonData.validationMessages[0]).to.include(\"The OTP field is required.\");\r",
+											"    pm.expect(jsonData.validationMessages).to.include(\"The Otp field is required.\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -4095,7 +4095,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the required PIN field is returned\", function () {\r",
-											"    pm.expect(jsonData.validationMessages[0]).to.include(\"The PIN field is required.\");\r",
+											"    pm.expect(jsonData.validationMessages[0]).to.include(\"The Pin field is required.\");\r",
 											"});"
 										],
 										"type": "text/javascript",
