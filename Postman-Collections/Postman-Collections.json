@@ -6581,7 +6581,7 @@
 											"\r",
 											"pm.test(\"The error message about the unmet PIN condition is returned\", function () {\r",
 											"    var jsonData = pm.response.json();\r",
-											"    pm.expect(jsonData.message).to.include(\"PIN condition not met\");\r",
+											"    pm.expect(jsonData.message).to.include(\"Pin condition not met\");\r",
 											"});"
 										],
 										"type": "text/javascript",
