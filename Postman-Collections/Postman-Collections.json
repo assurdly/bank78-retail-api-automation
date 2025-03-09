@@ -481,13 +481,15 @@
 							"script": {
 								"id": "5cbbe3ec-ec6a-449c-b893-0f648dd308b6",
 								"exec": [
+									"var jsonData = pm.response.json()\r",
 									"pm.test(\"Status code is 400\", function () {\r",
 									"    pm.response.to.have.status(400, \"Bad Request\");\r",
 									"});\r",
 									"\r",
-									"pm.test(\"error message is 'invalid_grant'\", function () {\r",
+									"pm.test(\"error message is 'Invalid Username or password'\", function () {\r",
 									"    pm.expect(jsonData.error_description).to.eql(\"Invalid Username or password\");\r",
 									"});\r",
+									"\r",
 									"\r",
 									""
 								],
@@ -644,7 +646,7 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Error message about the required username is returned\", function () {\r",
-									"   pm.expect(jsonData.error_description).to.eql(\"Invalid Username or password\");\r",
+									"   pm.expect(jsonData.error).to.eql(\"invalid_grant\");\r",
 									"});\r",
 									"\r",
 									""
