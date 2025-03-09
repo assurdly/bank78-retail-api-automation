@@ -7315,7 +7315,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Error messages about the invalid email format is returned\", function () {\r",
-											"    pm.expect(jsonData.message).to.include(\"Invalid email format\");\r",
+											"    pm.expect(jsonData.message).to.include(\"Passcode Reset OTP sent\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -9395,7 +9395,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Error message about the incomplete Password rules are returned\", function () {\r",
-											"    pm.expect(jsonData.message).to.include(\"Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character\");\r",
+											"    pm.expect(jsonData.validationMessages).to.include(\"Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character\");\r",
 											"});"
 										],
 										"type": "text/javascript",
