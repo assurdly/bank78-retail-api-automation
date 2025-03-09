@@ -8687,7 +8687,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the password mismatch is returned\", function () {\r",
-											"    pm.expect(jsonData.message).to.include(\"Password and confirm password do not match\");\r",
+											"    pm.expect(jsonData.validationMessages).to.include(\"Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -9847,122 +9847,6 @@
 				{
 					"name": "Resend OTP",
 					"item": [
-						{
-							"name": "Resend OTP - Valid email",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "58846a7c-5f42-4de3-bd85-8c37e850c298",
-										"exec": [
-											"var responseData = pm.response.json();\r",
-											"\r",
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Response does not have error fields\", function () {\r",
-											"     pm.expect(responseData.successful).to.not.eql(false);\r",
-											"    pm.expect(responseData.hasResult).to.not.eql(false);\r",
-											"    pm.expect(responseData.message).to.eql('Success');\r",
-											"});\r",
-											"\r",
-											"pm.test(\"A message about an OTP being sent is displayed\", function () {\r",
-											"     pm.expect(responseData.message).to.equal('Passcode Reset OTP sent');\r",
-											"});"
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"id": "46885dc4-0061-4842-9950-180e8b4efc4e",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{customer_access_token}}"
-									}
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "x-api-key",
-										"value": "{{x-api-key}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"username\": \"{{userName}}\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/identity/v1/accounts/passwords/resendotp"
-							},
-							"response": [
-								{
-									"id": "f6481293-3c2e-429e-8cb9-a00c6123b60f",
-									"name": "Success",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											},
-											{
-												"key": "Accept",
-												"value": "application/json"
-											},
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "Authorization",
-												"value": "<API Key>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"username\": \"mMV3S.KKr.F6n+Lg0h'18ymRAK-J0YvUk8+C'hs1-je8K05HQU'BqbDP5@WS0QmoD.HNp8.1-BuXsPBfP-jN-wyT4KR0GlVK.j.c7oA-RP-6AXj-vmX.nJqJ67h\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": "{{baseUrl}}/v1/accounts/passwords/resendotp"
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"message\": \"<string>\",\n  \"resetTokenId\": \"<string>\"\n}"
-								}
-							]
-						},
 						{
 							"name": "Resend OTP - Invalid email",
 							"event": [
