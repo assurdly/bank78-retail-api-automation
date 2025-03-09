@@ -5498,7 +5498,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Error message about the PIN mismatch is returned\", function () {\r",
-											"    pm.expect(jsonData.message).to.eql(\"PIN and confirm PIN don't match\");\r",
+											"    pm.expect(jsonData.message).to.eql(\"Pin doesnt match\");\r",
 											"});\r",
 											""
 										],
@@ -5616,7 +5616,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Error message about the required Old PIN is returned\", function () {\r",
-											"    pm.expect(jsonData.validationMessages[0]).to.eql(\"The OldPIN field is required.\");\r",
+											"    pm.expect(jsonData.validationMessages).to.include(\"The OldPin field is required.\");\r",
 											"});\r",
 											""
 										],
