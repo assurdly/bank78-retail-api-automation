@@ -2003,13 +2003,14 @@
 									"script": {
 										"id": "cf093915-93e8-492d-8b49-cd80fb186f64",
 										"exec": [
-											"var num = Math.floor(Math.random() * (9999 - 1000) + 1000)\r",
-											"var number  = \"806744\" + num\r",
-											"pm.environment.set(\"number\", number)\r",
+											"var num = Math.floor(Math.random() * (9999 - 1000) + 1000);\r",
+											"var number  = \"806744\" + num;\r",
+											"pm.environment.set(\"number\", number);\r",
 											"\r",
-											"var rand = Math.floor(Math.random()* (9999 -1000) + 100)\r",
-											"var email = \"test\"+rand+\"@mailinator.com\"\r",
-											"pm.environment.set(\"cust_email\",email)"
+											"var rand = Math.floor(Math.random() * (9999 - 1000) + 1000); // Fixed range\r",
+											"var email = \"test\" + rand + \"@mailinator.com\";\r",
+											"pm.environment.set(\"cust_email\", email);\r",
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -2045,7 +2046,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"firstName\": \"{{$randomFirstName}}\",\n  \"lastName\": \"{{$randomLastName}}\",\n  \"userName\": \"{{cust_email}}\",\n  \"email\": \"{{cust_email}}\",\n  \"phoneNumber\": \"{{number}}\",\n  \"phoneNumberCountryCode\": \"+234\",\n  \"referralCode\": \"abc123\",\n  \"countryCode\": \"NG\",\n  \"password\": \"Tested@0980\",\n    \"otp\": \"\",\n    \"agreeToSignUpTandC\": true\n}\n",
+									"raw": "{\n  \"firstName\": \"Test\",\n  \"lastName\": \"Now\",\n  \"userName\": \"{{cust_email}}\",\n  \"email\": \"{{cust_email}}\",\n  \"phoneNumber\": \"{{number}}\",\n  \"phoneNumberCountryCode\": \"+234\",\n  \"referralCode\": \"AYO201\",\n  \"countryCode\": \"NG\",\n  \"password\": \"Tested@0980\",\n    \"otp\": \"\",\n    \"agreeToSignUpTandC\": true\n}\n",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
