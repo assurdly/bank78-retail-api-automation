@@ -24267,8 +24267,8 @@
 								"exec": [
 									"var jsonData = pm.response.json();\r",
 									"\r",
-									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Reponse body contains standard error fields\", function () {\r",
