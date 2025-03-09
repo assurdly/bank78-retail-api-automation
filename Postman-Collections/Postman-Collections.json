@@ -23512,7 +23512,7 @@
 											"",
 											"pm.test(\"An error about an Invalid question is returned\", function () {",
 											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.message).to.include(\"The Action requested is invalid.\");",
+											"    pm.expect(jsonData.message).to.include(\"Security Question Not Found\");",
 											"});"
 										],
 										"type": "text/javascript",
@@ -24508,7 +24508,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"transactionPin\": \"6543\"\n}",
+							"raw": "{\n    \"transactionPin\": \"{{transactionpin}}\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -24614,7 +24614,7 @@
 									"});",
 									"",
 									"pm.test(\"The error message about the incorrect PIN is returned\", function () {",
-									"    pm.expect(jsonData.message).to.eql(\"Incorrect PIN\");",
+									"    pm.expect(jsonData.message).to.eql(\"Incorrect 78 pin\");",
 									"});"
 								],
 								"type": "text/javascript",
