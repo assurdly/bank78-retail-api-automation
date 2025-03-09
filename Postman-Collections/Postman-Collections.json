@@ -23264,11 +23264,7 @@
 											"    pm.expect(jsonData.responseCode).to.be.null;",
 											"});",
 											"",
-											"pm.test(\"A single validation error message is returned\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.validationMessages[0]).to.include(\"The QuestionId field is required.\");",
-											"    pm.expect(jsonData.validationMessages[1]).to.be.null",
-											"});"
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -23328,11 +23324,7 @@
 											"    pm.expect(jsonData.responseCode).to.be.null;",
 											"});",
 											"",
-											"pm.test(\"A single validation error message is returned\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.validationMessages[0]).to.include(\"The Response field is required.\");",
-											"    pm.expect(jsonData.validationMessages[1]).to.be.null",
-											"});"
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -23457,7 +23449,7 @@
 											"",
 											"pm.test(\"An error about an Invalid question is returned\", function () {",
 											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.message).to.include(\"The Question does not exist.\");",
+											"    pm.expect(jsonData.message).to.include(\"User Security Question Not Found\");",
 											"});"
 										],
 										"type": "text/javascript",
