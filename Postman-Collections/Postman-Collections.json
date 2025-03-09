@@ -22773,7 +22773,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the invalid question is returned\", function () {\r",
-											"    pm.expect(jsonData.message).to.eql(\"Some question(s) selected does not exist\");\r",
+											"    pm.expect(jsonData.message).to.eql(\"Security Question Already Created\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -23051,12 +23051,12 @@
 										{
 											"description": "username= test1860@mailinator.com, test6900, {{latest_cust_email}}",
 											"key": "username",
-											"value": "mayin@yopmail.com"
+											"value": "Testuser_01@mailinator.com"
 										},
 										{
 											"description": "password",
 											"key": "password",
-											"value": "Assurdly01!"
+											"value": "Password12$"
 										},
 										{
 											"description": "client_id",
