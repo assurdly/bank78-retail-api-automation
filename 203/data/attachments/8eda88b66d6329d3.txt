@@ -1,0 +1,21 @@
+{
+  "amount": "-100",
+  "transactionPin": "{{transactionpin}}",
+  "narration": "Transfer this particualr amount",
+  "channel": "1",
+  "sourceAccountNo": {{sourceAccountretail}},
+  "saveBeneficiary": true,
+  "deviceId": "phoneX",
+  "canSchedule": "false",
+  "scheduleInfo": {
+    "scheduledStartDate": "2023-09-05T14:50:46.856Z",
+    "scheduledEndDate": "2023-01-30T16:10:46.856Z",
+    "repeatFrequency": "5",
+    "repeatWeekDay": "1",
+    "repeatMonthDay": "10",
+    "repeatCount": "5"
+  },
+  "accountNumber": "1010001367",
+  "nameEnquiryRequestId": "15",
+  "currency": "NGN"
+}

@@ -1,0 +1,21 @@
+{
+  "amount": "100",
+  "transactionPin": "{{transactionpin}}",
+  "narration": "Invalid",
+  "channel": "1",
+  "sourceAccountNo": 7080507367,
+  "saveBeneficiary": true,
+  "deviceId": "phoneX",
+  "canSchedule": "false",
+  "scheduleInfo": {
+    "scheduledStartDate": "2025-08-30T16:10:46.856Z",
+    "scheduledEndDate": "2025-08-30T16:10:46.856Z",
+    "repeatFrequency": "0",
+    "repeatWeekDay": "0",
+    "repeatMonthDay": "0",
+    "repeatCount": "0"
+  },
+  "accountNumber": "1010001367",
+  "nameEnquiryRequestId": "13h00",
+  "currency": "NGN"
+}
