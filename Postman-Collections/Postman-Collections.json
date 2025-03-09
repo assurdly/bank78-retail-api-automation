@@ -4223,7 +4223,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the required Confirm PIN field is returned\", function () {\r",
-											"    pm.expect(jsonData.validationMessages[0]).to.include(\"The ConfirmPIN field is required.\");\r",
+											"    pm.expect(jsonData.validationMessages[0]).to.include(\"The ConfirmPin field is required.\");\r",
 											"});"
 										],
 										"type": "text/javascript",
@@ -5264,7 +5264,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"The error message about the unmet PIN condition is returned\", function () {\r",
-											"    pm.expect(jsonData.message).to.include(\"PIN condition not met\");\r",
+											"    pm.expect(jsonData.message).to.include(\"Pin condition not met\");\r",
 											"});"
 										],
 										"type": "text/javascript",
