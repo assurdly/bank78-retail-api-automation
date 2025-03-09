@@ -3175,7 +3175,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Error message about the missing OTP is returned\", function () {\r",
-											"    pm.expect(jsonData.message).to.eql(\"The OTP field is required\");\r",
+											"    pm.expect(jsonData.message).to.eql(\"The Otp field is required.\");\r",
 											"});\r",
 											""
 										],
@@ -9161,7 +9161,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Error message about the incorrect password is returned\", function () {\r",
-											"    pm.expect(jsonData.message).to.include(\"Incorrect password.\");\r",
+											"    pm.expect(jsonData.validationMessages).to.include(\"Incorrect password.\");\r",
 											"});"
 										],
 										"type": "text/javascript",
