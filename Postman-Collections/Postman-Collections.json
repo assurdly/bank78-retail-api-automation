@@ -24541,7 +24541,7 @@
 									"});",
 									"",
 									"pm.test(\"The error message about the missing PIN is returned\", function () {",
-									"    pm.expect(jsonData.validationMessages[0]).to.eql(\"PIN is required\");",
+									"    pm.expect(jsonData.message).to.eql(\"Incorrect 78 pin\");",
 									"});"
 								],
 								"type": "text/javascript",
