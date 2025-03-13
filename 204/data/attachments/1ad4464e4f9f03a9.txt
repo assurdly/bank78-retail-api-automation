@@ -1,0 +1,29 @@
+{
+    "transactionPin": "{{transactionpin}}",
+    "channel": "Web",
+    "sourceAccountNo": "{{sourceAccountretail}}",
+    "deviceId": "xphone",
+    "beneficiaries": [
+        {
+            "accountNumber": "7011725297",
+            "amount": 100,
+            "nameEnquiryRequestId": 7645,
+            "saveBeneficiary": false,
+            "narration": ""
+        },
+        {
+            "accountNumber": "1780004070",
+            "amount": 100,
+            "nameEnquiryRequestId": 7646,
+            "saveBeneficiary": false,
+            "narration": ""
+        },
+        {
+            "accountNumber": "7022425297",
+            "amount": 100,
+            "nameEnquiryRequestId": 7647,
+            "saveBeneficiary": false,
+            "narration": ""
+        }
+    ]
+}
