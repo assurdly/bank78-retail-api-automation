@@ -1,0 +1,14 @@
+{
+  "amount": "2000",
+  "transactionPin": "{{transactionpin}}",
+  "narration": "Transfer now",
+  "channel": "1",
+  "sourceAccountNo": {{sourceAccountretail}},
+  "saveBeneficiary": true,
+  "deviceId": "phoneX",
+  "canSchedule": false,
+  "scheduleInfo": {},
+  "accountNumber": "7080008000",
+  "nameEnquiryRequestId": "17351",
+  "currency": "NGN"
+}
